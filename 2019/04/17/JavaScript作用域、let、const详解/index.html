@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>JS-入门 | 个人博客</title>
+  <title>JS作用域、let、const详解 | 个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="利用寒假一个多月的时间，重新学习下JS。参考文献：廖雪峰的官方网站一步一步地学习并记下笔记复习。">
+  <meta name="description" content="ES6之前，JS中的作用域有：全局作用域、函数作用域，没有块级作用域的概念。ES6新增了新的声明方式let、const，也为JS新增了块级作用域">
 <meta name="keywords" content="JavaScript">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JS-入门">
-<meta property="og:url" content="http://yoursite.com/2019/04/13/JS-入门/index.html">
+<meta property="og:title" content="JS作用域、let、const详解">
+<meta property="og:url" content="http://yoursite.com/2019/04/17/JavaScript作用域、let、const详解/index.html">
 <meta property="og:site_name" content="个人博客">
-<meta property="og:description" content="利用寒假一个多月的时间，重新学习下JS。参考文献：廖雪峰的官方网站一步一步地学习并记下笔记复习。">
+<meta property="og:description" content="ES6之前，JS中的作用域有：全局作用域、函数作用域，没有块级作用域的概念。ES6新增了新的声明方式let、const，也为JS新增了块级作用域">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-18T10:38:32.332Z">
+<meta property="og:updated_time" content="2019-04-18T11:59:06.807Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JS-入门">
-<meta name="twitter:description" content="利用寒假一个多月的时间，重新学习下JS。参考文献：廖雪峰的官方网站一步一步地学习并记下笔记复习。">
+<meta name="twitter:title" content="JS作用域、let、const详解">
+<meta name="twitter:description" content="ES6之前，JS中的作用域有：全局作用域、函数作用域，没有块级作用域的概念。ES6新增了新的声明方式let、const，也为JS新增了块级作用域">
   
     <link rel="alternative" href="/atom.xml" title="个人博客" type="application/atom+xml">
   
@@ -151,46 +151,69 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-JS-入门" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-JavaScript作用域、let、const详解" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      JS-入门
+      JS作用域、let、const详解
     </h1>
   
 
         
-        <a href="/2019/04/13/JS-入门/" class="archive-article-date">
-  	<time datetime="2019-04-13T13:54:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-13</time>
+        <a href="/2019/04/17/JavaScript作用域、let、const详解/" class="archive-article-date">
+  	<time datetime="2019-04-17T13:16:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-17</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>利用寒假一个多月的时间，重新学习下JS。参考文献：<a href="https://www.liaoxuefeng.com/" target="_blank" rel="noopener">廖雪峰的官方网站</a><br>一步一步地学习并记下笔记复习。<br><a id="more"></a></p>
-<p>使用var申明的变量则不是全局变量，它的范围被限制在该变量被申明的函数体内（函数的概念将稍后讲解），同名变量在不同的函数体内互不冲突。<br>如果一个变量没有通过var申明就被使用，那么该变量就自动被申明为全局变量。不用var申明的变量会被视为全局变量，为了避免这一缺陷，所有的JavaScript代码都应该使用strict模式。<br>转义字符\<br>\n 表示换行<br>JavaScript把null、undefined、0、NaN和空字符串’’视为false，其他值一概视为true。</p>
-<h3 id="一、基本类型"><a href="#一、基本类型" class="headerlink" title="一、基本类型"></a>一、基本类型</h3><p>JS的基本类型：<br>    Number<br>    String<br>    boolean<br>    undefined<br>    null<br>    Object</p>
-<h3 id="二、字符串："><a href="#二、字符串：" class="headerlink" title="二、字符串："></a>二、字符串：</h3><p>字符串是不可变的，如果对字符串的某个索引赋值，不会有任何错误，但是，也没有任何效果。<br>调用这些方法本身不会改变原有字符串的内容，而是<strong>返回一个新字符串</strong>：<br>toUpperCase()<br>toLowerCase()<br>indexOf()    搜索指定字符串出现的位置<br>substring()   返回指定区间的子串</p>
-<h3 id="三、数组"><a href="#三、数组" class="headerlink" title="三、数组"></a>三、数组</h3><p>indexOf()   搜索指定元素的位置<br>slice()   截取<strong>Array</strong>的部分元素，然后返回一个<strong>新的Array</strong><br>push()   向末尾添加若干元素<br>pop()   把末尾的最后一个元素删除<br>unshift()   向头部添加若干元素<br>shift()     把头部第一个元素删除掉<br>sort()      对当前<strong>Array</strong>进行排序，它会直接修改当前<strong>Array</strong>的位置。<br>reverse()     把整个Array的元素给反转<br>splice()    修改Array的万能方法，可以从指定的索引开始删除若干元素，然后从该位置添加若干元素<br>concat()    把当前的Array和另一个Array连接起来，并<strong>返回一个新的Array</strong><br>join()      把当前Array的每个元素都用指定的字符串连接起来，然后<strong>返回连接后的字符串</strong></p>
-<h3 id="四、对象"><a href="#四、对象" class="headerlink" title="四、对象"></a>四、对象</h3><p>由若干键值对组成。<br>如果属性名包含特殊字符，需要用’’括起来。访问这个属性也无法实用.操作符，必须用[‘xxx’]来访问。</p>
-<h3 id="五、条件判断"><a href="#五、条件判断" class="headerlink" title="五、条件判断"></a>五、条件判断</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">if()&#123;</span><br><span class="line"></span><br><span class="line">&#125;else&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">if()&#123;</span><br><span class="line"></span><br><span class="line">&#125;else if()&#123;</span><br><span class="line"></span><br><span class="line">&#125;else&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="六、循环"><a href="#六、循环" class="headerlink" title="六、循环"></a>六、循环</h3><p><strong>for循环</strong><br>for(初始条件;结束条件;递增条件){</p>
-<p>}<br>for循环最常用的地方是利用索引来遍历数组：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var i,x</span><br><span class="line">for(i=0;i&lt;arr.length;i++)&#123;</span><br><span class="line">    x = arr[i];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>可以用<strong>break</strong>语句他退出循环。<br><strong>for…in</strong><br>它可以把一个对象的所有属性依次循环出来：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var o = &#123;</span><br><span class="line">    name: &apos;Jack&apos;,</span><br><span class="line">    age: 20,</span><br><span class="line">    city: &apos;Beijing&apos;</span><br><span class="line">&#125;;</span><br><span class="line">for (var key in o) &#123;</span><br><span class="line">    console.log(key); // &apos;name&apos;, &apos;age&apos;, &apos;city&apos;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>由于<strong>Array</strong>也是对象，而它的每个元素的索引被视为对象的属性，因此，<strong>for…in</strong>循环可以列出Array的索引：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var a = [&apos;A&apos;, &apos;B&apos;, &apos;C&apos;];</span><br><span class="line">for (var i in a) &#123;</span><br><span class="line">    console.log(i); // &apos;0&apos;, &apos;1&apos;, &apos;2&apos;</span><br><span class="line">    console.log(a[i]); // &apos;A&apos;, &apos;B&apos;, &apos;C&apos;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>注意：for…in对<strong>Array</strong>循环得到的是<strong>String</strong>而不是<strong>Number</strong><br><strong>while</strong><br>while(){</p>
-<p>}<br>while循环只有一个判断条件，条件满足就不断循环。<br>do {</p>
-<p>}while()<br>是在每次循环完成时判断条件。</p>
-<h3 id="七、Map和Set"><a href="#七、Map和Set" class="headerlink" title="七、Map和Set"></a>七、Map和Set</h3><p><strong>Map</strong><br>Map是一组键值对的结构，具有极快的查找速度<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var m = new Map([[&apos;Michael&apos;, 95], [&apos;Bob&apos;, 75], [&apos;Tracy&apos;, 85]]);</span><br><span class="line">m.get(&apos;Michael&apos;); // 95</span><br></pre></td></tr></table></figure></p>
-<p>初始化Map需要一个二维数组，或者直接初始化一个空的<strong>Map</strong>。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var m = new Map(); // 空Map</span><br><span class="line">m.set(&apos;Adam&apos;, 67); // 添加新的key-value</span><br><span class="line">m.set(&apos;Bob&apos;, 59);</span><br><span class="line">m.has(&apos;Adam&apos;); // 是否存在key &apos;Adam&apos;: true</span><br><span class="line">m.get(&apos;Adam&apos;); // 67</span><br><span class="line">m.delete(&apos;Adam&apos;); // 删除key &apos;Adam&apos;</span><br><span class="line">m.get(&apos;Adam&apos;); // undefined</span><br></pre></td></tr></table></figure></p>
-<p><strong>Set</strong><br>Set和Map类似，是一组key的集合，但不存储value。<br>由于key不能重复，所以在Set中，没有重复的key。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var s = new Set([])     //创建一个Set，需要提供一个Array</span><br><span class="line">s.add()     //添加元素</span><br><span class="line">s.delete()      //删除元素</span><br></pre></td></tr></table></figure></p>
-<h3 id="八、iterable"><a href="#八、iterable" class="headerlink" title="八、iterable"></a>八、iterable</h3><p>遍历<strong>Array</strong>可以采用下标循环，遍历<strong>Map</strong>和<strong>Set</strong>就无法使用下标。为了统一集合类型，<strong>ES6</strong>引入了新的iterable类型，<strong>Array、Map、Set</strong>都属于iterable类型<br>具有iterable类型的集合可以通过新的<strong>for..of</strong>来遍历。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">var a = [&apos;A&apos;, &apos;B&apos;, &apos;C&apos;];</span><br><span class="line">var s = new Set([&apos;A&apos;, &apos;B&apos;, &apos;C&apos;]);</span><br><span class="line">var m = new Map([[1, &apos;x&apos;], [2, &apos;y&apos;], [3, &apos;z&apos;]]);</span><br><span class="line">for (var x of a) &#123; // 遍历Array</span><br><span class="line">    console.log(x);</span><br><span class="line">&#125;</span><br><span class="line">for (var x of s) &#123; // 遍历Set</span><br><span class="line">    console.log(x);</span><br><span class="line">&#125;</span><br><span class="line">for (var x of m) &#123; // 遍历Map</span><br><span class="line">    console.log(x[0] + &apos;=&apos; + x[1]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>更好的方法是直接使用<strong>iterable</strong>内置的<strong>foreach()</strong>方法，它接受一个函数，每次迭代就自动回调该函数。<br>Array为例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var a = [&apos;A&apos;, &apos;B&apos;, &apos;C&apos;];</span><br><span class="line">a.forEach(function (element, index, array) &#123;</span><br><span class="line">    // element: 指向当前元素的值</span><br><span class="line">    // index: 指向当前索引</span><br><span class="line">    // array: 指向Array对象本身</span><br><span class="line">    console.log(element + &apos;, index = &apos; + index );</span><br><span class="line">&#125;);</span><br><span class="line">//A, index = 0</span><br><span class="line">//B, index = 1</span><br><span class="line">//C, index = 2</span><br></pre></td></tr></table></figure></p>
-<p>Set没有索引，回调函数前两个都是元素本身。<br>Map的回调函数的参数以此为<strong>value、key、map本身</strong></p>
+        <p>ES6之前，JS中的作用域有：全局作用域、函数作用域，没有块级作用域的概念。ES6新增了新的声明方式let、const，也为JS新增了块级作用域</p>
+<a id="more"></a>
+<h2 id="一、全局作用域、局部作用域"><a href="#一、全局作用域、局部作用域" class="headerlink" title="一、全局作用域、局部作用域"></a>一、全局作用域、局部作用域</h2><ul>
+<li><strong>函数作用域</strong>: 函数内部定义的变量，只能在函数内部访问。</li>
+<li><strong>全局作用域</strong>: 不在函数内部定义的变量就是全局作用域，绑定在<strong>window</strong>全局对象当中。在任何地方都能访问，不使用var定义的变量默认拥有全局作用域。</li>
+</ul>
+<p>ES5是没有块级作用域的，这就会造成两个问题：</p>
+<ol>
+<li>内层变量可能会覆盖外层变量</li>
+<li>if、for用来循环变量泄露为全局变量</li>
+</ol>
+<p>看一个变量提升的例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var scope = &quot;global&quot;;</span><br><span class="line">      function fn()&#123;</span><br><span class="line">         console.log(scope);//result:undefined</span><br><span class="line">         var scope = &quot;local&quot;;</span><br><span class="line">         console.log(scope);//result:local;</span><br><span class="line">      &#125;</span><br><span class="line">      fn();</span><br></pre></td></tr></table></figure></p>
+<p>第一个输出居然是undefined，并没有访问全局变量(scope = “global”)。原因在于：<strong>只要函数内定义了一个局部变量，函数在解析的时候都会将这个变量“提前声明”</strong></p>
+<h2 id="二、let"><a href="#二、let" class="headerlink" title="二、let"></a>二、let</h2><p>ES6新增了<strong>let</strong>命令，它所声明的变量，只在<strong>let</strong>命令所在的<strong>代码块</strong>内有效。<br>有以下几个特点：</p>
+<ul>
+<li>不存在变量提升。<strong>var</strong>命令会发生<strong>变量提升</strong>的现象，即变量可以在声明之前使用，但值为<strong>undefined</strong>。为了纠正这种错误，<strong>let</strong>命令所声明的变量一定要在声明之后使用，否则就会报错。</li>
+<li>暂时性死区。在代码块内，使用<strong>let</strong>命令声明变量之前，该变量都是不可用的，称为“暂时性死区”</li>
+<li>在相同区域内，不允许重复声明同一个变量</li>
+</ul>
+<h2 id="三、块级作用域"><a href="#三、块级作用域" class="headerlink" title="三、块级作用域"></a>三、块级作用域</h2><p><strong>需要特别注意的是</strong>：<strong>只有let、const在块出现的时候，才有块级作用域的概念</strong></p>
+<h3 id="为什么需要块级作用域？"><a href="#为什么需要块级作用域？" class="headerlink" title="为什么需要块级作用域？"></a>为什么需要块级作用域？</h3><hr>
+<p>ES5只有全局作用域和函数作用域，没有块级作用域，这会产生很多麻烦：</p>
+<ul>
+<li><p>内层变量可能会覆盖外层变量（变量提升）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var tmp = new Date();</span><br><span class="line"></span><br><span class="line">function f() &#123;</span><br><span class="line">  console.log(tmp);</span><br><span class="line">  if (false) &#123;</span><br><span class="line">    var tmp = &apos;hello world&apos;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">f(); // undefined</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>用来计数的循环变量泄露为全局变量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var s = &apos;hello&apos;;</span><br><span class="line"></span><br><span class="line">for (var i = 0; i &lt; s.length; i++) &#123;</span><br><span class="line">  console.log(s[i]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.log(i); // 5</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="ES5的解决方法（闭包）"><a href="#ES5的解决方法（闭包）" class="headerlink" title="ES5的解决方法（闭包）"></a>ES5的解决方法（闭包）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">for(var i=0;i&lt;3;i++)&#123;</span><br><span class="line">  (function()&#123;</span><br><span class="line">    var i=&apos;abc&apos;;</span><br><span class="line">    console.log(i)</span><br><span class="line">  &#125;())</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="ES6中let、const为JS新增了块级作用域"><a href="#ES6中let、const为JS新增了块级作用域" class="headerlink" title="ES6中let、const为JS新增了块级作用域"></a>ES6中let、const为JS新增了块级作用域</h3><hr>
+<p><strong>let</strong>、<strong>const</strong>所声明的变量只在它所在的<strong>代码块</strong>内起作用，完美地解决了上述问题。<br><strong>for</strong>循环又一个特别之处，设置循环变量的那部分是一个父作用域，而循环体内部是一个单独的子作用域<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">for (let i = 0; i &lt; 3; i++) &#123;</span><br><span class="line">  let i = &apos;abc&apos;;</span><br><span class="line">  console.log(i);</span><br><span class="line">&#125;</span><br><span class="line">// abc</span><br><span class="line">// abc</span><br><span class="line">// abc</span><br></pre></td></tr></table></figure></p>
+<p>输出了三次abc，表明循环变量i和函数内部的变量i在不同的作用域内，有各自单独的作用域。</p>
+<h3 id="块级作用域内函数声明"><a href="#块级作用域内函数声明" class="headerlink" title="块级作用域内函数声明"></a>块级作用域内函数声明</h3><hr>
+<p>ES6引入块级组哦用语后，明确规定允许在块级作用域之中声明函数，函数声明类似于<code>let</code>，在块级作用域之外不可引用。<br>但这显然会对老代码产生很大影响，为了兼容，在浏览器的ES6环境中，块级作用域内声明的函数，行为类似于<code>var</code>。<br>考虑到环境导致的行为差异太大，应该避免在块级作用域内声明函数,如果确实需要，也应该写成<strong>函数表达式</strong>，而不是<strong>函数声明语句</strong>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">// 函数声明语句</span><br><span class="line">&#123;</span><br><span class="line">  let a = &apos;secret&apos;;</span><br><span class="line">  function f() &#123;</span><br><span class="line">    return a;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 函数表达式</span><br><span class="line">&#123;</span><br><span class="line">  let a = &apos;secret&apos;;</span><br><span class="line">  let f = function () &#123;</span><br><span class="line">    return a;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="四、const"><a href="#四、const" class="headerlink" title="四、const"></a>四、const</h2><p>与<code>let</code>相似，<code>const</code>只在声明所在的代码块作用域内生效，不存在变量提升，同样存在暂时性死区，不可重复声明。<br>不同的是，<code>const</code>声明的变量不得改变值，所以，<code>const</code>必须在声明时初始化。<br>本质上来说，并不是变量的值不能改动，而是变量指向的那个内存地址所保存的数据不得改动。</p>
+<ul>
+<li>对于简单类型的数据（数值、字符串、布尔值）：值就保存在变量指向的那个内存地址，因此等于常量。</li>
+<li>对于符合类型的数据（主要是对象和数组）：变量指向的内存地址，保存的只是一个指向实际数据的指针，<code>const</code>只能保证这个指针是固定的，而对于它所指向的数据不可控制<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">const foo = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">// 为 foo 添加一个属性，可以成功</span><br><span class="line">foo.prop = 123;</span><br><span class="line">foo.prop // 123</span><br><span class="line"></span><br><span class="line">// 将 foo 指向另一个对象，就会报错</span><br><span class="line">foo = &#123;&#125;; // TypeError: &quot;foo&quot; is read-only</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="五、ES6声明变量的六种方法"><a href="#五、ES6声明变量的六种方法" class="headerlink" title="五、ES6声明变量的六种方法"></a>五、ES6声明变量的六种方法</h2><p>ES5只有两种声明变量的方法：<code>var</code>、<code>function</code><br>ES6又添加了四种：<code>let</code>、<code>const</code>、<code>import</code>、<code>class</code></p>
 
       
 
@@ -281,7 +304,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/04/13/JS-入门/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/04/17/JavaScript作用域、let、const详解/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -295,18 +318,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/04/13/JS-函数/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/04/18/JavaScript之顶层对象和全局变量/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          JS-函数
+          JavaScript之顶层对象和全局变量
         
       </div>
     </a>
   
   
-    <a href="/2019/04/13/React-Redux数据流/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">React-Redux数据流</div>
+    <a href="/2019/04/15/小程序开发框架的四种基本组成/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">小程序开发框架的四种基本组成</div>
       <i class="icon-circle-right"></i>
     </a>
   
