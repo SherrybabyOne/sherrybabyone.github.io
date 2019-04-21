@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>JavaScript之顶层对象和全局变量 | 个人博客</title>
+  <title>Umi配置proxy解决跨域问题 | 个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="顶层对象，在浏览器环境指的是window对象，在Node指的是global对象。ES5之前，顶层对象和全局变量是等价的，此被称为JavaScript设计的最大的败笔之一。ES6之后，顶层对象和全局变量讲逐渐脱钩。">
-<meta name="keywords" content="JavaScript">
+  <meta name="description" content="在umi脚手架下，配置webpack解决跨域问题">
+<meta name="keywords" content="Umi">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JavaScript之顶层对象和全局变量">
-<meta property="og:url" content="http://yoursite.com/2019/04/18/JavaScript之顶层对象和全局变量/index.html">
+<meta property="og:title" content="Umi配置proxy解决跨域问题">
+<meta property="og:url" content="http://yoursite.com/2019/04/21/Umi配置proxy解决跨域问题/index.html">
 <meta property="og:site_name" content="个人博客">
-<meta property="og:description" content="顶层对象，在浏览器环境指的是window对象，在Node指的是global对象。ES5之前，顶层对象和全局变量是等价的，此被称为JavaScript设计的最大的败笔之一。ES6之后，顶层对象和全局变量讲逐渐脱钩。">
+<meta property="og:description" content="在umi脚手架下，配置webpack解决跨域问题">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-18T12:22:52.412Z">
+<meta property="og:updated_time" content="2019-04-21T14:26:08.702Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JavaScript之顶层对象和全局变量">
-<meta name="twitter:description" content="顶层对象，在浏览器环境指的是window对象，在Node指的是global对象。ES5之前，顶层对象和全局变量是等价的，此被称为JavaScript设计的最大的败笔之一。ES6之后，顶层对象和全局变量讲逐渐脱钩。">
+<meta name="twitter:title" content="Umi配置proxy解决跨域问题">
+<meta name="twitter:description" content="在umi脚手架下，配置webpack解决跨域问题">
   
     <link rel="alternative" href="/atom.xml" title="个人博客" type="application/atom+xml">
   
@@ -151,42 +151,30 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-JavaScript之顶层对象和全局变量" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Umi配置proxy解决跨域问题" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      JavaScript之顶层对象和全局变量
+      Umi配置proxy解决跨域问题
     </h1>
   
 
         
-        <a href="/2019/04/18/JavaScript之顶层对象和全局变量/" class="archive-article-date">
-  	<time datetime="2019-04-18T11:41:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-18</time>
+        <a href="/2019/04/21/Umi配置proxy解决跨域问题/" class="archive-article-date">
+  	<time datetime="2019-04-21T14:23:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-21</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>顶层对象，在浏览器环境指的是<strong>window</strong>对象，在Node指的是<strong>global</strong>对象。<br>ES5之前，顶层对象和全局变量是等价的，此被称为JavaScript设计的最大的败笔之一。<br>ES6之后，顶层对象和全局变量讲逐渐脱钩。</p>
+        <p>在umi脚手架下，配置webpack解决跨域问题</p>
 <a id="more"></a>
-<h3 id="顶层对象和全局变量的关系"><a href="#顶层对象和全局变量的关系" class="headerlink" title="顶层对象和全局变量的关系"></a>顶层对象和全局变量的关系</h3><hr>
-<p>在ES5之前，顶层对象的属性和全局变量是完全等价的。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">window.a = 1;</span><br><span class="line">a // 1</span><br><span class="line"></span><br><span class="line">a = 2;</span><br><span class="line">window.a // 2</span><br></pre></td></tr></table></figure></p>
-<p>但顶层对象的属性和全局变量挂钩，被认为是JavaScript语言最大的设计败笔之一，带来了很多问题</p>
-<ul>
-<li>没法在编译时就报出变量未声明的错误，只有运行时才知道</li>
-<li>易错误地创建全局对象</li>
-<li>不易于模块化编程</li>
-<li><strong>window</strong>对象有实体含义，指的是浏览器的窗口对象。顶层对象是一个有实体含义的对象。</li>
-</ul>
-<p>ES6为了改变这一点，又为了保持兼容性</p>
-<ul>
-<li>一方面，<code>var</code>、<code>function</code>命令声明的全局变量，依旧是顶层对象的属性</li>
-<li>另一方面，let、const、class命令声明的全局变量，不属于顶层对象的属性<br>从ES6开始，全局变量将逐步与顶层对象脱钩<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var a = 1;</span><br><span class="line">// 如果在 Node 的 REPL 环境，可以写成 global.a</span><br><span class="line">// 或者采用通用方法，写成 this.a</span><br><span class="line">window.a // 1</span><br><span class="line"></span><br><span class="line">let b = 1;</span><br><span class="line">window.b // undefined</span><br></pre></td></tr></table></figure></li>
-</ul>
+<p>解决跨域需要在webpack配置proxy,umi将webpack配置保存在<code>.umirc.js</code>的配置文件中。<br>在<code>.umirc.js</code>文件加上：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">proxy: &#123;</span><br><span class="line">    &apos;/api&apos;: &#123;</span><br><span class="line">      target: &apos;http://localhost:9093&apos;,</span><br><span class="line">      pathRewrite: &#123; &apos;^/api&apos;: &apos;&apos; &#125;,</span><br><span class="line">      changeOrigin: true</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
+<p>本地8000发送请求<code>http://localhost:8000/api/data</code>请求的数据其实是<code>http://localh ost:9093/data</code></p>
 
       
 
@@ -221,7 +209,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Umi</a>
         		</li>
       		
 		</ul>
@@ -277,7 +265,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/04/18/JavaScript之顶层对象和全局变量/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/04/21/Umi配置proxy解决跨域问题/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -291,18 +279,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/04/20/后端Express、mongodb环境部署/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          后端Express、mongodb环境部署
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/04/17/JavaScript作用域、let、const详解/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">JS作用域、let、const详解</div>
+    <a href="/2019/04/21/Dva数据流实现AJAX请求/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Dva数据流实现AJAX请求</div>
       <i class="icon-circle-right"></i>
     </a>
   
