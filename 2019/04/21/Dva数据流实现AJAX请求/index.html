@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: Express | 个人博客</title>
+  <title>Dva数据流实现AJAX请求 | 个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="个人博客">
-<meta property="og:url" content="http://yoursite.com/tags/Express/index.html">
+  <meta name="description" content="Dva数据流中数据的相关操作在Modal中实现，发送AJAX请求时则需要调用异步操作方法effect。为了显示加载中的效果，还可以使用第三方插件dva-loading">
+<meta name="keywords" content="Dva,AJAX">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Dva数据流实现AJAX请求">
+<meta property="og:url" content="http://yoursite.com/2019/04/21/Dva数据流实现AJAX请求/index.html">
 <meta property="og:site_name" content="个人博客">
+<meta property="og:description" content="Dva数据流中数据的相关操作在Modal中实现，发送AJAX请求时则需要调用异步操作方法effect。为了显示加载中的效果，还可以使用第三方插件dva-loading">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-21T09:21:43.907Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="个人博客">
+<meta name="twitter:title" content="Dva数据流实现AJAX请求">
+<meta name="twitter:description" content="Dva数据流中数据的相关操作在Modal中实现，发送AJAX请求时则需要调用异步操作方法effect。为了显示加载中的效果，还可以使用第三方插件dva-loading">
   
     <link rel="alternative" href="/atom.xml" title="个人博客" type="application/atom+xml">
   
@@ -146,68 +151,175 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Dva数据流实现AJAX请求" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/20/后端Express、mongodb环境部署/" class="archive-article-date">
-  	<time datetime="2019-04-20T03:16:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-20</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/20/后端Express、mongodb环境部署/">后端Express、mongodb环境部署</a>
+    <h1 class="article-title" itemprop="name">
+      Dva数据流实现AJAX请求
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/04/21/Dva数据流实现AJAX请求/" class="archive-article-date">
+  	<time datetime="2019-04-21T09:09:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Dva数据流中数据的相关操作在<strong>Modal</strong>中实现，发送AJAX请求时则需要调用异步操作方法<strong>effect</strong>。<br>为了显示加载中的效果，还可以使用第三方插件<strong>dva-loading</strong></p>
+<a id="more"></a>
+<p>实现一个简单的获取用户姓名，写出Modal：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">import axios from &apos;axios&apos;;</span><br><span class="line">export default &#123;</span><br><span class="line">    namespace: &apos;user&apos;,</span><br><span class="line">    state: &#123;</span><br><span class="line">        // isFetching: false,</span><br><span class="line">        error: null,</span><br><span class="line">        user: null</span><br><span class="line">    &#125;,</span><br><span class="line">    reducers: &#123;</span><br><span class="line">        &apos;fetch/start&apos;(state,action)&#123;</span><br><span class="line">            return &#123;</span><br><span class="line">                // isFetching: true,</span><br><span class="line">                error: null,</span><br><span class="line">                user: null</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        &apos;fetch/success&apos;(state,action)&#123;</span><br><span class="line">            return &#123;</span><br><span class="line">                // isFetching: false,</span><br><span class="line">                error: null,</span><br><span class="line">                user:action.user</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        &apos;fetch/error&apos;(state,action)&#123;</span><br><span class="line">            return &#123;</span><br><span class="line">                // isFetching: false,</span><br><span class="line">                error: action.error,</span><br><span class="line">                user: null</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    effects: &#123;</span><br><span class="line">        *fetch(&#123; payload &#125;,&#123; call,put &#125; )&#123;</span><br><span class="line">            // console.log(payload)</span><br><span class="line">            yield put(&#123;type:&apos;fetch/start&apos;&#125;);</span><br><span class="line">            try &#123;</span><br><span class="line">                const user = yield call(axios.get,&apos;https://jsonplaceholder.typicode.com/users&apos;)</span><br><span class="line">                yield put(&#123;type:&apos;fetch/success&apos;,user:user&#125;)</span><br><span class="line">            &#125; catch(e)&#123;</span><br><span class="line">                yield put (&#123;type:&apos;fetch/error&apos;,error:e.message&#125;)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>主页面的代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">import &#123; connect &#125; from &apos;dva&apos;;</span><br><span class="line">import &#123; Button &#125; from &apos;antd&apos;;</span><br><span class="line"></span><br><span class="line">const User = (props) =&gt; &#123;</span><br><span class="line">    // console.log(props.loading.global)</span><br><span class="line">    const &#123; error,user &#125; = props.user;</span><br><span class="line">    const &#123; dispatch &#125; = props;</span><br><span class="line">    // const isFetching = props.loading.effects[&apos;user/fetch&apos;];</span><br><span class="line">    const isFetching = props.loading.global;</span><br><span class="line">    let data;</span><br><span class="line">    if(error)&#123;</span><br><span class="line">        data = error;</span><br><span class="line">    &#125;else if(isFetching)&#123;</span><br><span class="line">        data=&apos;loading...&apos;;</span><br><span class="line">    &#125;else &#123;</span><br><span class="line">        data = user&amp;&amp;user.data[0].name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return (</span><br><span class="line">        &lt;div&gt;</span><br><span class="line">            &lt;h1&gt;&#123; data &#125;&lt;/h1&gt;</span><br><span class="line">            &lt;Button type=&apos;primary&apos; onClick=&#123; ()=&gt;&#123;dispatch(&#123;type:&apos;user/fetch&apos;&#125;)&#125; &#125;&gt;Get User&lt;/Button&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">User.propTypes = &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">const mapStateToProps = (state) =&gt; &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">        user: state.user,</span><br><span class="line">        loading: state.loading</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">export default connect(mapStateToProps)(User);</span><br></pre></td></tr></table></figure></p>
+<h2 id="使用dva-loading插件："><a href="#使用dva-loading插件：" class="headerlink" title="###使用dva-loading插件："></a>###使用<code>dva-loading</code>插件：</h2><p>在<code>mapStateToProps</code>函数中，可以<code>loading: state.loading</code>获取到全局的loading变化。<br>loading本质上是一个对象，global属性显示了全局的loading状态，effects下有各个异步操作的loading状态，更方便地显示网页的加载情况。</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Mongoose</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Dva</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Express</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Mongodb</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">AJAX</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/04/21/Dva数据流实现AJAX请求/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2019/04/20/mongoose基本操作/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Mongoose基本操作</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -230,9 +342,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
