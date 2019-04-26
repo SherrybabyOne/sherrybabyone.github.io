@@ -6,20 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>React中变量声明使用的坑 | 个人博客</title>
+  <title>云服务器Nginx配置 | 个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在React中state的定义中有一个坑不易被发现，主要是state属性变量未被定义就使用，会造成编译错误，需要用到三位运算符：">
-<meta name="keywords" content="React">
+  <meta name="description" content="使用的是ubuntu云服务器">
 <meta property="og:type" content="article">
-<meta property="og:title" content="React中变量声明使用的坑">
-<meta property="og:url" content="http://yoursite.com/2019/04/22/React中变量声明使用的坑/index.html">
+<meta property="og:title" content="云服务器Nginx配置">
+<meta property="og:url" content="http://yoursite.com/2019/04/26/云服务器Nginx配置/index.html">
 <meta property="og:site_name" content="个人博客">
-<meta property="og:description" content="在React中state的定义中有一个坑不易被发现，主要是state属性变量未被定义就使用，会造成编译错误，需要用到三位运算符：">
+<meta property="og:description" content="使用的是ubuntu云服务器">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-22T02:14:43.061Z">
+<meta property="og:image" content="http://pq33vp0q4.bkt.clouddn.com/images/posts/nginx_1.png">
+<meta property="og:updated_time" content="2019-04-26T14:33:56.906Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="React中变量声明使用的坑">
-<meta name="twitter:description" content="在React中state的定义中有一个坑不易被发现，主要是state属性变量未被定义就使用，会造成编译错误，需要用到三位运算符：">
+<meta name="twitter:title" content="云服务器Nginx配置">
+<meta name="twitter:description" content="使用的是ubuntu云服务器">
+<meta name="twitter:image" content="http://pq33vp0q4.bkt.clouddn.com/images/posts/nginx_1.png">
   
     <link rel="alternative" href="/atom.xml" title="个人博客" type="application/atom+xml">
   
@@ -151,41 +152,50 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-React中变量声明使用的坑" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-云服务器Nginx配置" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      React中变量声明使用的坑
+      云服务器Nginx配置
     </h1>
   
 
         
-        <a href="/2019/04/22/React中变量声明使用的坑/" class="archive-article-date">
-  	<time datetime="2019-04-22T02:13:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-22</time>
+        <a href="/2019/04/26/云服务器Nginx配置/" class="archive-article-date">
+  	<time datetime="2019-04-26T11:00:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-26</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>在React中state的定义中有一个坑不易被发现，主要是state属性变量未被定义就使用，会造成编译错误，需要用到三位运算符：</p>
+        <p>使用的是ubuntu云服务器</p>
 <a id="more"></a>
-<p>举个栗子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">class App extends Component&#123;</span><br><span class="line">  this.state=&#123;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">  componentDidMount()&#123;</span><br><span class="line">    请求后端接口拿到数据data,data是一个对象数组</span><br><span class="line">  &#125;</span><br><span class="line">  // 然后将data保存在当前状态之中</span><br><span class="line">  this.setState(&#123;</span><br><span class="line">    data:DataTransferItem</span><br><span class="line">  &#125;)</span><br><span class="line">  // 渲染到页面上</span><br><span class="line">  render()&#123;</span><br><span class="line">    return(</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &#123;this.state.data[0].name&#125;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>是会报错的，原因有几点：</p>
+<h2 id="一、连接到服务器上"><a href="#一、连接到服务器上" class="headerlink" title="一、连接到服务器上"></a>一、连接到服务器上</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh @xx.xx.xxx.xxx  //公共IP地址</span><br></pre></td></tr></table></figure>
+<p>然后按照提示输入密码即可</p>
+<h2 id="二、使用Nginx："><a href="#二、使用Nginx：" class="headerlink" title="二、使用Nginx："></a>二、使用Nginx：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update //更新软件源</span><br><span class="line">sudo apt-get install nginx  //安装nginx</span><br><span class="line">nginx -v    //检查是否安装成功</span><br></pre></td></tr></table></figure>
+<p>登录阿里云，确认域名解析到了服务器IP上，并且已经备案成功，此时访问域名，就能看到:</p>
+<p><img src="http://pq33vp0q4.bkt.clouddn.com/images/posts/nginx_1.png" alt="访问" title="访问"><br>这就说明nginx已经安装并基本部署好了</p>
+<h2 id="三、Nginx配置"><a href="#三、Nginx配置" class="headerlink" title="三、Nginx配置"></a>三、Nginx配置</h2><h3 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h3><hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/usr/sbin/nginx：主程序</span><br><span class="line">/etc/nginx：存放配置文件</span><br><span class="line">/usr/share/nginx：存放静态文件</span><br><span class="line">/var/log/nginx：存放日志</span><br></pre></td></tr></table></figure>
+<p>配置文件为：<code>/etc/nginx/nginx.conf</code>和<code>/etc/nginx/conf.d/default.conf</code></p>
 <ul>
-<li>render在componentDidMount之前运行，此时state中没有data</li>
-<li>就算定义初始时状态<code>data:[]</code>，还是会报错的，只加这一个还不够。此时<code>this.state.data</code>是一个空数组，获取不到<code>this.state.data[0].name</code>，渲染到页面上的时候还是会报错。<br>代码需要改进，主要是两个方面：</li>
-</ul>
-<ol>
-<li>初始state定义</li>
-<li>用三元运算符判断<code>state.data</code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">class App extends Component&#123;</span><br><span class="line">  this.state=&#123;</span><br><span class="line">		data:[]</span><br><span class="line">  &#125;</span><br><span class="line">  componentDidMount()&#123;</span><br><span class="line">    请求后端接口拿到数据data,data是一个对象数组</span><br><span class="line">  &#125;</span><br><span class="line">  // 然后将data保存在当前状态之中</span><br><span class="line">  this.setState(&#123;</span><br><span class="line">    data:DataTransferItem</span><br><span class="line">  &#125;)</span><br><span class="line">  // 渲染到页面上</span><br><span class="line">  render()&#123;</span><br><span class="line">    return(</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &#123;this.state.data.length!==0?this.state.data[0].name:&apos;&apos;&#125;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li><p>自定义nginx.conf配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">events &#123;</span><br><span class="line">    worker_connections  1024; # 单个后台进程的最大并发数</span><br><span class="line">    # multi_accept on;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">http &#123;</span><br><span class="line">    ##</span><br><span class="line">    # Basic Settings</span><br><span class="line">    ##</span><br><span class="line">    sendfile on; #开启高效传输模式</span><br><span class="line">    tcp_nopush on; #减少网络报文段的数量</span><br><span class="line">    tcp_nodelay on;</span><br><span class="line">    keepalive_timeout 65; #保持连接的时间，也叫超时时间</span><br><span class="line">    types_hash_max_size 2048;</span><br><span class="line">    # server_tokens off;</span><br><span class="line"></span><br><span class="line">    # server_names_hash_bucket_size 64;</span><br><span class="line">    # server_name_in_redirect off;</span><br><span class="line"></span><br><span class="line">    include /etc/nginx/mime.types; #文件扩展名与类型映射表</span><br><span class="line">    default_type application/octet-stream; #默认文件类型</span><br><span class="line"></span><br><span class="line">    ##</span><br><span class="line">    # SSL Settings</span><br><span class="line">    ##</span><br><span class="line"></span><br><span class="line">    ssl_protocols TLSv1 TLSv1.1 TLSv1.2; # Dropping SSLv3, ref: POODLE</span><br><span class="line">    ssl_prefer_server_ciphers on;</span><br><span class="line"></span><br><span class="line">    ##</span><br><span class="line">    # Logging Settings</span><br><span class="line">    ##</span><br><span class="line"></span><br><span class="line">    access_log /var/log/nginx/access.log;</span><br><span class="line">    error_log /var/log/nginx/error.log;</span><br><span class="line"></span><br><span class="line">    ##</span><br><span class="line">    # Gzip Settings</span><br><span class="line">    ##</span><br><span class="line"></span><br><span class="line">    gzip on; #开启gzip压缩</span><br><span class="line">    gzip_disable &quot;msie6&quot;;</span><br><span class="line"></span><br><span class="line">    # gzip_vary on;</span><br><span class="line">    # gzip_proxied any;</span><br><span class="line">    # gzip_comp_level 6;</span><br><span class="line">    # gzip_buffers 16 8k;</span><br><span class="line">    # gzip_http_version 1.1;</span><br><span class="line">    # gzip_types text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/javascript;</span><br><span class="line"></span><br><span class="line">    ##</span><br><span class="line">    # Virtual Host Configs</span><br><span class="line">    ##</span><br><span class="line"></span><br><span class="line">    include /etc/nginx/conf.d/*.conf; #包含的子配置项位置和文件</span><br><span class="line">    # include /etc/nginx/sites-enabled/*;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#mail &#123;</span><br><span class="line">#    # See sample authentication script at:</span><br><span class="line">#    # http://wiki.nginx.org/ImapAuthenticateWithApachePhpScript</span><br><span class="line">#</span><br><span class="line">#    # auth_http localhost/auth.php;</span><br><span class="line">#    # pop3_capabilities &quot;TOP&quot; &quot;USER&quot;;</span><br><span class="line">#    # imap_capabilities &quot;IMAP4rev1&quot; &quot;UIDPLUS&quot;;</span><br><span class="line">#</span><br><span class="line">#    server &#123;</span><br><span class="line">#        listen     localhost:110;</span><br><span class="line">#        protocol   pop3;</span><br><span class="line">#        proxy      on;</span><br><span class="line">#    &#125;</span><br><span class="line">#</span><br><span class="line">#    server &#123;</span><br><span class="line">#        listen     localhost:143;</span><br><span class="line">#        protocol   imap;</span><br><span class="line">#        proxy      on;</span><br><span class="line">#    &#125;</span><br><span class="line">#&#125;</span><br></pre></td></tr></table></figure>
 </li>
-</ol>
-<p>总结：代码要规范，初始状态要定义，数据为空要判断。</p>
-
+<li><p>自定义default.conf配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">        listen       80;   #配置监听端口</span><br><span class="line">        server_name  localhost;  #配置域名</span><br><span class="line">        #charset koi8-r;</span><br><span class="line">        #access_log  /var/log/nginx/host.access.log  main;</span><br><span class="line"></span><br><span class="line">        location / &#123;</span><br><span class="line">            #服务默认启动目录</span><br><span class="line">            root /usr/share/nginx/html/pc;   #pc</span><br><span class="line">            # nginx适配pc和app设备</span><br><span class="line">            if ($http_user_agent ~* &apos;(Android|webOS|iPhone|iPod|BlackBerry)&apos;) &#123;</span><br><span class="line">                root /usr/share/nginx/html/app;  #app</span><br><span class="line">            &#125;</span><br><span class="line">            index  index.html;    #默认访问文件</span><br><span class="line">            allow  all; #允许访问的ip</span><br><span class="line">            # deny   all;  #拒绝访问的ip</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        #  redirect  error pages to the static page /404.html</span><br><span class="line">        error_page  404   /static/html/404/404.html;   # 配置404页面</span><br><span class="line">        # redirect server error pages to the static page /50x.html</span><br><span class="line">        error_page   500 502 503 504  /static/html/404/500.html;   #错误状态码的显示页面，配置后需要重启</span><br><span class="line"></span><br><span class="line">        # ^~ 表示uri以某个常规字符串开头,大多情况下用来匹配url路径，nginx不对url做编码，因此请求为/static/20%/aa，</span><br><span class="line">        # 可以被规则^~ /static/ /aa匹配到（注意是空格）。</span><br><span class="line">        location ^~ /static/ &#123;</span><br><span class="line">            root /usr/share/nginx/html;</span><br><span class="line">            allow  all; #允许访问的ip</span><br><span class="line">            # deny   all;  #拒绝访问的ip</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        location = /50x.html &#123;</span><br><span class="line">            root /usr/share/nginx/html/pc/;   #pc</span><br><span class="line">            # nginx适配pc和app设备</span><br><span class="line">            if ($http_user_agent ~* &apos;(Android|webOS|iPhone|iPod|BlackBerry)&apos;) &#123;</span><br><span class="line">                root /usr/share/nginx/html/app/;  #app</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        # proxy the PHP scripts to Apache listening on 127.0.0.1:80</span><br><span class="line">        #</span><br><span class="line">        #location ~ \.php$ &#123;</span><br><span class="line">        #    proxy_pass   http://127.0.0.1;</span><br><span class="line">        #&#125;</span><br><span class="line"></span><br><span class="line">        # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000</span><br><span class="line">        #</span><br><span class="line">        #location ~ \.php$ &#123;</span><br><span class="line">        #    root           html;</span><br><span class="line">        #    fastcgi_pass   127.0.0.1:9000;</span><br><span class="line">        #    fastcgi_index  index.php;</span><br><span class="line">        #    fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;</span><br><span class="line">        #    include        fastcgi_params;</span><br><span class="line">        #&#125;</span><br><span class="line"></span><br><span class="line">        # deny access to .htaccess files, if Apache&apos;s document root</span><br><span class="line">        # concurs with nginx&apos;s one</span><br><span class="line">        #</span><br><span class="line">        #location ~ /\.ht &#123;</span><br><span class="line">        #    deny  all;</span><br><span class="line">        #&#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="修改配置"><a href="#修改配置" class="headerlink" title="修改配置"></a>修改配置</h3><hr>
+<p>进入<code>/etc/nginx</code>所在目录的<code>conf.d</code>或<code>sites-enabled</code>文件夹下编写配置文件<br>区别在于<code>conf.d</code>下的文件必须以<code>.conf</code>结尾，而且服务器优先解析<code>conf.d</code>文件夹下文件<br>最简单的配置文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">        listen 80;</span><br><span class="line"></span><br><span class="line">        root /usr/share/nginx/html/;</span><br><span class="line">        index index.html index.htm;</span><br><span class="line"></span><br><span class="line">        server_name http://sherrybaby.club</span><br><span class="line"></span><br><span class="line">        location / &#123;</span><br><span class="line">                try_files $uri $uri/ =404;</span><br><span class="line">               </span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><code>/etc/nginx/nginx.conf</code>中把运行用户改成root:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">user root</span><br></pre></td></tr></table></figure></p>
+<p>修改完配置，重启一下nginx<strong>sudo nginx -s reload</strong></p>
+<h2 id="四、上传代码"><a href="#四、上传代码" class="headerlink" title="四、上传代码"></a>四、上传代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -r local_dir remote_username@ip:/remote_dir</span><br></pre></td></tr></table></figure>
+<h2 id="五、Nginx相关命令"><a href="#五、Nginx相关命令" class="headerlink" title="五、Nginx相关命令"></a>五、Nginx相关命令</h2>
       
 
       
@@ -214,17 +224,6 @@
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">React</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
 
       
@@ -275,7 +274,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/04/22/React中变量声明使用的坑/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/04/26/云服务器Nginx配置/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -289,18 +288,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/04/26/云服务器Nginx配置/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          云服务器Nginx配置
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/04/21/Umi配置proxy解决跨域问题/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Umi配置proxy解决跨域问题</div>
+    <a href="/2019/04/22/React中变量声明使用的坑/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">React中变量声明使用的坑</div>
       <i class="icon-circle-right"></i>
     </a>
   
