@@ -6,20 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>小程序开发框架的四种基本组成 | 个人博客</title>
+  <title>JavaScript数据类型及其检测 | 个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="小程序的开发框架由四部分组成： WXML、WXSS、WXS、JavaScript">
-<meta name="keywords" content="小程序">
+  <meta name="keywords" content="JavaScript">
 <meta property="og:type" content="article">
-<meta property="og:title" content="小程序开发框架的四种基本组成">
-<meta property="og:url" content="http://yoursite.com/2019/04/15/小程序开发框架的四种基本组成/index.html">
+<meta property="og:title" content="JavaScript数据类型及其检测">
+<meta property="og:url" content="http://yoursite.com/2019/05/05/JavaScript数据类型及其检测/index.html">
 <meta property="og:site_name" content="个人博客">
-<meta property="og:description" content="小程序的开发框架由四部分组成： WXML、WXSS、WXS、JavaScript">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-15T12:48:30.533Z">
+<meta property="og:image" content="http://pq33vp0q4.bkt.clouddn.com/image/posts/JS_1">
+<meta property="og:updated_time" content="2019-05-05T12:10:02.930Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="小程序开发框架的四种基本组成">
-<meta name="twitter:description" content="小程序的开发框架由四部分组成： WXML、WXSS、WXS、JavaScript">
+<meta name="twitter:title" content="JavaScript数据类型及其检测">
+<meta name="twitter:image" content="http://pq33vp0q4.bkt.clouddn.com/image/posts/JS_1">
   
     <link rel="alternative" href="/atom.xml" title="个人博客" type="application/atom+xml">
   
@@ -151,47 +150,70 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-小程序开发框架的四种基本组成" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-JavaScript数据类型及其检测" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      小程序开发框架的四种基本组成
+      JavaScript数据类型及其检测
     </h1>
   
 
         
-        <a href="/2019/04/15/小程序开发框架的四种基本组成/" class="archive-article-date">
-  	<time datetime="2019-04-15T12:47:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-15</time>
+        <a href="/2019/05/05/JavaScript数据类型及其检测/" class="archive-article-date">
+  	<time datetime="2019-05-05T04:48:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-05</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>小程序的开发框架由四部分组成： WXML、WXSS、WXS、JavaScript<br><a id="more"></a></p>
-<h2 id="一、WXML"><a href="#一、WXML" class="headerlink" title="一、WXML"></a>一、WXML</h2><p><code>WXML是框架设计的一套标签语言，结合组件、WXS和事件系统，可以构建出页面的结构。</code><br>Attention：WXML标签严格要求闭合，区分大小写。<br>WXML数据绑定使用<strong>Mustache</strong>语法，动态数据用双括号包裹起来：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;view&gt;</span><br><span class="line">	&lt;text&gt;&#123;&#123;message&#125;&#125;&lt;/text&gt;</span><br><span class="line">&lt;/view&gt;</span><br></pre></td></tr></table></figure></p>
-<p>属性：id、class、style、hidden、data-<em>、bind/catch</em></p>
-<h3 id="模板引用的两种方式："><a href="#模板引用的两种方式：" class="headerlink" title="模板引用的两种方式："></a>模板引用的两种方式：</h3><ul>
-<li>import： 只能引用所定义模板文件里的模板内容块。<br><code>&lt;import src=&#39; &#39;&gt;&lt;/import&gt;</code></li>
-<li>include： 把目标文件内除了模版代码块外的所有代码引入<br><code>&lt;include src=&#39; &#39;&gt;&lt;/include&gt;</code></li>
-</ul>
-<h2 id="二、WXSS"><a href="#二、WXSS" class="headerlink" title="二、WXSS"></a>二、WXSS</h2><p>WXSS是一套样式语言，用于描述WXML的组件样式。</p>
+        <p><img src="http://pq33vp0q4.bkt.clouddn.com/image/posts/JS_1" alt="JavaScript数据类型" title="知识树"></p>
+<a id="more"></a>
+<h2 id="一、-JavaScript的数据类型"><a href="#一、-JavaScript的数据类型" class="headerlink" title="一、 JavaScript的数据类型"></a>一、 JavaScript的数据类型</h2><p>JavaScript有两种数据类型,分别是<strong>基本数据类型</strong>和<strong>引用数据类型</strong>。<br><strong>基本数据类型</strong>：Undefined、Null、Number、String、Boolean、Symbol(ES6新增，表示独一无二的值)。<br><strong>引用数据类型</strong>：统称为Object对象，主要包括对象、数组和函数。</p>
+<h3 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h3><hr>
 <ul>
-<li><strong>rpx</strong>：响应式像素，微信团队规定屏幕宽度为750rpx</li>
-<li><code>@import &#39; &#39;</code> ：外联引入WXSS</li>
-<li>选择器： id、class、element、::before、::after</li>
+<li>值是不可变的</li>
+<li>存放在栈区。<br>原始数据类型直接存储在栈(stack)中的简单数据段，占据空间小、大小固定、属于被频繁使用数据，所以放入占中存储。</li>
+<li>值的比较。(<code>==</code>和<code>===</code>)</li>
 </ul>
-<h2 id="三、JS"><a href="#三、JS" class="headerlink" title="三、JS"></a>三、JS</h2><p>NodeJS中的JavaScript：ECMAScript、Native、NPM<br>浏览器中的JavaScript：ECMAScript、DOM（浏览器的文档对象模型）、BOM（浏览器的对象模型）<br>小程序中的JavaScript：ECMAScript、小程序框架、小程序API</p>
-<h2 id="四、WXS"><a href="#四、WXS" class="headerlink" title="四、WXS"></a>四、WXS</h2><p>除了在逻辑层使用的JavaScript脚本语言外，小程序有自己的脚本语言<strong>WXS</strong></p>
+<h3 id="引用数据类型"><a href="#引用数据类型" class="headerlink" title="引用数据类型"></a>引用数据类型</h3><hr>
 <ul>
-<li>WXS可以用标签书写，也可以用文件的形式书写但文件命名后缀是<strong>.wxs</strong>，在WXS模块内所定义的变量和函数默认是<strong>私有</strong>的。</li>
-<li>模块导出和引用wxs文件用<strong>exports</strong>和<strong>require</strong>。</li>
-<li>数据类型中的<strong>date</strong>和<strong>regexp</strong>用<strong>get</strong>生成。</li>
-<li>基础类库：类似于ES5，WXS的基础类库有：Number、Date、Global、console、Math、JSON</li>
+<li>值是可变的</li>
+<li>同时保存在栈内存和堆内存<br>引用数据类型在栈中存储了指针，该指针指向堆中该实体的起始地址</li>
+<li>比较是引用的比较</li>
 </ul>
+<h2 id="二、检测数据类型"><a href="#二、检测数据类型" class="headerlink" title="二、检测数据类型"></a>二、检测数据类型</h2><h3 id="typeof"><a href="#typeof" class="headerlink" title="typeof"></a>typeof</h3><hr>
+<p><strong>typeof</strong>返回一个表示数据类型的字符串。<br>返回的结果有：number、string、boolean、symbol、undefined、function、object等七种数据类型，但不能判断null、array等：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">typeof null; //object 无效</span><br><span class="line">typeof [] ; //object 无效</span><br><span class="line">typeof new Date(); //object 无效</span><br><span class="line">typeof new RegExp(); //object 无效</span><br></pre></td></tr></table></figure></p>
+<p>这时需要用<strong>instance of</strong>来判断</p>
+<h3 id="instanceof"><a href="#instanceof" class="headerlink" title="instanceof"></a>instanceof</h3><hr>
+<p><strong>instanceof</strong>用来判断A是否是B的实例，表达式为：<code>A instanceof B</code>,如果是返回true，否则返回false。<br><strong>instanceof</strong>用来检测一个对象在其原型链中是否存在一个构造函数的prototype属性。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[] instanceof Array; //true</span><br><span class="line">&#123;&#125; instanceof Object;//true</span><br><span class="line">new Date() instanceof Date;//true</span><br><span class="line">new RegExp() instanceof RegExp//true</span><br></pre></td></tr></table></figure></p>
+<p>对于数组的类型判断，还可以用ES6新增<strong>Array.isArray()</strong><br>instanceof三大弊端：</p>
+<ul>
+<li><p>对于基本数据类型,字面量创建出来的结果和实例创建的有一定区别</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">console.log(1 instanceof Number)//false</span><br><span class="line">console.log(new Number(1) instanceof Number)//true</span><br></pre></td></tr></table></figure>
+<p>  从严格上讲，只有实例创建出来的结果才是标准的对象数据类型；字面量创建出来的结果是基本的数据类型，不是严谨的实例，但由于JS松散的特点，导致了可以使用Number.prototype上提供的方法。</p>
+</li>
+<li><p>在类的原型继承中，最后检测出来的结果未必准确</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var arr = [1, 2, 3];</span><br><span class="line">console.log(arr instanceof Array) // true</span><br><span class="line">console.log(arr instanceof Object);  // true</span><br><span class="line">function fn()&#123;&#125;</span><br><span class="line">console.log(fn instanceof Function)// true</span><br><span class="line">console.log(fn instanceof Object)// true</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>不能检测null和undefined。对于特殊数据类型null和undefined，它们所属的类是Null和Undefined，但浏览器把这两个类保护起来了，不允许我们在外部进行访问</p>
+</li>
+</ul>
+<h3 id="严格运算符"><a href="#严格运算符" class="headerlink" title="严格运算符==="></a>严格运算符===</h3><hr>
+<p>可以用来判断null和undefined</p>
+<h3 id="constructor-NaN"><a href="#constructor-NaN" class="headerlink" title="constructor"></a>constructor</h3><hr>
+<p><strong>constructor</strong>作用和<strong>instanceof</strong>非常相似，但constructor检测Object与constructor不一样，还可以处理基本数据类型和检测。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var aa=[1,2];</span><br><span class="line">console.log(aa.constructor===Array);//true</span><br><span class="line">console.log(aa.constructor===RegExp);//false</span><br><span class="line">console.log((1).constructor===Number);//true</span><br><span class="line">var reg=/^$/;</span><br><span class="line">console.log(reg.constructor===RegExp);//true</span><br><span class="line">console.log(reg.constructor===Object);//false</span><br></pre></td></tr></table></figure></p>
+<p>constructor的两大弊端：</p>
+<ul>
+<li>null和undefined是无效的对象，因此不会有constructor存在，这两种类型的数据需要通过其它方式来判断。</li>
+<li>函数的constructor是不稳定的，这个主要体现在可以把类的原型进行重写，这样检测出来的结果是不准确的。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function Fn()&#123;&#125;</span><br><span class="line">Fn.prototype = new Array()</span><br><span class="line">var f = new Fn</span><br><span class="line">console.log(f.constructor)//Array</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="Object-prototype-toString-call"><a href="#Object-prototype-toString-call" class="headerlink" title="Object.prototype.toString.call()"></a>Object.prototype.toString.call()</h3><hr>
+<p>这个是最精确最常用的方式。<br>首先获取Object原型上的toString方法，让方法执行，让toString方法中的this指向第一个参数的值。<br>Object上的toString并不是用来转换字符串的，而是返回当前方法的执行主体（方法中的this）所属类的详细信息即”[object Object]”，其中第一个object代表当前实例是对象数据类型的(这个是写死的)，第二个Object代表的是this所属的类是Object<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Object.prototype.toString.call(&apos;&apos;) ;   // [object String]</span><br><span class="line">Object.prototype.toString.call(1) ;    // [object Number]</span><br><span class="line">Object.prototype.toString.call(true) ; // [object Boolean]</span><br><span class="line">Object.prototype.toString.call(undefined) ; // [object Undefined]</span><br><span class="line">Object.prototype.toString.call(null) ; // [object Null]</span><br><span class="line">Object.prototype.toString.call(new Function()) ; // [object Function]</span><br><span class="line">Object.prototype.toString.call(new Date()) ; // [object Date]</span><br><span class="line">Object.prototype.toString.call([]) ; // [object Array]</span><br><span class="line">Object.prototype.toString.call(new RegExp()) ; // [object RegExp]</span><br><span class="line">Object.prototype.toString.call(new Error()) ; // [object Error]</span><br><span class="line">Object.prototype.toString.call(document) ; // [object HTMLDocument]</span><br><span class="line">Object.prototype.toString.call(window) ; //[object global] window是全局对象global的引用</span><br></pre></td></tr></table></figure></p>
 
       
 
@@ -226,7 +248,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">小程序</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
         		</li>
       		
 		</ul>
@@ -282,7 +304,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/04/15/小程序开发框架的四种基本组成/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/05/05/JavaScript数据类型及其检测/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -296,18 +318,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/04/17/JavaScript作用域、let、const详解/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          JS作用域、let、const详解
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/04/15/微信小程序开发目录/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">微信小程序项目目录</div>
+    <a href="/2019/04/26/云服务器Nginx配置/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">云服务器Nginx配置</div>
       <i class="icon-circle-right"></i>
     </a>
   
