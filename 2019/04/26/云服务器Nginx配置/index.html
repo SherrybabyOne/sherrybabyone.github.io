@@ -17,7 +17,7 @@
 <meta property="og:description" content="使用的是ubuntu云服务器，简单配置一下服务器">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://pq33vp0q4.bkt.clouddn.com/image/posts/nginx_1.png">
-<meta property="og:updated_time" content="2019-05-05T04:53:46.245Z">
+<meta property="og:updated_time" content="2019-05-06T11:08:26.743Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="云服务器Nginx配置">
 <meta name="twitter:description" content="使用的是ubuntu云服务器，简单配置一下服务器">
@@ -192,7 +192,8 @@
 </li>
 </ul>
 <h3 id="修改配置"><a href="#修改配置" class="headerlink" title="修改配置"></a>修改配置</h3><hr>
-<p>进入<code>/etc/nginx</code>所在目录的<code>conf.d</code>或<code>sites-enabled</code>文件夹下编写配置文件<br>区别在于<code>conf.d</code>下的文件必须以<code>.conf</code>结尾，而且服务器优先解析<code>conf.d</code>文件夹下文件<br>修改http-&gt;server,简单的配置文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">                listen    80;</span><br><span class="line">                server_name  域名;</span><br><span class="line"></span><br><span class="line">                location / &#123;</span><br><span class="line">                        root /usr/share/nginx/html;</span><br><span class="line">                        index index.html index.htm;</span><br><span class="line">                        try_files $uri /index.html;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                error_page 404 /404.html;</span><br><span class="line">                        location = /40x.html &#123;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                error_page 500 502 503 503 /50x.html;</span><br><span class="line">                        location = /50x.html &#123;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure></p>
+<p>进入<code>/etc/nginx</code>所在目录的<code>conf.d</code>或<code>sites-enabled</code>文件夹下编写配置文件<br>区别在于<code>conf.d</code>下的文件必须以<code>.d</code>结尾，而且服务器优先解析<code>conf.d</code>文件夹下文件</p>
+<p>还可以修改nginx.conf配置文件，如下：<br>修改http-&gt;server,简单的配置文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">                listen    80;</span><br><span class="line">                server_name  域名;</span><br><span class="line"></span><br><span class="line">                location / &#123;</span><br><span class="line">                        root /usr/share/nginx/html;</span><br><span class="line">                        index index.html index.htm;</span><br><span class="line">                        try_files $uri $uri/  /index.html;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                error_page 404 /404.html;</span><br><span class="line">                        location = /40x.html &#123;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                error_page 500 502 503 503 /50x.html;</span><br><span class="line">                        location = /50x.html &#123;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure></p>
 <p><code>/etc/nginx/nginx.conf</code>中把运行用户改成root:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">user root</span><br></pre></td></tr></table></figure></p>
 <p>修改完配置，重启一下nginx<strong>sudo nginx -s reload</strong>，就能正常运行了。<br>ps：如果还不行的话，清楚下浏览器缓存，重新登陆页面</p>
 <h2 id="四、上传代码"><a href="#四、上传代码" class="headerlink" title="四、上传代码"></a>四、上传代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -r local_dir remote_username@ip:/remote_dir</span><br></pre></td></tr></table></figure>
@@ -444,19 +445,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Umi</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Mongoose</a>
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
+                <a href="javascript:void(0)" class="js-tag color4">Mongoose</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -465,6 +462,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Mongodb</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
               </li>
              
               <li class="article-tag-list-item">
