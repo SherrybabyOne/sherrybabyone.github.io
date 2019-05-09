@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>JavaScript的单线程和异步 | 个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前言 提到JavaScript的单线程(single threaded)和异步(asynchronous)，很多初入JavaScript的会想到这是自相矛盾的。当然，单线程和异步不能同时成为一个语言的特性。JS语言的特性是单线程，所以本身是不可能异步的，但JS的宿主环境(比如浏览器,Node)是多线程的，宿主环境通过某种方式使得JS具备了异步的属性。">
+  <meta name="description" content="一、前言 提到JavaScript的单线程(single threaded)和异步(asynchronous)，很多初入JavaScript的会想到这是自相矛盾的。当然，单线程和异步不能同时成为一个语言的特性。JS语言的特性是单线程，所以本身是不可能异步的，但JS的宿主环境(比如浏览器,Node)是多线程的，宿主环境通过某种方式使得JS具备了异步的属性。">
 <meta name="keywords" content="JavaScript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript的单线程和异步">
 <meta property="og:url" content="http://yoursite.com/2019/05/09/JavaScript的单线程和异步/index.html">
 <meta property="og:site_name" content="个人博客">
-<meta property="og:description" content="前言 提到JavaScript的单线程(single threaded)和异步(asynchronous)，很多初入JavaScript的会想到这是自相矛盾的。当然，单线程和异步不能同时成为一个语言的特性。JS语言的特性是单线程，所以本身是不可能异步的，但JS的宿主环境(比如浏览器,Node)是多线程的，宿主环境通过某种方式使得JS具备了异步的属性。">
+<meta property="og:description" content="一、前言 提到JavaScript的单线程(single threaded)和异步(asynchronous)，很多初入JavaScript的会想到这是自相矛盾的。当然，单线程和异步不能同时成为一个语言的特性。JS语言的特性是单线程，所以本身是不可能异步的，但JS的宿主环境(比如浏览器,Node)是多线程的，宿主环境通过某种方式使得JS具备了异步的属性。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-09T12:15:02.986Z">
+<meta property="og:updated_time" content="2019-05-09T13:55:21.732Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript的单线程和异步">
-<meta name="twitter:description" content="前言 提到JavaScript的单线程(single threaded)和异步(asynchronous)，很多初入JavaScript的会想到这是自相矛盾的。当然，单线程和异步不能同时成为一个语言的特性。JS语言的特性是单线程，所以本身是不可能异步的，但JS的宿主环境(比如浏览器,Node)是多线程的，宿主环境通过某种方式使得JS具备了异步的属性。">
+<meta name="twitter:description" content="一、前言 提到JavaScript的单线程(single threaded)和异步(asynchronous)，很多初入JavaScript的会想到这是自相矛盾的。当然，单线程和异步不能同时成为一个语言的特性。JS语言的特性是单线程，所以本身是不可能异步的，但JS的宿主环境(比如浏览器,Node)是多线程的，宿主环境通过某种方式使得JS具备了异步的属性。">
   
     <link rel="alternative" href="/atom.xml" title="个人博客" type="application/atom+xml">
   
@@ -164,17 +164,17 @@
 
         
         <a href="/2019/05/09/JavaScript的单线程和异步/" class="archive-article-date">
-  	<time datetime="2019-05-09T14:02:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-09</time>
+  	<time datetime="2019-05-09T11:02:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-09</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><hr>
+        <h2 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h2><hr>
 <p>提到JavaScript的单线程(single threaded)和异步(asynchronous)，很多初入JavaScript的会想到这是自相矛盾的。当然，单线程和异步不能同时成为一个语言的特性。<br>JS语言的特性是<strong>单线程</strong>，所以本身是不可能异步的，但JS的宿主环境(比如浏览器,Node)是多线程的，宿主环境通过某种方式使得JS具备了异步的属性。</p>
 <a id="more"></a>
-<h2 id="浏览器"><a href="#浏览器" class="headerlink" title="浏览器"></a>浏览器</h2><p>JS是单线程语言，浏览器指分配给JS一个主线程，用来执行函数，但一次只能执行一个函数，这些任务排队形成任务队列等候执行。<br>有些任务是很耗时的，比如网络请求、定时器和事件监听等。这些任务还要排队执行的话，效率很低甚至网页会卡死。<br>所以，浏览器为这些耗时任务开辟了另外的线程，主要包括http请求线程，浏览器定时触发器，浏览器事件触发线程，这些任务是异步的。</p>
+<h2 id="二、浏览器"><a href="#二、浏览器" class="headerlink" title="二、浏览器"></a>二、浏览器</h2><p>JS是单线程语言，浏览器指分配给JS一个主线程，用来执行函数，但一次只能执行一个函数，这些任务排队形成任务队列等候执行。<br>有些任务是很耗时的，比如网络请求、定时器和事件监听等。这些任务还要排队执行的话，效率很低甚至网页会卡死。<br>所以，浏览器为这些耗时任务开辟了另外的线程，主要包括http请求线程，浏览器定时触发器，浏览器事件触发线程，这些任务是异步的。</p>
 <ul>
 <li>任务队列<br>浏览器为网络请求这样的异步任务单独开启了一个线程，这些异步任务完成后，主线程怎么知道的呢？<strong>回调函数</strong>，整个程序是事件驱动的，每个事件都会绑定相应的回调函数，举个🌰：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(function()&#123;</span><br><span class="line">    console.log(&apos;time is out);</span><br><span class="line">&#125;,50)</span><br></pre></td></tr></table></figure>
 </li>
@@ -183,19 +183,19 @@
 <ul>
 <li>主线程<br>JS一直在做一件事，就是从任务队列里提取任务，放到主线程里执行。<br>上文所说到的浏览器为异步任务开辟的线程可以统一理解为<strong>WebAPIs</strong>，任务队列就是<strong>callback queue</strong>，<strong>堆(heap)</strong>和<strong>栈(stack)</strong>共同组成了JS主线程。函数的执行就是通过进栈和出栈实现的，等到栈(stack)被清空的时候，说明一个任务已经执行完了，这是就会从callback queue中寻找下一个任务进栈，这个寻找的过程成为称为<strong>event loop</strong>，它总是循环的查找任务队列里是否还有任务。</li>
 </ul>
-<h2 id="举个实际的🌰"><a href="#举个实际的🌰" class="headerlink" title="举个实际的🌰:"></a>举个实际的🌰:</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(function()&#123;</span><br><span class="line">    console.log(&apos;a&apos;)</span><br><span class="line">&#125;,0)</span><br><span class="line">console.log(&apos;b&apos;)</span><br></pre></td></tr></table></figure>
+<h2 id="三、举个实际的🌰"><a href="#三、举个实际的🌰" class="headerlink" title="三、举个实际的🌰:"></a>三、举个实际的🌰:</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(function()&#123;</span><br><span class="line">    console.log(&apos;a&apos;)</span><br><span class="line">&#125;,0)</span><br><span class="line">console.log(&apos;b&apos;)</span><br></pre></td></tr></table></figure>
 <p>实际的输出结果现输出b，再输出a。为什么呢？<br>因为执行完setTimeout后，会立即把匿名函数放到callback queue里等待主程序的召唤。但此时stack里面不是空的，还有一句<code>console.log(&#39;b&#39;)</code>等到执行完这个之后，才通过event loop把匿名函数放到stack里面。<br>如果是很耗时的任务，那就应该把任务放到callback queue里面，等主程序执行完后再执行。</p>
 <ul>
 <li>AJAX<br>AJAX请求内容的时候是异步的，当请求完成后，会触发请求完成的事件，然后把回调函数放入callback queue。这样保证了页面不会出现因为网络请求页面一段时间内卡顿渲染不出来，影响用户体验。</li>
 <li>界面渲染<br>界面渲染线程是单独开辟的线程，是不是DOM一变化，界面就立刻重新渲染？<br>如果DOM一变化，页面就立刻重新渲染，效率必然会很低，所以浏览器的机制规定界面渲染和主程序是互斥的。<br>主程序执行任务时，浏览器渲染线程处于挂起状态。</li>
 </ul>
-<h2 id="利用浏览器的异步机制"><a href="#利用浏览器的异步机制" class="headerlink" title="利用浏览器的异步机制"></a>利用浏览器的异步机制</h2><p>浏览器为几个明显耗时任务单独开辟线程解决耗时问题，但我们自己写的程序里面也会有耗时的函数，肯定不能自己开辟单独的线程，这种情况下，我们可以利用浏览器给我们开放的这几个窗口。<br>浏览器定时器线程和事件触发线程是好利用的，网络请求不适合我们使用。<br>举个栗子，假设耗时函数是f1，f1是f2的前置任务。</p>
+<h2 id="四、利用浏览器的异步机制"><a href="#四、利用浏览器的异步机制" class="headerlink" title="四、利用浏览器的异步机制"></a>四、利用浏览器的异步机制</h2><p>浏览器为几个明显耗时任务单独开辟线程解决耗时问题，但我们自己写的程序里面也会有耗时的函数，肯定不能自己开辟单独的线程，这种情况下，我们可以利用浏览器给我们开放的这几个窗口。<br>浏览器定时器线程和事件触发线程是好利用的，网络请求不适合我们使用。<br>举个栗子，假设耗时函数是f1，f1是f2的前置任务。</p>
 <ul>
 <li>利用定时器触发线程<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function f1(callback)&#123;</span><br><span class="line">    setTimeout(function()&#123;</span><br><span class="line">        // f1的代码</span><br><span class="line">        callback()</span><br><span class="line">    &#125;,0)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>这是最简单但并不实用的方法，以后会介绍现在常用的异步处理方式。</p>
-<h2 id="异步适用的场景"><a href="#异步适用的场景" class="headerlink" title="异步适用的场景"></a>异步适用的场景</h2><p>当我们的程序需要大量I/O操作和用户请求时，JS这个具备单线程、异步、事件驱动的语言就发挥出优势了。相比多线程语言，它不必耗费过多的系统开销，同时也不必把精力用于处理多线程管理，相比同步执行的语言，宿主环境的异步和事件驱动机制又让它实现了非阻塞I/O。</p>
+<h2 id="五、异步适用的场景"><a href="#五、异步适用的场景" class="headerlink" title="五、异步适用的场景"></a>五、异步适用的场景</h2><p>当我们的程序需要大量I/O操作和用户请求时，JS这个具备单线程、异步、事件驱动的语言就发挥出优势了。相比多线程语言，它不必耗费过多的系统开销，同时也不必把精力用于处理多线程管理，相比同步执行的语言，宿主环境的异步和事件驱动机制又让它实现了非阻塞I/O。</p>
 
       
 
@@ -300,9 +300,18 @@
   
 <nav id="article-nav">
   
+    <a href="/2019/05/09/JavaScript之this原理/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          JavaScript之this原理
+        
+      </div>
+    </a>
   
-    <a href="/2019/05/09/JavaScript之this原理/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">JavaScript之this原理</div>
+  
+    <a href="/2019/05/08/JavaScript7个实用技巧/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">JavaScript7个实用技巧</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -428,11 +437,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React</a>
+                <a href="javascript:void(0)" class="js-tag color4">Umi</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Umi</a>
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
               </li>
              
               <li class="article-tag-list-item">
