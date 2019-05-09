@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="个人博客">
 <meta property="og:description" content="前言 提到JavaScript的单线程(single threaded)和异步(asynchronous)，很多初入JavaScript的会想到这是自相矛盾的。当然，单线程和异步不能同时成为一个语言的特性。JS语言的特性是单线程，所以本身是不可能异步的，但JS的宿主环境(比如浏览器,Node)是多线程的，宿主环境通过某种方式使得JS具备了异步的属性。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-09T12:08:11.207Z">
+<meta property="og:updated_time" content="2019-05-09T12:15:02.986Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript的单线程和异步">
 <meta name="twitter:description" content="前言 提到JavaScript的单线程(single threaded)和异步(asynchronous)，很多初入JavaScript的会想到这是自相矛盾的。当然，单线程和异步不能同时成为一个语言的特性。JS语言的特性是单线程，所以本身是不可能异步的，但JS的宿主环境(比如浏览器,Node)是多线程的，宿主环境通过某种方式使得JS具备了异步的属性。">
@@ -174,12 +174,12 @@
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><hr>
 <p>提到JavaScript的单线程(single threaded)和异步(asynchronous)，很多初入JavaScript的会想到这是自相矛盾的。当然，单线程和异步不能同时成为一个语言的特性。<br>JS语言的特性是<strong>单线程</strong>，所以本身是不可能异步的，但JS的宿主环境(比如浏览器,Node)是多线程的，宿主环境通过某种方式使得JS具备了异步的属性。</p>
 <a id="more"></a>
-<h2 id="浏览器"><a href="#浏览器" class="headerlink" title="浏览器"></a>浏览器</h2><p>JS是单线程语言，浏览器指分配给JS一个主线程，用来执行函数，但一次只能执行一个函数，这些任务排队形成任务队列等候执行。<br>有些任务是很耗时的，比如网络请求、定时器和时间监听等。这些任务还要排队执行的话，效率很低甚至网页会卡死。<br>所以，浏览器为这些耗时任务开辟了另外的线程，主要包括http请求线程，浏览器定时触发器，浏览器事件触发线程，这些任务是异步的。</p>
+<h2 id="浏览器"><a href="#浏览器" class="headerlink" title="浏览器"></a>浏览器</h2><p>JS是单线程语言，浏览器指分配给JS一个主线程，用来执行函数，但一次只能执行一个函数，这些任务排队形成任务队列等候执行。<br>有些任务是很耗时的，比如网络请求、定时器和事件监听等。这些任务还要排队执行的话，效率很低甚至网页会卡死。<br>所以，浏览器为这些耗时任务开辟了另外的线程，主要包括http请求线程，浏览器定时触发器，浏览器事件触发线程，这些任务是异步的。</p>
 <ul>
 <li>任务队列<br>浏览器为网络请求这样的异步任务单独开启了一个线程，这些异步任务完成后，主线程怎么知道的呢？<strong>回调函数</strong>，整个程序是事件驱动的，每个事件都会绑定相应的回调函数，举个🌰：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(function()&#123;</span><br><span class="line">    console.log(&apos;time is out);</span><br><span class="line">&#125;,50)</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p>当50ms到了之后，会触发定时事件，这个时候，就会把回调函数放到任务队列里。</p>
+<p>当50ms到了之后，会触发定时事件，这个时候，就会把回调函数放到任务队列里,整个程序就是通过这样的一个个事件驱动起来的。</p>
 <ul>
 <li>主线程<br>JS一直在做一件事，就是从任务队列里提取任务，放到主线程里执行。<br>上文所说到的浏览器为异步任务开辟的线程可以统一理解为<strong>WebAPIs</strong>，任务队列就是<strong>callback queue</strong>，<strong>堆(heap)</strong>和<strong>栈(stack)</strong>共同组成了JS主线程。函数的执行就是通过进栈和出栈实现的，等到栈(stack)被清空的时候，说明一个任务已经执行完了，这是就会从callback queue中寻找下一个任务进栈，这个寻找的过程成为称为<strong>event loop</strong>，它总是循环的查找任务队列里是否还有任务。</li>
 </ul>
@@ -194,6 +194,7 @@
 <li>利用定时器触发线程<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function f1(callback)&#123;</span><br><span class="line">    setTimeout(function()&#123;</span><br><span class="line">        // f1的代码</span><br><span class="line">        callback()</span><br><span class="line">    &#125;,0)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
+<p>这是最简单但并不实用的方法，以后会介绍现在常用的异步处理方式。</p>
 <h2 id="异步适用的场景"><a href="#异步适用的场景" class="headerlink" title="异步适用的场景"></a>异步适用的场景</h2><p>当我们的程序需要大量I/O操作和用户请求时，JS这个具备单线程、异步、事件驱动的语言就发挥出优势了。相比多线程语言，它不必耗费过多的系统开销，同时也不必把精力用于处理多线程管理，相比同步执行的语言，宿主环境的异步和事件驱动机制又让它实现了非阻塞I/O。</p>
 
       
