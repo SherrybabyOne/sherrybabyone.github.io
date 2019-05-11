@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="个人博客">
 <meta property="og:description" content="JavaScript的四种常用异步操作方式:callback、Primose、Generator、asnyc/await">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-11T13:28:38.063Z">
+<meta property="og:updated_time" content="2019-05-11T13:30:14.555Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript异步的几种方式">
 <meta name="twitter:description" content="JavaScript的四种常用异步操作方式:callback、Primose、Generator、asnyc/await">
@@ -172,9 +172,9 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="JavaScript的四种常用异步操作方式-callback、Primose、Generator、asnyc-await"><a href="#JavaScript的四种常用异步操作方式-callback、Primose、Generator、asnyc-await" class="headerlink" title="JavaScript的四种常用异步操作方式:callback、Primose、Generator、asnyc/await"></a>JavaScript的四种常用异步操作方式:callback、Primose、Generator、asnyc/await</h2><a id="more"></a>
-<h2 id="callback回调函数"><a href="#callback回调函数" class="headerlink" title="callback回调函数"></a>callback回调函数</h2><p>回调是一个函数作为参数传递到另一个函数里，在那个函数执行完后再执行。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function f1 (callback) &#123;</span><br><span class="line">    setTimeout(function () &#123;</span><br><span class="line">　　　　 console.log(&quot;1&quot;)</span><br><span class="line">        callback();</span><br><span class="line">    &#125;,1000);</span><br><span class="line">    &#125;</span><br><span class="line">function f2()&#123;</span><br><span class="line">        console.log(&quot;2&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">    f1(f2);</span><br></pre></td></tr></table></figure></p>
+<h2 id="一、callback回调函数"><a href="#一、callback回调函数" class="headerlink" title="一、callback回调函数"></a>一、callback回调函数</h2><p>回调是一个函数作为参数传递到另一个函数里，在那个函数执行完后再执行。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function f1 (callback) &#123;</span><br><span class="line">    setTimeout(function () &#123;</span><br><span class="line">　　　　 console.log(&quot;1&quot;)</span><br><span class="line">        callback();</span><br><span class="line">    &#125;,1000);</span><br><span class="line">    &#125;</span><br><span class="line">function f2()&#123;</span><br><span class="line">        console.log(&quot;2&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">    f1(f2);</span><br></pre></td></tr></table></figure></p>
 <p>缺点是会陷入回调地狱。</p>
-<h2 id="Promise-ES6"><a href="#Promise-ES6" class="headerlink" title="Promise(ES6)"></a>Promise(ES6)</h2><ul>
+<h2 id="二、Promise-ES6"><a href="#二、Promise-ES6" class="headerlink" title="二、Promise(ES6)"></a>二、Promise(ES6)</h2><ul>
 <li>Promise对象代表一个异步操作，有三种状态：<strong>pending</strong>(进行中),<strong>resolved</strong>(已成功)和<strong>rejected</strong>(已失败)。</li>
 <li>一旦状态改变，就不会再变，任何时候都可以得到这个结果。状态改变只有两种可能：<strong>pending</strong>=&gt;<strong>resolved</strong>,<strong>pending</strong>=&gt;<strong>rejected</strong>。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">const promise = new Promise(function(resolve, reject) &#123;</span><br><span class="line">  // ... some code</span><br><span class="line"></span><br><span class="line">  if (/* 异步操作成功 */)&#123;</span><br><span class="line">    resolve(value);</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    reject(error);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 </li>
@@ -186,9 +186,9 @@
 <li>不设置回调函数，<strong>Promise</strong>内部抛出的错误，不会反应到外部。</li>
 <li>当初与<strong>pending</strong>状态时，无法得知目前进展到哪一个阶段(刚刚开始还是即将完成)</li>
 </ul>
-<h2 id="Generator-ES6"><a href="#Generator-ES6" class="headerlink" title="Generator(ES6)"></a>Generator(ES6)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">function* G() &#123;</span><br><span class="line">    const a = yield 100</span><br><span class="line">    console.log(&apos;a&apos;, a)  // a aaa</span><br><span class="line">    const b = yield 200</span><br><span class="line">    console.log(&apos;b&apos;, b)  // b bbb</span><br><span class="line">    const c = yield 300</span><br><span class="line">    console.log(&apos;c&apos;, c)  // c ccc</span><br><span class="line">&#125;</span><br><span class="line">const g = G()</span><br><span class="line">g.next()    // value: 100, done: false</span><br><span class="line">g.next(&apos;aaa&apos;) // value: 200, done: false</span><br><span class="line">g.next(&apos;bbb&apos;) // value: 300, done: false</span><br><span class="line">g.next(&apos;ccc&apos;) // value: undefined, done: true</span><br></pre></td></tr></table></figure>
+<h2 id="三、Generator-ES6"><a href="#三、Generator-ES6" class="headerlink" title="三、Generator(ES6)"></a>三、Generator(ES6)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">function* G() &#123;</span><br><span class="line">    const a = yield 100</span><br><span class="line">    console.log(&apos;a&apos;, a)  // a aaa</span><br><span class="line">    const b = yield 200</span><br><span class="line">    console.log(&apos;b&apos;, b)  // b bbb</span><br><span class="line">    const c = yield 300</span><br><span class="line">    console.log(&apos;c&apos;, c)  // c ccc</span><br><span class="line">&#125;</span><br><span class="line">const g = G()</span><br><span class="line">g.next()    // value: 100, done: false</span><br><span class="line">g.next(&apos;aaa&apos;) // value: 200, done: false</span><br><span class="line">g.next(&apos;bbb&apos;) // value: 300, done: false</span><br><span class="line">g.next(&apos;ccc&apos;) // value: undefined, done: true</span><br></pre></td></tr></table></figure>
 <p>相比<strong>Promise</strong>，<strong>Generator</strong>流程更加直观、语义化。<br><strong>Generator</strong>的问题在于，函数的执行需要执行器每次都需要通过<code>g.next()</code>方式执行。</p>
-<h2 id="async-await-ES2017"><a href="#async-await-ES2017" class="headerlink" title="async/await(ES2017)"></a>async/await(ES2017)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">async function testResult() &#123;</span><br><span class="line">    let first = await doubleAfter2seconds(30);</span><br><span class="line">    let second = await doubleAfter2seconds(50);</span><br><span class="line">    let third = await doubleAfter2seconds(30);</span><br><span class="line">    console.log(first + second + third);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="四、async-await-ES2017"><a href="#四、async-await-ES2017" class="headerlink" title="四、async/await(ES2017)"></a>四、async/await(ES2017)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">async function testResult() &#123;</span><br><span class="line">    let first = await doubleAfter2seconds(30);</span><br><span class="line">    let second = await doubleAfter2seconds(50);</span><br><span class="line">    let third = await doubleAfter2seconds(30);</span><br><span class="line">    console.log(first + second + third);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><strong>asnyc</strong>函数解决了上述问题，流程清晰、直观、语义明显。<br>同时<strong>asnyc</strong>函数自带执行器，执行的时候无需手动加载。</p>
 
       
@@ -293,6 +293,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2019/05/11/JavaScript中this指向的修改/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          JavaScript中this指向的修改
+        
+      </div>
+    </a>
   
   
     <a href="/2019/05/09/JavaScript之this原理/" id="article-nav-older" class="article-nav-link-wrap">
@@ -426,7 +435,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -434,11 +443,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">小程序</a>
+                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color4">小程序</a>
               </li>
             
             <div class="clearfix"></div>
