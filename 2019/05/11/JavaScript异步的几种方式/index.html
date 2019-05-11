@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>JavaScript异步的几种方式 | 个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="JavaScript的四种常用异步操作方式:callback、Primose、Generator、asnyc/await">
+  <meta name="description" content="JavaScript的四种常用异步操作方式:callback、Promise、Generator、asnyc/await">
 <meta name="keywords" content="JavaScript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript异步的几种方式">
 <meta property="og:url" content="http://yoursite.com/2019/05/11/JavaScript异步的几种方式/index.html">
 <meta property="og:site_name" content="个人博客">
-<meta property="og:description" content="JavaScript的四种常用异步操作方式:callback、Primose、Generator、asnyc/await">
+<meta property="og:description" content="JavaScript的四种常用异步操作方式:callback、Promise、Generator、asnyc/await">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-11T13:30:14.555Z">
+<meta property="og:updated_time" content="2019-05-11T14:47:28.071Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript异步的几种方式">
-<meta name="twitter:description" content="JavaScript的四种常用异步操作方式:callback、Primose、Generator、asnyc/await">
+<meta name="twitter:description" content="JavaScript的四种常用异步操作方式:callback、Promise、Generator、asnyc/await">
   
     <link rel="alternative" href="/atom.xml" title="个人博客" type="application/atom+xml">
   
@@ -171,7 +171,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="JavaScript的四种常用异步操作方式-callback、Primose、Generator、asnyc-await"><a href="#JavaScript的四种常用异步操作方式-callback、Primose、Generator、asnyc-await" class="headerlink" title="JavaScript的四种常用异步操作方式:callback、Primose、Generator、asnyc/await"></a>JavaScript的四种常用异步操作方式:callback、Primose、Generator、asnyc/await</h2><a id="more"></a>
+        <h2 id="JavaScript的四种常用异步操作方式-callback、Promise、Generator、asnyc-await"><a href="#JavaScript的四种常用异步操作方式-callback、Promise、Generator、asnyc-await" class="headerlink" title="JavaScript的四种常用异步操作方式:callback、Promise、Generator、asnyc/await"></a>JavaScript的四种常用异步操作方式:callback、Promise、Generator、asnyc/await</h2><a id="more"></a>
 <h2 id="一、callback回调函数"><a href="#一、callback回调函数" class="headerlink" title="一、callback回调函数"></a>一、callback回调函数</h2><p>回调是一个函数作为参数传递到另一个函数里，在那个函数执行完后再执行。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function f1 (callback) &#123;</span><br><span class="line">    setTimeout(function () &#123;</span><br><span class="line">　　　　 console.log(&quot;1&quot;)</span><br><span class="line">        callback();</span><br><span class="line">    &#125;,1000);</span><br><span class="line">    &#125;</span><br><span class="line">function f2()&#123;</span><br><span class="line">        console.log(&quot;2&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">    f1(f2);</span><br></pre></td></tr></table></figure></p>
 <p>缺点是会陷入回调地狱。</p>
 <h2 id="二、Promise-ES6"><a href="#二、Promise-ES6" class="headerlink" title="二、Promise(ES6)"></a>二、Promise(ES6)</h2><ul>
@@ -435,11 +435,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Express</a>
+                <a href="javascript:void(0)" class="js-tag color4">小程序</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -447,7 +443,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">小程序</a>
+                <a href="javascript:void(0)" class="js-tag color3">Express</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
             
             <div class="clearfix"></div>

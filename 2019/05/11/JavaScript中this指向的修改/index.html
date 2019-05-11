@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="个人博客">
 <meta property="og:description" content="已经介绍过JavaScript中this指向的原理，今天介绍一下this指向的几个复杂解析，和如何改变this的指向。 关于this的指向，有几个点需要注意：  this指向的，只能是对象。 this指向谁，取决于函数的执行环境，而不是在创建时就决定了。 匿名函数的执行环境具有全局性。 对于普通函数调用，我们通常把this绑定为null">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-11T14:43:10.886Z">
+<meta property="og:updated_time" content="2019-05-11T14:50:44.059Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript中this指向的修改">
 <meta name="twitter:description" content="已经介绍过JavaScript中this指向的原理，今天介绍一下this指向的几个复杂解析，和如何改变this的指向。 关于this的指向，有几个点需要注意：  this指向的，只能是对象。 this指向谁，取决于函数的执行环境，而不是在创建时就决定了。 匿名函数的执行环境具有全局性。 对于普通函数调用，我们通常把this绑定为null">
@@ -199,7 +199,8 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">function getAge() &#123;</span><br><span class="line">    const y = new Date().getFullYear();</span><br><span class="line">    return y - this.birth;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const xiaoming = &#123;</span><br><span class="line">    name: &apos;小明&apos;,</span><br><span class="line">    birth: 1990,</span><br><span class="line">    age: getAge</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">xiaoming.age(); // 29, 正常结果</span><br><span class="line">getAge.bind(xiaoming)() //29,正常结果</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h2 id="箭头函数-ES6"><a href="#箭头函数-ES6" class="headerlink" title="箭头函数(ES6)"></a>箭头函数(ES6)</h2><p>箭头函数解决了this指向混乱问题。<br>this对象的指向是可变的，但在箭头函数中它是<strong>固定</strong>的。<br>箭头函数有一个重要的特性：<br><strong>函数体内的this对象就是定义时所在的对象，而不是使用时所在的对象</strong><br>解释一下底层原因：<br>this指针的固定化并不是箭头函数内部有绑定this的机制，实际原因是箭头函数根本没有自己的this，导致内部的this就是外层代码块的this，正是因为它没有this，所以不能用作构造函数。<br>修复第二个🌰:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">const name = &apos;this window&apos;</span><br><span class="line">const obj = &#123;</span><br><span class="line">    name : &apos;my object&apos;,</span><br><span class="line"></span><br><span class="line">    getName : function()&#123;</span><br><span class="line">        const getNameFunc = ()=&gt; &#123;</span><br><span class="line">            return this.name</span><br><span class="line">        &#125;</span><br><span class="line">        return getNameFunc()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">obj.getName()  //my object</span><br></pre></td></tr></table></figure></p>
+<h2 id="三、箭头函数-ES6"><a href="#三、箭头函数-ES6" class="headerlink" title="三、箭头函数(ES6)"></a>三、箭头函数(ES6)</h2><p>箭头函数解决了this指向混乱问题。<br>this对象的指向是可变的，但在箭头函数中它是<strong>固定</strong>的。<br>箭头函数有一个重要的特性：<br><strong>函数体内的this对象就是定义时所在的对象，而不是使用时所在的对象</strong><br>解释一下底层原因：<br>this指针的固定化并不是箭头函数内部有绑定this的机制，实际原因是箭头函数根本没有自己的this，导致内部的this就是外层代码块的this，正是因为它没有this，所以不能用作构造函数。<br>修复第二个🌰:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">const name = &apos;this window&apos;</span><br><span class="line">const obj = &#123;</span><br><span class="line">    name : &apos;my object&apos;,</span><br><span class="line"></span><br><span class="line">    getName : function()&#123;</span><br><span class="line">        const getNameFunc = ()=&gt; &#123;</span><br><span class="line">            return this.name</span><br><span class="line">        &#125;</span><br><span class="line">        return getNameFunc()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">obj.getName()  //my object</span><br></pre></td></tr></table></figure></p>
+<p>转载请标明来源：<a href="https://sherrybabyone.github.io/2019/05/11/JavaScript%E4%B8%ADthis%E6%8C%87%E5%90%91%E7%9A%84%E4%BF%AE%E6%94%B9/" target="_blank" rel="noopener">sherrybaby的博客</a></p>
 
       
 
@@ -436,11 +437,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Express</a>
+                <a href="javascript:void(0)" class="js-tag color4">小程序</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -448,7 +445,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">小程序</a>
+                <a href="javascript:void(0)" class="js-tag color3">Express</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
             
             <div class="clearfix"></div>
