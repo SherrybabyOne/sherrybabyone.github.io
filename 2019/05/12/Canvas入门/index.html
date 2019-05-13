@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>个人博客</title>
+  <title>Canvas入门 | 个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="个人博客">
-<meta property="og:url" content="http://yoursite.com/page/3/index.html">
+  <meta name="description" content="什么是Canvas?HTML5 的 canvas 元素使用 JavaScript 在网页上绘制图像。 画布是一个矩形区域，您可以控制其每一像素。 canvas 拥有多种绘制路径、矩形、圆形、字符以及添加图像的方法。">
+<meta name="keywords" content="HTML">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Canvas入门">
+<meta property="og:url" content="http://yoursite.com/2019/05/12/Canvas入门/index.html">
 <meta property="og:site_name" content="个人博客">
+<meta property="og:description" content="什么是Canvas?HTML5 的 canvas 元素使用 JavaScript 在网页上绘制图像。 画布是一个矩形区域，您可以控制其每一像素。 canvas 拥有多种绘制路径、矩形、圆形、字符以及添加图像的方法。">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-05-13T05:02:27.793Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="个人博客">
+<meta name="twitter:title" content="Canvas入门">
+<meta name="twitter:description" content="什么是Canvas?HTML5 的 canvas 元素使用 JavaScript 在网页上绘制图像。 画布是一个矩形区域，您可以控制其每一像素。 canvas 拥有多种绘制路径、矩形、圆形、字符以及添加图像的方法。">
   
     <link rel="alternative" href="/atom.xml" title="个人博客" type="application/atom+xml">
   
@@ -146,254 +151,116 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-JavaScript-标准对象" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-Canvas入门" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/13/JavaScript-标准对象/">JS-标准对象</a>
+    <h1 class="article-title" itemprop="name">
+      Canvas入门
     </h1>
   
 
         
-        <a href="/2019/04/13/JavaScript-标准对象/" class="archive-article-date">
-  	<time datetime="2019-04-13T13:56:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-13</time>
+        <a href="/2019/05/12/Canvas入门/" class="archive-article-date">
+  	<time datetime="2019-05-12T14:08:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-12</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>在JS世界里，一切都是对象。<br>
-        
+        <h2 id="什么是Canvas"><a href="#什么是Canvas" class="headerlink" title="什么是Canvas?"></a>什么是Canvas?</h2><p>HTML5 的 canvas 元素使用 JavaScript 在网页上绘制图像。</p>
+<p>画布是一个矩形区域，您可以控制其每一像素。</p>
+<p>canvas 拥有多种绘制路径、矩形、圆形、字符以及添加图像的方法。<br><a id="more"></a></p>
+<h2 id="Canvas画布"><a href="#Canvas画布" class="headerlink" title="Canvas画布"></a>Canvas画布</h2><h3 id="绘图工具"><a href="#绘图工具" class="headerlink" title="绘图工具"></a>绘图工具</h3><hr>
+<p>canvas 元素用于在网页上绘制图形。<br>设置画布大小，使用属性方式设置。在css中设置大小可能会失真。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//html:</span><br><span class="line">&lt;canvas id=&quot;myCanvas&quot; width=&quot;200&quot; height=&quot;100&quot;&gt;&lt;/canvas&gt;</span><br><span class="line">//JS:</span><br><span class="line">var c=document.getElementById(&quot;myCanvas&quot;);</span><br><span class="line">var cxt=c.getContext(&quot;2d&quot;);</span><br></pre></td></tr></table></figure></p>
+<h3 id="绘图方法"><a href="#绘图方法" class="headerlink" title="绘图方法"></a>绘图方法</h3><hr>
+<p>cxt.moveTo(x,y) //落笔<br>cxt.lineTo(x,y) //连线<br>cxt.stroke()    //描边</p>
+<p>cxt.beginPath()   //开启新的图层<br>cxt.closePath() //闭合路径</p>
+<p>cxt.strokeStyle=’’  //线的颜色<br>cxt.strokeWidth=’’  //线的宽度<br>cxt.lineCap=’’      //设置线帽</p>
+<h3 id="渐变方案"><a href="#渐变方案" class="headerlink" title="渐变方案"></a>渐变方案</h3><hr>
+<ul>
+<li>创建渐变方案<br>var lgd = cxt.createLinearGradient(x0,y0,x1,y1)</li>
+<li>添加开始颜色。0代表开始，1代表结束。<br>lgd.addColorStop(0,’red’)</li>
+<li>添加结束颜色<br>lgd.addColorStop(1,’blue’)</li>
+</ul>
+<p>cxt.strokeStyle = lgd;</p>
+<h3 id="填充效果"><a href="#填充效果" class="headerlink" title="填充效果"></a>填充效果</h3><hr>
+<ul>
+<li>设置填充效果<br>cxt.fill()            </li>
+<li>设置填充颜色<br>cxt.fillstyle=’值’    </li>
+</ul>
+<h3 id="非零环绕原则"><a href="#非零环绕原则" class="headerlink" title="非零环绕原则"></a>非零环绕原则</h3><hr>
+<ol>
+<li>绘制的是一个闭合图形</li>
+<li>假如在绘制的时候，出现绘制顺序有顺时针和逆时针</li>
+<li>任意找一点，越简单越好</li>
+<li>以点为圆心，绘制一条射线，越简单越好(相交的边越少越好)</li>
+<li>以射线为半径顺时针旋转，相交的边同向的记为+1，反方向记为-1</li>
+<li>相加为0的区域不填充，非零区域填充。</li>
+</ol>
+<h3 id="绘制虚线"><a href="#绘制虚线" class="headerlink" title="绘制虚线"></a>绘制虚线</h3><hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cxt.setLineDash(数组)   //实-&gt;空白 循环</span><br><span class="line">cxt.stroke()</span><br></pre></td></tr></table></figure>
+<h3 id="绘制动画效果"><a href="#绘制动画效果" class="headerlink" title="绘制动画效果"></a>绘制动画效果</h3><hr>
+<ul>
+<li>绘制一个描边矩形<br>cxt.strokeRect(x,y,width,height)</li>
+<li>绘制一个填充矩形<br>cxt.fillRect(x,y,width,height)</li>
+<li>清屏<br>cxt.clearRect(x,y,width ,height)</li>
+</ul>
+<p>绘制动画效果：</p>
+<ol>
+<li>先清屏</li>
+<li>绘制图形</li>
+<li>处理变量</li>
+</ol>
+<h3 id="绘制文本"><a href="#绘制文本" class="headerlink" title="绘制文本"></a>绘制文本</h3><hr>
+<ul>
+<li>绘制填充文本<br>cxt.fillText(‘文本内容’,x,y)</li>
+<li>绘制镂空文本<br>cxt.strokeText(‘文本内容’,x,y)</li>
+<li>设置文字大小<br>cxt.font = ‘20px 微软雅黑’</li>
+<li>设置文字对齐方式<br>cxt.textAlign=’left|right|center’</li>
+<li>设置文字垂直对齐方式<br>cxt.textBaseline=’top|middle|botoom|alphabetic(默认)’</li>
+<li>阴影效果<br>cxt.shadowColor=’’<br>cxt.shadowOffsetX=’’<br>cxt.shadowOffsetY=’’<br>cxt.shadowBlur=’’   //设置文字饮用模糊度</li>
+</ul>
+<h3 id="绘制图形"><a href="#绘制图形" class="headerlink" title="绘制图形"></a>绘制图形</h3><hr>
+<ul>
+<li>将图片绘制到画布<br>cxt.drawImage(图片对象,x,y)</li>
+<li>将图片绘制到画布中的指定区域<br>cxt.drawImage(图片对象,x,y,width,height)</li>
+<li>将图片的指定区域绘制到画布中的指定区域<br>cxt.drawImage(图片对象,sx,sy,swidth,sheight,x,y,width,height)</li>
+</ul>
+<h3 id="绘制圆弧"><a href="#绘制圆弧" class="headerlink" title="绘制圆弧"></a>绘制圆弧</h3><p>cxt.arc(x,y,raduys,startradian,endradian[,direct])<br>//startradian :开始弧度<br>//endradian: 结束弧度 二拍:2*Math.PI<br>//direct: 方向，默认顺时针方向</p>
+<h3 id="平移-坐标系原点的平移"><a href="#平移-坐标系原点的平移" class="headerlink" title="平移(坐标系原点的平移)"></a>平移(坐标系原点的平移)</h3><hr>
+<p>cxt.translate(x,y)</p>
+<h3 id="旋转"><a href="#旋转" class="headerlink" title="旋转"></a>旋转</h3><hr>
+<p>cxt.rotate(弧度)</p>
+<h3 id="伸缩"><a href="#伸缩" class="headerlink" title="伸缩"></a>伸缩</h3><hr>
+<p>cxt.scale(x,y)<br>//沿着x轴、y轴缩放倍数</p>
+
       
 
       
-    </p></div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/13/JavaScript-标准对象/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-JavaScript-函数" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/13/JavaScript-函数/">JS-函数</a>
-    </h1>
-  
-
-        
-        <a href="/2019/04/13/JavaScript-函数/" class="archive-article-date">
-  	<time datetime="2019-04-13T13:55:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>借助函数，我们才能不关心底层的计算问题，而是在更高的层次上思考问题。<br>写计算机程序也是一样，函数就是最基本的而一种代码抽象方式。<br>
-        
-      
-
-      
-    </p></div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/13/JavaScript-函数/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-JavaScript-入门" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/13/JavaScript-入门/">JS-入门</a>
-    </h1>
-  
-
-        
-        <a href="/2019/04/13/JavaScript-入门/" class="archive-article-date">
-  	<time datetime="2019-04-13T13:54:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>利用寒假一个多月的时间，重新学习下JS。参考文献：<a href="https://www.liaoxuefeng.com/" target="_blank" rel="noopener">廖雪峰的官方网站</a><br>一步一步地学习并记下笔记复习。<br>
-        
-      
-
-      
-    </p></div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/13/JavaScript-入门/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-React-Redux数据流" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/13/React-Redux数据流/">React-Redux数据流</a>
-    </h1>
-  
-
-        
-        <a href="/2019/04/13/React-Redux数据流/" class="archive-article-date">
-  	<time datetime="2019-04-13T13:52:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Redux 是 JavaScript <strong>状态容器</strong>，提供可预测化的状态管理。<br>可以让你构建一致化的应用，运行于不同的环境（客户端、服务器、原生应用），并且易于测试。不仅于此，它还提供 超爽的开发体验，比如有一个时间旅行调试器可以编辑后实时预览。<br>Redux 除了和 React 一起用外，还支持其它界面库。 它体小精悍（只有2kB，包括依赖）。</p>
-        
-      
-
       
     </div>
     <div class="article-info article-info-index">
@@ -404,7 +271,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">React</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">HTML</a>
         		</li>
       		
 		</ul>
@@ -413,16 +280,75 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/13/React-Redux数据流/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/05/12/Canvas入门/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2019/05/12/HTML5新特性入门/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">HTML5新特性入门</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -442,211 +368,14 @@
 
 
 
-
-  
-    <article id="post-Git教程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/13/Git教程/">Git教程</a>
-    </h1>
-  
-
-        
-        <a href="/2019/04/13/Git教程/" class="archive-article-date">
-  	<time datetime="2019-04-13T11:43:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Git是目前世界上最先进的分布式版本控制系统（没有之一）。<br>现在的项目开发已经离不开Git了，其强大的分支管理令多人协同开发十分便捷。<br>并且先在很多项目都选择在github上开源，学Git已是大势所趋。</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">git</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/13/Git教程/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-mac前端环境配置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/13/mac前端环境配置/">mac前端环境配置</a>
-    </h1>
-  
-
-        
-        <a href="/2019/04/13/mac前端环境配置/" class="archive-article-date">
-  	<time datetime="2019-04-13T11:32:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/13/mac前端环境配置/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/13/hello-world/">Hello World</a>
-    </h1>
-  
-
-        
-        <a href="/2019/04/13/hello-world/" class="archive-article-date">
-  	<time datetime="2019-04-12T21:25:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>之前的博客大大小小丢了好多，从今天开始完善博客，随手记录知识点，方便温习。2019-4-13</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/13/hello-world/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
-    </nav>
+  
+
+  
+
+  
+
   
 
 
@@ -669,8 +398,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

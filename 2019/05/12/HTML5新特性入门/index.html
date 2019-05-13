@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>个人博客</title>
+  <title>HTML5新特性入门 | 个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="个人博客">
-<meta property="og:url" content="http://yoursite.com/page/3/index.html">
+  <meta name="description" content="HTML5基于上一代HTML的新迭代语言，设计HTML5的主要目的是为了在移动设备上支持多媒体，例如：video标签和audio标签及canvas标签">
+<meta name="keywords" content="HTML">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTML5新特性入门">
+<meta property="og:url" content="http://yoursite.com/2019/05/12/HTML5新特性入门/index.html">
 <meta property="og:site_name" content="个人博客">
+<meta property="og:description" content="HTML5基于上一代HTML的新迭代语言，设计HTML5的主要目的是为了在移动设备上支持多媒体，例如：video标签和audio标签及canvas标签">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-05-13T04:57:40.054Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="个人博客">
+<meta name="twitter:title" content="HTML5新特性入门">
+<meta name="twitter:description" content="HTML5基于上一代HTML的新迭代语言，设计HTML5的主要目的是为了在移动设备上支持多媒体，例如：video标签和audio标签及canvas标签">
   
     <link rel="alternative" href="/atom.xml" title="个人博客" type="application/atom+xml">
   
@@ -146,254 +151,138 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-JavaScript-标准对象" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-HTML5新特性入门" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/13/JavaScript-标准对象/">JS-标准对象</a>
+    <h1 class="article-title" itemprop="name">
+      HTML5新特性入门
     </h1>
   
 
         
-        <a href="/2019/04/13/JavaScript-标准对象/" class="archive-article-date">
-  	<time datetime="2019-04-13T13:56:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-13</time>
+        <a href="/2019/05/12/HTML5新特性入门/" class="archive-article-date">
+  	<time datetime="2019-05-12T10:09:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-12</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>在JS世界里，一切都是对象。<br>
-        
+        <p>HTML5基于上一代HTML的新迭代语言，设计HTML5的主要目的是为了在移动设备上支持多媒体，例如：video标签和audio标签及canvas标签</p>
+<a id="more"></a>
+<h2 id="一、了解"><a href="#一、了解" class="headerlink" title="一、了解"></a>一、了解</h2><p>新特性：</p>
+<ul>
+<li>取消了过时的显示效果标记</li>
+<li>新表单元素引入</li>
+<li>新语义标签引入</li>
+<li>canvas标签(图形设计)</li>
+<li>本地数据库(本地存储)</li>
+<li>一些API<br>好处： 跨平台<br>缺点： PC端浏览器支持不是特别友好</li>
+</ul>
+<p>新语义标签：nav、header、article、aside、section、footer</p>
+<p>多媒体标签：video、audio<br>兼容视频格式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;video width=&quot;320&quot; height=&quot;240&quot; controls=&quot;controls&quot;&gt;</span><br><span class="line">  &lt;source src=&quot;movie.ogg&quot; type=&quot;video/ogg&quot;&gt;</span><br><span class="line">  &lt;source src=&quot;movie.mp4&quot; type=&quot;video/mp4&quot;&gt;</span><br><span class="line">  Your browser does not support the video tag.</span><br><span class="line">&lt;/video&gt;</span><br></pre></td></tr></table></figure></p>
+<h3 id="新的表单元素及属性"><a href="#新的表单元素及属性" class="headerlink" title="新的表单元素及属性"></a>新的表单元素及属性</h3><hr>
+<p>新表单元素：</p>
+<ul>
+<li>email: 合法邮箱地址</li>
+<li>url: 合法地址</li>
+<li>number: 只能输入数字</li>
+<li>range: 滑块</li>
+<li>color: 拾色器</li>
+<li>date: 日期</li>
+<li>month: 月</li>
+<li>week: 周</li>
+<li>time: 日期<br>例如：<code>&lt;input type=&#39;email&gt;&lt;/input&gt;</code></li>
+</ul>
+<p>新的form属性：</p>
+<ul>
+<li>autocomplete    //是否自动完成 on|off</li>
+<li>novalidate      //是否关闭校验 true|off</li>
+</ul>
+<p>新的input属性：</p>
+<ul>
+<li>autocomplete</li>
+<li>novalidate</li>
+<li>autofocus       //是否自动获取焦点</li>
+<li>placeholder</li>
+<li>required</li>
+<li>form</li>
+<li>multiple</li>
+<li>list</li>
+<li>width和height</li>
+</ul>
+<h2 id="二、HTML5-API"><a href="#二、HTML5-API" class="headerlink" title="二、HTML5 API"></a>二、HTML5 API</h2><h3 id="获取页面元素及类名操作和自定义属性"><a href="#获取页面元素及类名操作和自定义属性" class="headerlink" title="获取页面元素及类名操作和自定义属性"></a>获取页面元素及类名操作和自定义属性</h3><hr>
+<ul>
+<li><p>获取页面元素：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">document.querySelector(&apos;选择器&apos;)</span><br><span class="line">document.querySelectorAll(&apos;选择器&apos;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>类名操作：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Dom.classList.add(&apos;类名)    //添加类样式</span><br><span class="line">Dom.classList.removeList(&apos;类名&apos;)  //删除类样式</span><br><span class="line">Dom.classList.contains(&apos;类名&apos;)    //检测是否包含类样式</span><br><span class="line">Dom.classList.toggle(&apos;active&apos;)    //切换类样式(有就删除，没有就添加)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>自定义属性名：<br>data-自定义属性名<br>获取：Dom.dataset.属性名<br>设置：Dom.dataset.自定义属性名=值</p>
+</li>
+</ul>
+<h3 id="文件读取"><a href="#文件读取" class="headerlink" title="文件读取"></a>文件读取</h3><hr>
+<p>FileReader  接口有三个用来读取文件方法返回结果在result中</p>
+<ul>
+<li>readAsBinaryString  //将文件读取为二进制编码</li>
+<li>readAsText  //将文件读取为文本</li>
+<li>readAsDataUrl   //将文件读取为DataURL</li>
+</ul>
+<p>FileReader提供的事件模型：</p>
+<ul>
+<li>onabort //中断时触发</li>
+<li>onerror //出错时触发</li>
+<li>onload  //文件读取成功触发</li>
+<li>onloadend   //读取完成触发，无论成功或失败</li>
+<li>onloadstart //读取开始时触发</li>
+<li>onprogress  //读取中</li>
+</ul>
+<h3 id="获取网络状态"><a href="#获取网络状态" class="headerlink" title="获取网络状态"></a>获取网络状态</h3><hr>
+<p>window.navigator.onLine    //true|false<br>网络状态事件： window.ononline、window.onoffline</p>
+<h3 id="获取地理定位"><a href="#获取地理定位" class="headerlink" title="获取地理定位"></a>获取地理定位</h3><hr>
+<p>获取一次当前位置：<br>window.navigator.geolocation.getCurrentPosition(success,error)<br>coords.latitude //维度<br>coords.longitude    //经度<br>实时获取当前位置：<br>window.navigator.geolocation.watchPosition(success,error)</p>
+<h3 id="本地存储"><a href="#本地存储" class="headerlink" title="本地存储"></a>本地存储</h3><hr>
+<p>传统本地存储cookie，但存储大小只有4k左右，并且解析也相当复杂。HTML5规范提出使用<strong>localStorage</strong>和<strong>sessionStorage</strong>存储数据<br><strong>localStorage</strong>:</p>
+<ul>
+<li>永久生效</li>
+<li>多窗口共享</li>
+<li>容量大约为20M<br>具体操作：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">localStorage.setItem(key,value) //添加</span><br><span class="line">localStorage.getItem(key)   //获取</span><br><span class="line">localStorage.remove(key)    //删除</span><br><span class="line">localStorage.clear()    //清空</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>sessionStorage</strong>:</p>
+<ul>
+<li>声明周期为关闭当前浏览器</li>
+<li>只能在同一个窗口下访问</li>
+<li>数据大小为5M左右<br>sessionStorage操作与localStorage类似。</li>
+</ul>
+
       
 
       
-    </p></div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/13/JavaScript-标准对象/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-JavaScript-函数" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/13/JavaScript-函数/">JS-函数</a>
-    </h1>
-  
-
-        
-        <a href="/2019/04/13/JavaScript-函数/" class="archive-article-date">
-  	<time datetime="2019-04-13T13:55:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>借助函数，我们才能不关心底层的计算问题，而是在更高的层次上思考问题。<br>写计算机程序也是一样，函数就是最基本的而一种代码抽象方式。<br>
-        
-      
-
-      
-    </p></div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/13/JavaScript-函数/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-JavaScript-入门" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/13/JavaScript-入门/">JS-入门</a>
-    </h1>
-  
-
-        
-        <a href="/2019/04/13/JavaScript-入门/" class="archive-article-date">
-  	<time datetime="2019-04-13T13:54:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>利用寒假一个多月的时间，重新学习下JS。参考文献：<a href="https://www.liaoxuefeng.com/" target="_blank" rel="noopener">廖雪峰的官方网站</a><br>一步一步地学习并记下笔记复习。<br>
-        
-      
-
-      
-    </p></div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/13/JavaScript-入门/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-React-Redux数据流" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/13/React-Redux数据流/">React-Redux数据流</a>
-    </h1>
-  
-
-        
-        <a href="/2019/04/13/React-Redux数据流/" class="archive-article-date">
-  	<time datetime="2019-04-13T13:52:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Redux 是 JavaScript <strong>状态容器</strong>，提供可预测化的状态管理。<br>可以让你构建一致化的应用，运行于不同的环境（客户端、服务器、原生应用），并且易于测试。不仅于此，它还提供 超爽的开发体验，比如有一个时间旅行调试器可以编辑后实时预览。<br>Redux 除了和 React 一起用外，还支持其它界面库。 它体小精悍（只有2kB，包括依赖）。</p>
-        
-      
-
       
     </div>
     <div class="article-info article-info-index">
@@ -404,7 +293,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">React</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">HTML</a>
         		</li>
       		
 		</ul>
@@ -413,16 +302,84 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/13/React-Redux数据流/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/05/12/HTML5新特性入门/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2019/05/12/Canvas入门/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Canvas入门
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/05/11/JavaScript中this指向的修改/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">JavaScript中this指向的修改</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -442,211 +399,14 @@
 
 
 
-
-  
-    <article id="post-Git教程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/13/Git教程/">Git教程</a>
-    </h1>
-  
-
-        
-        <a href="/2019/04/13/Git教程/" class="archive-article-date">
-  	<time datetime="2019-04-13T11:43:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Git是目前世界上最先进的分布式版本控制系统（没有之一）。<br>现在的项目开发已经离不开Git了，其强大的分支管理令多人协同开发十分便捷。<br>并且先在很多项目都选择在github上开源，学Git已是大势所趋。</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">git</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/13/Git教程/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-mac前端环境配置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/13/mac前端环境配置/">mac前端环境配置</a>
-    </h1>
-  
-
-        
-        <a href="/2019/04/13/mac前端环境配置/" class="archive-article-date">
-  	<time datetime="2019-04-13T11:32:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/13/mac前端环境配置/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/13/hello-world/">Hello World</a>
-    </h1>
-  
-
-        
-        <a href="/2019/04/13/hello-world/" class="archive-article-date">
-  	<time datetime="2019-04-12T21:25:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>之前的博客大大小小丢了好多，从今天开始完善博客，随手记录知识点，方便温习。2019-4-13</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/13/hello-world/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
-    </nav>
+  
+
+  
+
+  
+
   
 
 
@@ -669,8 +429,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
