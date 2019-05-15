@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>小程序开发框架的四种基本组成 | 个人博客</title>
+  <title>Mac下Java环境配置 | 个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="小程序的开发框架由四部分组成： WXML、WXSS、WXS、JavaScript">
-<meta name="keywords" content="小程序">
+  <meta name="description" content="Mac下配置Java环境，正式入坑。">
+<meta name="keywords" content="Java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="小程序开发框架的四种基本组成">
-<meta property="og:url" content="http://yoursite.com/2019/04/15/小程序开发框架的四种基本组成/index.html">
+<meta property="og:title" content="Mac下Java环境配置">
+<meta property="og:url" content="http://yoursite.com/2019/05/14/Mac下Java环境配置/index.html">
 <meta property="og:site_name" content="个人博客">
-<meta property="og:description" content="小程序的开发框架由四部分组成： WXML、WXSS、WXS、JavaScript">
+<meta property="og:description" content="Mac下配置Java环境，正式入坑。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-15T12:48:30.533Z">
+<meta property="og:updated_time" content="2019-05-15T04:44:40.706Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="小程序开发框架的四种基本组成">
-<meta name="twitter:description" content="小程序的开发框架由四部分组成： WXML、WXSS、WXS、JavaScript">
+<meta name="twitter:title" content="Mac下Java环境配置">
+<meta name="twitter:description" content="Mac下配置Java环境，正式入坑。">
   
     <link rel="alternative" href="/atom.xml" title="个人博客" type="application/atom+xml">
   
@@ -151,47 +151,46 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-小程序开发框架的四种基本组成" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Mac下Java环境配置" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      小程序开发框架的四种基本组成
+      Mac下Java环境配置
     </h1>
   
 
         
-        <a href="/2019/04/15/小程序开发框架的四种基本组成/" class="archive-article-date">
-  	<time datetime="2019-04-15T12:47:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-15</time>
+        <a href="/2019/05/14/Mac下Java环境配置/" class="archive-article-date">
+  	<time datetime="2019-05-14T04:38:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-14</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>小程序的开发框架由四部分组成： WXML、WXSS、WXS、JavaScript<br><a id="more"></a></p>
-<h2 id="一、WXML"><a href="#一、WXML" class="headerlink" title="一、WXML"></a>一、WXML</h2><p><code>WXML是框架设计的一套标签语言，结合组件、WXS和事件系统，可以构建出页面的结构。</code><br>Attention：WXML标签严格要求闭合，区分大小写。<br>WXML数据绑定使用<strong>Mustache</strong>语法，动态数据用双括号包裹起来：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;view&gt;</span><br><span class="line">	&lt;text&gt;&#123;&#123;message&#125;&#125;&lt;/text&gt;</span><br><span class="line">&lt;/view&gt;</span><br></pre></td></tr></table></figure></p>
-<p>属性：id、class、style、hidden、data-<em>、bind/catch</em></p>
-<h3 id="模板引用的两种方式："><a href="#模板引用的两种方式：" class="headerlink" title="模板引用的两种方式："></a>模板引用的两种方式：</h3><ul>
-<li>import： 只能引用所定义模板文件里的模板内容块。<br><code>&lt;import src=&#39; &#39;&gt;&lt;/import&gt;</code></li>
-<li>include： 把目标文件内除了模版代码块外的所有代码引入<br><code>&lt;include src=&#39; &#39;&gt;&lt;/include&gt;</code></li>
-</ul>
-<h2 id="二、WXSS"><a href="#二、WXSS" class="headerlink" title="二、WXSS"></a>二、WXSS</h2><p>WXSS是一套样式语言，用于描述WXML的组件样式。</p>
-<ul>
-<li><strong>rpx</strong>：响应式像素，微信团队规定屏幕宽度为750rpx</li>
-<li><code>@import &#39; &#39;</code> ：外联引入WXSS</li>
-<li>选择器： id、class、element、::before、::after</li>
-</ul>
-<h2 id="三、JS"><a href="#三、JS" class="headerlink" title="三、JS"></a>三、JS</h2><p>NodeJS中的JavaScript：ECMAScript、Native、NPM<br>浏览器中的JavaScript：ECMAScript、DOM（浏览器的文档对象模型）、BOM（浏览器的对象模型）<br>小程序中的JavaScript：ECMAScript、小程序框架、小程序API</p>
-<h2 id="四、WXS"><a href="#四、WXS" class="headerlink" title="四、WXS"></a>四、WXS</h2><p>除了在逻辑层使用的JavaScript脚本语言外，小程序有自己的脚本语言<strong>WXS</strong></p>
-<ul>
-<li>WXS可以用标签书写，也可以用文件的形式书写但文件命名后缀是<strong>.wxs</strong>，在WXS模块内所定义的变量和函数默认是<strong>私有</strong>的。</li>
-<li>模块导出和引用wxs文件用<strong>exports</strong>和<strong>require</strong>。</li>
-<li>数据类型中的<strong>date</strong>和<strong>regexp</strong>用<strong>get</strong>生成。</li>
-<li>基础类库：类似于ES5，WXS的基础类库有：Number、Date、Global、console、Math、JSON</li>
-</ul>
+        <p>Mac下配置Java环境，正式入坑。</p>
+<a id="more"></a>
+<h2 id="一、JDK配置"><a href="#一、JDK配置" class="headerlink" title="一、JDK配置"></a>一、JDK配置</h2><h3 id="JDK下载、安装"><a href="#JDK下载、安装" class="headerlink" title="JDK下载、安装"></a>JDK下载、安装</h3><hr>
+<p><a href="https://www.oracle.com/technetwork/java/javase/downloads/jdk12-downloads-5295953.html" target="_blank" rel="noopener">JDK下载页面</a><br>选择相应的版本进行下载，下载完成并双击安装。</p>
+<h3 id="查看是否安装成功"><a href="#查看是否安装成功" class="headerlink" title="查看是否安装成功"></a>查看是否安装成功</h3><hr>
+<p>打开终端，输入<code>java -version</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ java -version</span><br><span class="line">java version &quot;12.0.1&quot; 2019-04-16</span><br><span class="line">Java(TM) SE Runtime Environment (build 12.0.1+12)</span><br><span class="line">Java HotSpot(TM) 64-Bit Server VM (build 12.0.1+12, mixed mode, sharing)</span><br><span class="line">➜  ~</span><br></pre></td></tr></table></figure></p>
+<p>出现类似字段表明JDK安装成功。</p>
+<h3 id="配置PATH和CALSSPATH路径"><a href="#配置PATH和CALSSPATH路径" class="headerlink" title="配置PATH和CALSSPATH路径"></a>配置PATH和CALSSPATH路径</h3><hr>
+<p>打开终端，使用<strong>管理员权限</strong>打开<code>profile</code>文件:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ sudo vim /etc/profile</span><br></pre></td></tr></table></figure></p>
+<p>在末尾添加上:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">JAVA_HOME=&quot;/Library/Java/JavaVirtualMachines/jdk-12.0.1.jdk/Contents/Home/&quot;</span><br><span class="line"></span><br><span class="line">CLASS_PATH=&quot;$JAVA_HOME/lib&quot;</span><br><span class="line"></span><br><span class="line">PATH=&quot;.:$PATH:$JAVA_HOME/bin&quot;</span><br></pre></td></tr></table></figure></p>
+<p><strong>注意</strong>，添加的第一行<code>JAVA_HOME=&quot;/Library/Java/JavaVirtualMachines/jdk-12.0.1.jdk/Contents/Home/&quot;</code>，中的<strong>jdk-12.0.1.jdk</strong>需要根据你下载的JDK版本进行修改。<br>查看安装JDK版本方法：<br>先到<code>/Library/Java/JavaVirtualMachines/</code>目录，查看该目录下文件，唯一的文件夹名称即为安装JDK版本号。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ cd /Library/Java/JavaVirtualMachines/</span><br><span class="line">➜  JavaVirtualMachines ls</span><br><span class="line">jdk-12.0.1.jdk</span><br><span class="line">➜  JavaVirtualMachines</span><br></pre></td></tr></table></figure></p>
+<p>修改好文件，应该是这个样子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"># System-wide .profile for sh(1)</span><br><span class="line"></span><br><span class="line">if [ -x /usr/libexec/path_helper ]; then</span><br><span class="line">        eval `/usr/libexec/path_helper -s`</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line">if [ &quot;$&#123;BASH-no&#125;&quot; != &quot;no&quot; ]; then</span><br><span class="line">        [ -r /etc/bashrc ] &amp;&amp; . /etc/bashrc</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line">JAVA_HOME=&quot;/Library/Java/JavaVirtualMachines/jdk-12.0.1.jdk/Contents/Home/&quot;</span><br><span class="line"></span><br><span class="line">CLASS_PATH=&quot;$JAVA_HOME/lib&quot;</span><br><span class="line"></span><br><span class="line">PATH=&quot;.:$PATH:$JAVA_HOME/bin&quot;</span><br></pre></td></tr></table></figure></p>
+<p>(按ESC退出插入模式，英文键下输入:<code>:wq!</code> ,保存并推出profile文件)</p>
+<h3 id="查看是否路径配置成功"><a href="#查看是否路径配置成功" class="headerlink" title="查看是否路径配置成功"></a>查看是否路径配置成功</h3><hr>
+<p>重启终端。<br>输入<code>echo $JAVA_HOME</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">➜ echo $JAVA_HOME</span><br><span class="line">/Library/Java/JavaVirtualMachines/jdk-9.0.1.jdk/Contents/Home/</span><br></pre></td></tr></table></figure></p>
+<p>至此，Mac下JAVA环境配置完成！</p>
+<h2 id="二、测试Java的编译运行"><a href="#二、测试Java的编译运行" class="headerlink" title="二、测试Java的编译运行"></a>二、测试Java的编译运行</h2><p>创建<code>Hello.java</code>，代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">class Hello &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        System.out.println(&quot;Helllo&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>终端到达指定文件目录，输入<code>javac Hello.java</code>编译，看是否生成class文件。<br>若生成Hello.class文件，运行之：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">➜ java Hello</span><br><span class="line">Helllo</span><br></pre></td></tr></table></figure></p>
+<p>OK!</p>
+<h2 id="三、IDE安装"><a href="#三、IDE安装" class="headerlink" title="三、IDE安装"></a>三、IDE安装</h2><p>选择了<strong>Eclipse</strong>IDE，前往官网下载对应版本即可<br><a href="https://www.eclipse.org/downloads/" target="_blank" rel="noopener">Eclipse</a></p>
 
       
 
@@ -226,7 +225,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">小程序</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
         		</li>
       		
 		</ul>
@@ -282,7 +281,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/04/15/小程序开发框架的四种基本组成/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/05/14/Mac下Java环境配置/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -296,18 +295,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/04/17/JavaScript作用域、let、const详解/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          JS作用域、let、const详解
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/04/15/微信小程序开发目录/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">微信小程序项目目录</div>
+    <a href="/2019/05/12/Canvas入门/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Canvas入门</div>
       <i class="icon-circle-right"></i>
     </a>
   
