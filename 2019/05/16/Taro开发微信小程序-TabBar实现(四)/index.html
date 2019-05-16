@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="个人博客">
 <meta property="og:description" content="底层TabBar实现">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-16T12:53:18.496Z">
+<meta property="og:updated_time" content="2019-05-16T13:09:47.114Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Taro开发微信小程序-TabBar实现(四)">
 <meta name="twitter:description" content="底层TabBar实现">
@@ -174,6 +174,8 @@
         <p>底层TabBar实现</p>
 <a id="more"></a>
 <p>TabBar有四个子页：Fitting(试衣间)、Wardrobe(衣橱)、Circle(圈子)、Mine(我的)。<br>这四个页面存放在<code>src/components/</code>下为四个组件。<br>在<code>src/pages/main/index.js</code>编写主页。<br>代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">import Taro, &#123; Component &#125; from &apos;@tarojs/taro&apos;</span><br><span class="line">import &#123; AtTabBar &#125; from &apos;taro-ui&apos;</span><br><span class="line">import &#123; View &#125; from &apos;@tarojs/components&apos;</span><br><span class="line">import Fitting from &apos;./../../components/fitting&apos;;</span><br><span class="line">import Wardrobe from &apos;./../../components/wardrobe&apos;;</span><br><span class="line">import Circle from &apos;./../../components/circle&apos;;</span><br><span class="line">import Mine from &apos;./../../components/mine&apos;;</span><br><span class="line">import &apos;./index.less&apos;;</span><br><span class="line"></span><br><span class="line">const tabList = [</span><br><span class="line">        &#123; title: &apos;试衣间&apos;, iconType: &apos;eye&apos; &#125;,</span><br><span class="line">        &#123; title: &apos;衣橱&apos;, iconType: &apos;equalizer&apos; &#125;,</span><br><span class="line">        &#123; title: &apos;圈子&apos;, iconType: &apos;map-pin&apos;, &#125;,</span><br><span class="line">        &#123; title: &apos;我的&apos;, iconType: &apos;user&apos;, &#125;</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">export default class Main extends Component&#123;</span><br><span class="line"></span><br><span class="line">    constructor(props)&#123;</span><br><span class="line">        super(props);</span><br><span class="line">        this.state=&#123;</span><br><span class="line">            current: 0</span><br><span class="line">        &#125;</span><br><span class="line">        this.handleClick = this.handleClick.bind(this);</span><br><span class="line">    &#125;</span><br><span class="line">    componentDidMount()&#123;</span><br><span class="line">        Taro.setNavigationBarTitle(&#123;</span><br><span class="line">            title: tabList[this.state.current].title</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">    componentDidUpdate()&#123;</span><br><span class="line">        Taro.setNavigationBarTitle(&#123;</span><br><span class="line">            title: tabList[this.state.current].title</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    handleClick(value)&#123;</span><br><span class="line">        this.setState(&#123;</span><br><span class="line">            current: value</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    render()&#123;</span><br><span class="line">        return(</span><br><span class="line">            &lt;View&gt;</span><br><span class="line">                &#123;this.state.current===0 &amp;&amp; &lt;Fitting /&gt;&#125;</span><br><span class="line">                &#123;this.state.current===1 &amp;&amp; &lt;Wardrobe /&gt;&#125;</span><br><span class="line">                &#123;this.state.current===2 &amp;&amp; &lt;Circle /&gt;&#125;</span><br><span class="line">                &#123;this.state.current===3 &amp;&amp; &lt;Mine /&gt;&#125;</span><br><span class="line">                &lt;View className=&apos;tabbar&apos;&gt;</span><br><span class="line">                    &lt;AtTabBar</span><br><span class="line">                      fixed</span><br><span class="line">                      tabList=&#123;tabList&#125;</span><br><span class="line">                      onClick=&#123;this.handleClick&#125;</span><br><span class="line">                      current=&#123;this.state.current&#125;</span><br><span class="line">                    /&gt;</span><br><span class="line">                &lt;/View&gt;</span><br><span class="line">            &lt;/View&gt;</span><br><span class="line">        )</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>Taro还不支持在<code>render()</code>函数之外用JSX语法，所以我使用了：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;this.state.current===0 &amp;&amp; &lt;Fitting /&gt;&#125;</span><br><span class="line">&#123;this.state.current===1 &amp;&amp; &lt;Wardrobe /&gt;&#125;</span><br><span class="line">&#123;this.state.current===2 &amp;&amp; &lt;Circle /&gt;&#125;</span><br><span class="line">&#123;this.state.current===3 &amp;&amp; &lt;Mine /&gt;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>还有一个需要注意的点：<br>Taro中的<strong>componentDidMount</strong>方法里没有调用<code>setState()</code>，所以页面不会重新渲染，顶部导航栏也就不会发生变化，我使用<strong>componentDidMount</strong>和<strong>componentDidUpdate</strong>共同动态加载顶部导航栏。</p>
 
       
 
@@ -398,11 +400,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React</a>
+                <a href="javascript:void(0)" class="js-tag color5">HTML</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">HTML</a>
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -422,11 +424,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Express</a>
+                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
+                <a href="javascript:void(0)" class="js-tag color3">Express</a>
               </li>
              
               <li class="article-tag-list-item">
