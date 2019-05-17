@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Taro开发微信小程序-用户授权(三) | 个人博客</title>
+  <title>JavaScript之高阶函数 | 个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="我们已经完成了用户的登录，现在我们来完成用户的授权页面。">
-<meta name="keywords" content="小程序">
+  <meta name="description" content="高阶函数(Higher-order function),满足下两个任意一个条件即为高阶函数：  接受一个或多个函数作为参数输入 输出一个函数">
+<meta name="keywords" content="JavaScript">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Taro开发微信小程序-用户授权(三)">
-<meta property="og:url" content="http://yoursite.com/2019/05/16/Taro开发微信小程序-用户授权(三)/index.html">
+<meta property="og:title" content="JavaScript之高阶函数">
+<meta property="og:url" content="http://yoursite.com/2019/05/17/JavaScript之高阶函数/index.html">
 <meta property="og:site_name" content="个人博客">
-<meta property="og:description" content="我们已经完成了用户的登录，现在我们来完成用户的授权页面。">
+<meta property="og:description" content="高阶函数(Higher-order function),满足下两个任意一个条件即为高阶函数：  接受一个或多个函数作为参数输入 输出一个函数">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-16T12:47:39.545Z">
+<meta property="og:updated_time" content="2019-05-17T11:59:52.618Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Taro开发微信小程序-用户授权(三)">
-<meta name="twitter:description" content="我们已经完成了用户的登录，现在我们来完成用户的授权页面。">
+<meta name="twitter:title" content="JavaScript之高阶函数">
+<meta name="twitter:description" content="高阶函数(Higher-order function),满足下两个任意一个条件即为高阶函数：  接受一个或多个函数作为参数输入 输出一个函数">
   
     <link rel="alternative" href="/atom.xml" title="个人博客" type="application/atom+xml">
   
@@ -151,32 +151,48 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Taro开发微信小程序-用户授权(三)" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-JavaScript之高阶函数" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Taro开发微信小程序-用户授权(三)
+      JavaScript之高阶函数
     </h1>
   
 
         
-        <a href="/2019/05/16/Taro开发微信小程序-用户授权(三)/" class="archive-article-date">
-  	<time datetime="2019-05-16T12:22:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-16</time>
+        <a href="/2019/05/17/JavaScript之高阶函数/" class="archive-article-date">
+  	<time datetime="2019-05-17T06:10:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-17</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>我们已经完成了用户的登录，现在我们来完成用户的授权页面。</p>
+        <p>高阶函数(Higher-order function),满足下两个任意一个条件即为高阶函数：</p>
+<ul>
+<li>接受一个或多个函数作为参数输入</li>
+<li>输出一个函数</li>
+</ul>
 <a id="more"></a>
-<p>我们要先在<code>src/app.js</code>中，查看用户授权了没有，如果用户授权的话不需要再次确认授权。<br>写在<strong>componentWillMount</strong>生命周期中：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">Taro.getSetting()</span><br><span class="line">        .then(res=&gt;&#123;</span><br><span class="line">        if(res.authSetting[&quot;scope.userInfo&quot;])&#123;</span><br><span class="line">          return true;</span><br><span class="line">        &#125;else &#123;</span><br><span class="line">          throw new Error(&apos;没有授权&apos;)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">      .then(res=&gt;&#123;</span><br><span class="line">        return Taro.getUserInfo();</span><br><span class="line">      &#125;)</span><br><span class="line">      .then(res=&gt;&#123;</span><br><span class="line">        Taro.setStorage(&#123;</span><br><span class="line">          key: &apos;userInfo&apos;,</span><br><span class="line">          data: res.userInfo</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;)</span><br><span class="line">      .catch(err=&gt;&#123;</span><br><span class="line">        console.log(err)</span><br><span class="line">      &#125;)</span><br></pre></td></tr></table></figure></p>
-<p>用户授权的话，把用户的详细信息保存在Storage中的userInfo中 。<br>我们可以写一个主页，<code>src/pages/index/index.js</code>，如果用户没有授权，页面出一个按钮点击后询问授权，如果用户已经授权的话直接跳转。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">componentDidMount()&#123;</span><br><span class="line">    try &#123;</span><br><span class="line">      const value = Taro.getStorageSync(&apos;userInfo&apos;)</span><br><span class="line">      if (value) &#123;</span><br><span class="line">        Taro.redirectTo(&#123;</span><br><span class="line">          url: &apos;/pages/main/index&apos;</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; catch (e) &#123;</span><br><span class="line">      // Do something when catch error</span><br><span class="line">    &#125;    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">tobegin = () =&gt; &#123;</span><br><span class="line">    Taro.redirectTo(&#123;</span><br><span class="line">      url: &apos;/pages/main/index&apos;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;;</span><br></pre></td></tr></table></figure></p>
-<p>获取用户授权比较特殊，微信已经将其封装，只可以通过如下获取授权：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;Button</span><br><span class="line">    openType=&apos;getUserInfo&apos;</span><br><span class="line">    onGetUserInfo&#123;this.tobegin&#125;</span><br><span class="line">&gt;</span><br><span class="line">    用户授权</span><br><span class="line">&lt;/Button&gt;</span><br></pre></td></tr></table></figure></p>
-<p>微信提供的回调是<strong>bindgetuserinfo</strong>，但是Taro将bind事件都封装成了on事件，这个需要注意一下。<br><code>src/pages/index/index</code>完整代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">import Taro, &#123; Component &#125; from &apos;@tarojs/taro&apos;</span><br><span class="line">import &#123; View, Button &#125; from &apos;@tarojs/components&apos;</span><br><span class="line"></span><br><span class="line">import &apos;./index.less&apos;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class Index extends Component &#123;</span><br><span class="line"></span><br><span class="line">    config = &#123;</span><br><span class="line">    navigationBarTitleText: &apos;首页&apos;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  tobegin = () =&gt; &#123;</span><br><span class="line">    Taro.redirectTo(&#123;</span><br><span class="line">      url: &apos;/pages/main/index&apos;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  componentDidMount()&#123;</span><br><span class="line">    try &#123;</span><br><span class="line">      const value = Taro.getStorageSync(&apos;userInfo&apos;)</span><br><span class="line">      if (value) &#123;</span><br><span class="line">        Taro.redirectTo(&#123;</span><br><span class="line">          url: &apos;/pages/main/index&apos;</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; catch (e) &#123;</span><br><span class="line">      // Do something when catch error</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  render () &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;View className=&apos;index&apos;&gt;</span><br><span class="line">        &lt;Button className=&apos;btn&apos; openType=&apos;getUserInfo&apos; onGetUserInfo=&#123;this.tobegin&#125; type=&apos;primary&apos; lang=&apos;zh_CN&apos;&gt;</span><br><span class="line">            开启缘分</span><br><span class="line">        &lt;/Button&gt;</span><br><span class="line">      &lt;/View&gt;</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export default Index</span><br></pre></td></tr></table></figure></p>
+<h2 id="一、函数作为参数"><a href="#一、函数作为参数" class="headerlink" title="一、函数作为参数"></a>一、函数作为参数</h2><p>JavaScript语言中内置了一些高阶函数，比如:<strong>Array.prototype.map</strong>、<strong>Array.prototype.filter</strong>、<strong>Array.prototype.reduce</strong>，它们接收一个函数作为参数，并应用这个函数到列表的每一个元素。</p>
+<h3 id="Array-prototype-map"><a href="#Array-prototype-map" class="headerlink" title="Array.prototype.map"></a>Array.prototype.map</h3><hr>
+<p>有一个数组<code>[1,2,3,4]</code>，想要生成一个新的数组，其每个元素是之前数组的两倍：<br>不使用高阶函数：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">const arr1 = [1,2,3,4,5];</span><br><span class="line">const arr2 = [];</span><br><span class="line">for(let i =0;i &lt;arr1.length;i++)&#123;</span><br><span class="line">    arr2.push(arr1[i] * 2)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.log(arr1)   //[ 1, 2, 3, 4, 5 ]</span><br><span class="line">console.log(arr2)   //[ 2, 4, 6, 8, 10 ]</span><br></pre></td></tr></table></figure></p>
+<p>使用高阶函数：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const arr1 = [1,2,3,4,5];</span><br><span class="line">const arr2 = arr1.map(item=&gt;item*2)</span><br><span class="line"></span><br><span class="line">console.log(arr1)   //[ 1, 2, 3, 4, 5 ]</span><br><span class="line">console.log(arr2)   //[ 2, 4, 6, 8, 10 ]</span><br></pre></td></tr></table></figure></p>
+<h3 id="Array-prototype-filter"><a href="#Array-prototype-filter" class="headerlink" title="Array.prototype.filter"></a>Array.prototype.filter</h3><hr>
+<p>对于一个数组<code>[1,2,2,3,4,5,6,6]</code>去重：<br>不使用高阶函数：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">const arr1 = [1,2,2,3,4,5,6,6];</span><br><span class="line">const arr2 = [];</span><br><span class="line">for(let i =0;i&lt;arr1.length;i++)&#123;</span><br><span class="line">    if( arr1.indexOf(arr1[i]) === i)&#123;</span><br><span class="line">        arr2.push(arr1[i])</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.log(arr1);  //[ 1, 2, 2, 3, 4, 5, 6, 6 ]</span><br><span class="line">console.log(arr2);  //[ 1, 2, 3, 4, 5, 6 ]</span><br></pre></td></tr></table></figure></p>
+<p>使用高阶函数：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">const arr2 = arr1.filter((item,index)=&gt;&#123;</span><br><span class="line">    return arr1.indexOf(item)===index</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">console.log(arr1);  //[ 1, 2, 2, 3, 4, 5, 6, 6 ]</span><br><span class="line">console.log(arr2);  //[ 1, 2, 3, 4, 5, 6 ]</span><br></pre></td></tr></table></figure></p>
+<h3 id="Array-prototye-reduce"><a href="#Array-prototye-reduce" class="headerlink" title="Array.prototye.reduce"></a>Array.prototye.reduce</h3><hr>
+<p>计算一个数组<code>[0,1,2,3,4]</code>各个元素的和。<br>不使用高阶函数：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">const arr1 = [0,1,2,3,4];</span><br><span class="line">let sum = 0;</span><br><span class="line">for(let i=0;i&lt;arr1.length;i++)&#123;</span><br><span class="line">    sum += arr1[i]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.log(sum);   //10</span><br><span class="line">console.log(arr1)   //[ 0, 1, 2, 3, 4 ]</span><br></pre></td></tr></table></figure></p>
+<p>使用高阶函数：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const arr1 = [0,1,2,3,4];</span><br><span class="line">const sum = arr1.reduce((accumulator, currentValue)=&gt;&#123;</span><br><span class="line">    return accumulator+currentValue</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">console.log(arr1);  //[ 0, 1, 2, 3, 4 ]</span><br><span class="line">console.log(sum);  //10</span><br></pre></td></tr></table></figure></p>
+<p>上面的是不使用<strong>initialValue</strong>，还可以使用<strong>initialValue</strong>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const arr1 = [0,1,2,3,4];</span><br><span class="line">const sum = arr1.reduce((accumulator, currentValue)=&gt;&#123;</span><br><span class="line">    return accumulator+currentValue</span><br><span class="line">&#125;,10)</span><br><span class="line"></span><br><span class="line">console.log(arr1);  //[ 0, 1, 2, 3, 4 ]</span><br><span class="line">console.log(sum);  //20</span><br></pre></td></tr></table></figure></p>
+<h2 id="二、函数作为返回值输出"><a href="#二、函数作为返回值输出" class="headerlink" title="二、函数作为返回值输出"></a>二、函数作为返回值输出</h2><h3 id="isType函数"><a href="#isType函数" class="headerlink" title="isType函数"></a>isType函数</h3><hr>
+<p>可以通过<strong>Object.prototype.toString.call</strong>来获取对应对象返回的字符串来准确判断数据类型。<br>封装一个高阶函数，能方便地使用：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">const isType = type =&gt; obj =&gt; &#123;</span><br><span class="line">    return Object.prototype.toString.call(obj) === `[object $&#123;type&#125;]`</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.log(isType(&apos;Array&apos;)([1,2,3]))   //true</span><br><span class="line">console.log(isType(&apos;Object&apos;)(&#123;a:&apos;a&apos;&#125;))  //true</span><br></pre></td></tr></table></figure></p>
+<h3 id="add函数"><a href="#add函数" class="headerlink" title="add函数"></a>add函数</h3><p>常见面试题，用JS实现一个无限累加的函数<code>add</code>, 实例如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">add(1); // 1</span><br><span class="line">add(1)(2);  // 3</span><br><span class="line">add(1)(2)(3)； // 6</span><br><span class="line">add(1)(2)(3)(4)； // 10 </span><br><span class="line"></span><br><span class="line">// 以此类推</span><br></pre></td></tr></table></figure></p>
+<p>实现代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">function add(a)&#123;</span><br><span class="line">    function sum(b)&#123;    //使用一个闭包</span><br><span class="line">        a = a + b;</span><br><span class="line">        return sum;</span><br><span class="line">    &#125;</span><br><span class="line">    sum.toString = function()&#123;</span><br><span class="line">        return a;</span><br><span class="line">    &#125;</span><br><span class="line">    return sum;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.log(add(1))         //1</span><br><span class="line">console.log(add(1)(2))      //3</span><br><span class="line">console.log(add(1)(2)(3))   //6</span><br></pre></td></tr></table></figure></p>
+<p><code>console.log</code>一个函数,实际上会调用<strong>*toString()</strong>方法，只需要重写<code>sum.toString()</code>方法返回变量a就可以了。</p>
 
       
 
@@ -211,7 +227,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">小程序</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
         		</li>
       		
 		</ul>
@@ -267,7 +283,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/05/16/Taro开发微信小程序-用户授权(三)/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/05/17/JavaScript之高阶函数/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -281,18 +297,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/05/16/Taro开发微信小程序-TabBar实现(四)/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Taro开发微信小程序-TabBar实现(四)
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/05/16/Taro开发微信小程序-登/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Taro开发微信小程序-登录实现(二)</div>
+    <a href="/2019/05/16/Taro开发微信小程序-TabBar实现(四)/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Taro开发微信小程序-TabBar实现(四)</div>
       <i class="icon-circle-right"></i>
     </a>
   
