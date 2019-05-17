@@ -6,20 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>JavaScript中this指向的修改 | 个人博客</title>
+  <title>前端面试常考之数组扁平化去重 | 个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="已经介绍过JavaScript中this指向的原理，今天介绍一下this指向的几个复杂解析，和如何改变this的指向。 关于this的指向，有几个点需要注意：  this指向的，只能是对象。 this指向谁，取决于函数的执行环境，而不是在创建时就决定了。 匿名函数的执行环境具有全局性。 对于普通函数调用，我们通常把this绑定为null">
-<meta name="keywords" content="JavaScript">
+  <meta name="keywords" content="JavaScript">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JavaScript中this指向的修改">
-<meta property="og:url" content="http://yoursite.com/2019/05/11/JavaScript中this指向的修改/index.html">
+<meta property="og:title" content="前端面试常考之数组扁平化去重">
+<meta property="og:url" content="http://yoursite.com/2019/05/17/前端面试常考之数组扁平化去重/index.html">
 <meta property="og:site_name" content="个人博客">
-<meta property="og:description" content="已经介绍过JavaScript中this指向的原理，今天介绍一下this指向的几个复杂解析，和如何改变this的指向。 关于this的指向，有几个点需要注意：  this指向的，只能是对象。 this指向谁，取决于函数的执行环境，而不是在创建时就决定了。 匿名函数的执行环境具有全局性。 对于普通函数调用，我们通常把this绑定为null">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-11T14:52:50.930Z">
+<meta property="og:image" content="http://prl8grrsh.bkt.clouddn.com/image/posts/JS_5.jpg">
+<meta property="og:updated_time" content="2019-05-17T12:59:16.565Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JavaScript中this指向的修改">
-<meta name="twitter:description" content="已经介绍过JavaScript中this指向的原理，今天介绍一下this指向的几个复杂解析，和如何改变this的指向。 关于this的指向，有几个点需要注意：  this指向的，只能是对象。 this指向谁，取决于函数的执行环境，而不是在创建时就决定了。 匿名函数的执行环境具有全局性。 对于普通函数调用，我们通常把this绑定为null">
+<meta name="twitter:title" content="前端面试常考之数组扁平化去重">
+<meta name="twitter:image" content="http://prl8grrsh.bkt.clouddn.com/image/posts/JS_5.jpg">
   
     <link rel="alternative" href="/atom.xml" title="个人博客" type="application/atom+xml">
   
@@ -151,56 +150,35 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-JavaScript中this指向的修改" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-前端面试常考之数组扁平化去重" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      JavaScript中this指向的修改
+      前端面试常考之数组扁平化去重
     </h1>
   
 
         
-        <a href="/2019/05/11/JavaScript中this指向的修改/" class="archive-article-date">
-  	<time datetime="2019-05-11T13:37:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-11</time>
+        <a href="/2019/05/17/前端面试常考之数组扁平化去重/" class="archive-article-date">
+  	<time datetime="2019-05-17T12:19:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-17</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>已经介绍过JavaScript中this指向的原理，今天介绍一下this指向的几个复杂解析，和如何改变this的指向。</p>
-<p>关于this的指向，有几个点需要注意：</p>
-<ul>
-<li>this指向的，只能是对象。</li>
-<li>this指向谁，取决于函数的执行环境，而不是在创建时就决定了。</li>
-<li>匿名函数的执行环境具有全局性。</li>
-<li>对于普通函数调用，我们通常把<strong>this</strong>绑定为<strong>null</strong></li>
-</ul>
+        <p><img src="http://prl8grrsh.bkt.clouddn.com/image/posts/JS_5.jpg" alt="鬼刀"></p>
 <a id="more"></a>
-<h2 id="一、this问题"><a href="#一、this问题" class="headerlink" title="一、this问题"></a>一、this问题</h2><p>举个🌰：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">function getAge() &#123;</span><br><span class="line">    var y = new Date().getFullYear();</span><br><span class="line">    return y - this.birth;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const xiaoming = &#123;</span><br><span class="line">    name: &apos;小明&apos;,</span><br><span class="line">    birth: 1990,</span><br><span class="line">    age: getAge</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">xiaoming.age(); // 29, 正常结果</span><br><span class="line">getAge(); // NaN</span><br></pre></td></tr></table></figure></p>
-<p>this指向函数被调用的对象(执行环境)。<br>由于这是一个巨大的设计错误，ECMA规定，在<strong>strict</strong>模式下让函数的<strong>this</strong>指向<strong>undefined</strong>。<br>上面🌰在<strong>strict</strong>模式下调用<code>getAge()</code>，会得到一个错误。这个决定只是让错误及时暴露出来，并没有解决this应该指向的正确位置。</p>
-<p>有时因为编写<strong>闭包</strong>方式不同，也会导致this指向问题，而且不易被发现。<br>再来一个🌰:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">const name = &apos;this window&apos;</span><br><span class="line">const obj = &#123;</span><br><span class="line">    name : &apos;my object&apos;,</span><br><span class="line"></span><br><span class="line">    getName : function()&#123;</span><br><span class="line">        function getNameFunc()&#123;</span><br><span class="line">            return this.name</span><br><span class="line">        &#125;</span><br><span class="line">        return getNameFunc()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">obj.getName()  //undefined</span><br></pre></td></tr></table></figure></p>
-<p><code>getNameFunc</code>在匿名函数中执行，匿名函数的执行环境具有全局性，this又指向<strong>window</strong>了！</p>
-<h2 id="二、改变this的指向"><a href="#二、改变this的指向" class="headerlink" title="二、改变this的指向"></a>二、改变this的指向</h2><ul>
-<li><h3 id="定义that变量捕获this"><a href="#定义that变量捕获this" class="headerlink" title="定义that变量捕获this"></a>定义<strong>that</strong>变量捕获<strong>this</strong></h3>修复第二个🌰：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">const name = &apos;this window&apos;</span><br><span class="line">const obj = &#123;</span><br><span class="line">    name : &apos;my object&apos;,</span><br><span class="line"></span><br><span class="line">    getName : function()&#123;</span><br><span class="line">        const that = this;  //that捕获this为对象obj</span><br><span class="line">        function getNameFunc()&#123;</span><br><span class="line">            return that.name</span><br><span class="line">        &#125;</span><br><span class="line">        return getNameFunc()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">obj.getName()  //my object</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>我们还可以调用函数本身的<strong>apply</strong>、<strong>call</strong>、<strong>bind</strong>来指定函数的this指向哪个对象。</p>
-<ul>
-<li><h3 id="apply"><a href="#apply" class="headerlink" title="apply"></a>apply</h3><p><strong>apply</strong>接收两个参数，第一个参数是需要绑定的this变量，第二个参数是<strong>Array</strong>，表示函数本身的参数。<br>修复第一个🌰:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">function getAge() &#123;</span><br><span class="line">    const y = new Date().getFullYear();</span><br><span class="line">    return y - this.birth;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const xiaoming = &#123;</span><br><span class="line">    name: &apos;小明&apos;,</span><br><span class="line">    birth: 1990,</span><br><span class="line">    age: getAge</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">xiaoming.age(); // 29, 正常结果</span><br><span class="line">getAge.apply(xiaoming,[]); // 29,正常结果</span><br></pre></td></tr></table></figure>
-</li>
-<li><h3 id="call"><a href="#call" class="headerlink" title="call"></a>call</h3><p><strong>call</strong>与<strong>apply</strong>类似，唯一的区别是：<br><code>apply()</code>把参数打包成<strong>Array</strong>传入，而<code>call()</code>把参数按顺序传入。</p>
-</li>
-<li><h2 id="bind"><a href="#bind" class="headerlink" title="bind"></a>bind</h2><p>函数的<strong>bind</strong>指定一个对象，将this绑定到这个对象上。<br>用<strong>bind</strong>修复第一个🌰:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">function getAge() &#123;</span><br><span class="line">    const y = new Date().getFullYear();</span><br><span class="line">    return y - this.birth;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const xiaoming = &#123;</span><br><span class="line">    name: &apos;小明&apos;,</span><br><span class="line">    birth: 1990,</span><br><span class="line">    age: getAge</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">xiaoming.age(); // 29, 正常结果</span><br><span class="line">getAge.bind(xiaoming)() //29,正常结果</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="三、箭头函数-ES6"><a href="#三、箭头函数-ES6" class="headerlink" title="三、箭头函数(ES6)"></a>三、箭头函数(ES6)</h2><p>箭头函数解决了this指向混乱问题。<br>this对象的指向是可变的，但在箭头函数中它是<strong>固定</strong>的。<br>箭头函数有一个重要的特性：<br><strong>函数体内的this对象就是定义时所在的对象，而不是使用时所在的对象</strong><br>解释一下底层原因：<br>this指针的固定化并不是箭头函数内部有绑定this的机制，实际原因是箭头函数根本没有自己的this，导致内部的this就是外层代码块的this，正是因为它没有this，所以不能用作构造函数。<br>修复第二个🌰:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">const name = &apos;this window&apos;</span><br><span class="line">const obj = &#123;</span><br><span class="line">    name : &apos;my object&apos;,</span><br><span class="line"></span><br><span class="line">    getName : function()&#123;</span><br><span class="line">        const getNameFunc = ()=&gt; &#123;</span><br><span class="line">            return this.name</span><br><span class="line">        &#125;</span><br><span class="line">        return getNameFunc()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">obj.getName()  //my object</span><br></pre></td></tr></table></figure></p>
-<p>转载请标明来源：<a href="https://sherrybabyone.github.io/2019/05/11/JavaScript%E4%B8%ADthis%E6%8C%87%E5%90%91%E7%9A%84%E4%BF%AE%E6%94%B9/" target="_blank" rel="noopener">sherrybaby的博客</a></p>
+<p>前端面试之常考题：<br>将一个数组扁平化并去重，最终得到一个升序且不重复的数组。<br>总结常用的三种方法：</p>
+<h3 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h3><hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const arr = [[1,2,3,],[3,4,5,5],4,6,7,[11,13,[12,14]],20];</span><br><span class="line">const arr2 = [...new Set(arr.flat(Infinity).sort((x,y)=&gt;x-y))];</span><br><span class="line">console.log(arr2)   //[ 1, 2, 3, 4, 5, 6, 7, 11, 12, 13, 14, 20 ]</span><br></pre></td></tr></table></figure>
+<h3 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h3><hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const arr = [[1,2,3,],[3,4,5,5],4,6,7,[11,13,[12,14]],20];</span><br><span class="line">const arr2 = Array.from(new Set(arr.flat(Infinity).sort((x,y)=&gt;x-y)));</span><br><span class="line">console.log(arr2)   //[ 1, 2, 3, 4, 5, 6, 7, 11, 12, 13, 14, 20 ]</span><br></pre></td></tr></table></figure>
+<h3 id="方法三"><a href="#方法三" class="headerlink" title="方法三"></a>方法三</h3><hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const arr = [[1,2,3,],[3,4,5,5],4,6,7,[11,13,[12,14]],20];</span><br><span class="line">const arr2 = arr.toString().split(&quot;,&quot;).sort((a,b)=&gt;&#123; return a-b&#125;).map(Number)</span><br><span class="line">console.log(arr2)   //[ 1, 2, 3, 4, 5, 6, 7, 11, 12, 13, 14, 20 ]</span><br></pre></td></tr></table></figure>
 
       
 
@@ -291,7 +269,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/05/11/JavaScript中this指向的修改/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/05/17/前端面试常考之数组扁平化去重/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -305,18 +283,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/05/12/HTML5新特性入门/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          HTML5新特性入门
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/05/11/JavaScript异步的几种方式/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">JavaScript异步的几种方式</div>
+    <a href="/2019/05/17/JavaScript之高阶函数/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">JavaScript之高阶函数</div>
       <i class="icon-circle-right"></i>
     </a>
   
