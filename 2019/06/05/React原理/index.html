@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: Java | 个人博客</title>
+  <title>React原理 | 个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="个人博客">
-<meta property="og:url" content="http://yoursite.com/tags/Java/index.html">
+  <meta name="description" content="React核心原理：  虚拟Dom 生命周期 setState  一、虚拟DOM二、生命周期初始渲染：constructor、componentWillMount、render、componentDidMount 页面更新重新渲染有三种方法：  this.setState()更新页面state,需要通过shouldComponentUpdate()函数确认，函数返回true重新渲染。 父组件ren">
+<meta name="keywords" content="React">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React原理">
+<meta property="og:url" content="http://yoursite.com/2019/06/05/React原理/index.html">
 <meta property="og:site_name" content="个人博客">
+<meta property="og:description" content="React核心原理：  虚拟Dom 生命周期 setState  一、虚拟DOM二、生命周期初始渲染：constructor、componentWillMount、render、componentDidMount 页面更新重新渲染有三种方法：  this.setState()更新页面state,需要通过shouldComponentUpdate()函数确认，函数返回true重新渲染。 父组件ren">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-06-05T11:53:04.399Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="个人博客">
+<meta name="twitter:title" content="React原理">
+<meta name="twitter:description" content="React核心原理：  虚拟Dom 生命周期 setState  一、虚拟DOM二、生命周期初始渲染：constructor、componentWillMount、render、componentDidMount 页面更新重新渲染有三种方法：  this.setState()更新页面state,需要通过shouldComponentUpdate()函数确认，函数返回true重新渲染。 父组件ren">
   
     <link rel="alternative" href="/atom.xml" title="个人博客" type="application/atom+xml">
   
@@ -146,60 +151,180 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-React原理" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/05/14/Mac下Java环境配置/" class="archive-article-date">
-  	<time datetime="2019-05-14T04:38:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-14</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/14/Mac下Java环境配置/">Mac下Java环境配置</a>
+    <h1 class="article-title" itemprop="name">
+      React原理
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/06/05/React原理/" class="archive-article-date">
+  	<time datetime="2019-06-05T11:02:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>React核心原理：</p>
+<ul>
+<li>虚拟Dom</li>
+<li>生命周期</li>
+<li>setState</li>
+</ul>
+<h2 id="一、虚拟DOM"><a href="#一、虚拟DOM" class="headerlink" title="一、虚拟DOM"></a>一、虚拟DOM</h2><h2 id="二、生命周期"><a href="#二、生命周期" class="headerlink" title="二、生命周期"></a>二、生命周期</h2><p>初始渲染：constructor、componentWillMount、render、componentDidMount</p>
+<p>页面更新重新渲染有三种方法：</p>
+<ul>
+<li><code>this.setState()</code>更新页面state,需要通过<code>shouldComponentUpdate()</code>函数确认，函数返回<strong>true</strong>重新渲染。</li>
+<li>父组件render。常见的有redux引起的props的变化二重新渲染页面,通过<code>componentWillReceiveProps()</code>生命周期</li>
+<li><code>this.forceUpdate()</code>强制更新</li>
+</ul>
+<h2 id="三、setState"><a href="#三、setState" class="headerlink" title="三、setState"></a>三、setState</h2><p>不能直接修改state<br>setState有一个队列的机制，异步操作，队列机制能更高效地更新数据，多个<code>setState</code>，将修改的数据存在一个队列中，在一个<code>render</code>中重新渲染，高效地重新渲染。<br>在<code>render</code>中最好不要使用<code>setState</code>，会导致无限循环。(除非用shouldComponentUpdate终止)</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">React</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/06/05/React原理/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2019/05/22/ES6的10个重要特性/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">ES6的10个重要特性</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -222,9 +347,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
