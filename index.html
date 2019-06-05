@@ -174,15 +174,7 @@
 <li>生命周期</li>
 <li>setState</li>
 </ul>
-<h2 id="一、虚拟DOM"><a href="#一、虚拟DOM" class="headerlink" title="一、虚拟DOM"></a>一、虚拟DOM</h2><h2 id="二、生命周期"><a href="#二、生命周期" class="headerlink" title="二、生命周期"></a>二、生命周期</h2><p>初始渲染：constructor、componentWillMount、render、componentDidMount</p>
-<p>页面更新重新渲染有三种方法：</p>
-<ul>
-<li><code>this.setState()</code>更新页面state,需要通过<code>shouldComponentUpdate()</code>函数确认，函数返回<strong>true</strong>重新渲染。</li>
-<li>父组件render。常见的有redux引起的props的变化二重新渲染页面,通过<code>componentWillReceiveProps()</code>生命周期</li>
-<li><code>this.forceUpdate()</code>强制更新</li>
-</ul>
-<h2 id="三、setState"><a href="#三、setState" class="headerlink" title="三、setState"></a>三、setState</h2><p>不能直接修改state<br>setState有一个队列的机制，异步操作，队列机制能更高效地更新数据，多个<code>setState</code>，将修改的数据存在一个队列中，在一个<code>render</code>中重新渲染，高效地重新渲染。<br>在<code>render</code>中最好不要使用<code>setState</code>，会导致无限循环。(除非用shouldComponentUpdate终止)</p>
-
+        
       
 
       
@@ -998,7 +990,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1006,7 +998,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React</a>
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1022,11 +1014,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Express</a>
+                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
+                <a href="javascript:void(0)" class="js-tag color3">Express</a>
               </li>
              
               <li class="article-tag-list-item">
