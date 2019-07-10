@@ -6,22 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>微信小程序项目目录 | 个人博客</title>
+  <title>页面布局详解(圣杯、双飞翼、弹性布局) | 个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="简要地介绍下微信小程序的开发目录的组成">
-<meta name="keywords" content="小程序">
+  <meta name="description" content="前言 圣杯布局和双飞翼布局是页面布局的常用布局方式。两者都是为了实现两侧宽度固定，中间宽度自适应的三栏布局，但两者在实现方式上有一定的差别,不过都遵循了以下要点：  两侧宽度固定，中间官渡自适应 中间部分在DOM结构上优先，以便先行渲染 允许三列中的任意一列成为最高列 只需要一个额外的&amp;lt;div&amp;gt;&amp;lt;/div&amp;gt;标签">
+<meta name="keywords" content="CSS3">
 <meta property="og:type" content="article">
-<meta property="og:title" content="微信小程序项目目录">
-<meta property="og:url" content="http://yoursite.com/2019/04/15/微信小程序开发目录/index.html">
+<meta property="og:title" content="页面布局详解(圣杯、双飞翼、弹性布局)">
+<meta property="og:url" content="http://yoursite.com/2019/07/10/页面布局详解(圣杯、双飞翼、弹性布局)/index.html">
 <meta property="og:site_name" content="个人博客">
-<meta property="og:description" content="简要地介绍下微信小程序的开发目录的组成">
+<meta property="og:description" content="前言 圣杯布局和双飞翼布局是页面布局的常用布局方式。两者都是为了实现两侧宽度固定，中间宽度自适应的三栏布局，但两者在实现方式上有一定的差别,不过都遵循了以下要点：  两侧宽度固定，中间官渡自适应 中间部分在DOM结构上优先，以便先行渲染 允许三列中的任意一列成为最高列 只需要一个额外的&amp;lt;div&amp;gt;&amp;lt;/div&amp;gt;标签">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://prl8grrsh.bkt.clouddn.com/image/posts/xiaochengxu_1.png">
-<meta property="og:updated_time" content="2019-05-16T08:40:58.000Z">
+<meta property="og:image" content="http://blog.sherrybaby.club/image/posts/bu_1.png">
+<meta property="og:updated_time" content="2019-07-10T06:05:28.997Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="微信小程序项目目录">
-<meta name="twitter:description" content="简要地介绍下微信小程序的开发目录的组成">
-<meta name="twitter:image" content="http://prl8grrsh.bkt.clouddn.com/image/posts/xiaochengxu_1.png">
+<meta name="twitter:title" content="页面布局详解(圣杯、双飞翼、弹性布局)">
+<meta name="twitter:description" content="前言 圣杯布局和双飞翼布局是页面布局的常用布局方式。两者都是为了实现两侧宽度固定，中间宽度自适应的三栏布局，但两者在实现方式上有一定的差别,不过都遵循了以下要点：  两侧宽度固定，中间官渡自适应 中间部分在DOM结构上优先，以便先行渲染 允许三列中的任意一列成为最高列 只需要一个额外的&amp;lt;div&amp;gt;&amp;lt;/div&amp;gt;标签">
+<meta name="twitter:image" content="http://blog.sherrybaby.club/image/posts/bu_1.png">
   
     <link rel="alternative" href="/atom.xml" title="个人博客" type="application/atom+xml">
   
@@ -153,29 +153,56 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-微信小程序开发目录" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-页面布局详解(圣杯、双飞翼、弹性布局)" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      微信小程序项目目录
+      页面布局详解(圣杯、双飞翼、弹性布局)
     </h1>
   
 
         
-        <a href="/2019/04/15/微信小程序开发目录/" class="archive-article-date">
-  	<time datetime="2019-04-15T11:33:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-15</time>
+        <a href="/2019/07/10/页面布局详解(圣杯、双飞翼、弹性布局)/" class="archive-article-date">
+  	<time datetime="2019-07-10T03:37:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-10</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>简要地介绍下微信小程序的开发目录的组成<br><a id="more"></a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">+ pages						//小程序页面</span><br><span class="line">  + index</span><br><span class="line">    - index.js					//页面逻辑</span><br><span class="line">    - index.json				//页面配置</span><br><span class="line">    - index.wxml			//页面结构</span><br><span class="line">    - indwx.wxss			//页面样式表</span><br><span class="line">  + logs</span><br><span class="line">    -  logs.js</span><br><span class="line">    - logs.json</span><br><span class="line">    - logs.wxml</span><br><span class="line">    - logs.wxss</span><br><span class="line">+ utils							//存放工具的函数，达到代码复用的目的</span><br><span class="line">  - utils.js</span><br><span class="line">- app.js						//小程序逻辑</span><br><span class="line">- app.json					//小程序公共配置</span><br><span class="line">- app.wxss					//小程序公共样式表</span><br><span class="line">- project.config.json		//自动生成的开发者工具的配置信息，保存了对开发者工具的一些个性化设置</span><br><span class="line">- sitemap.json</span><br></pre></td></tr></table></figure>
-<p><img src="http://prl8grrsh.bkt.clouddn.com/image/posts/xiaochengxu_1.png" alt="开发目录" title="开发目录"><br><strong>Attention</strong>：为了方便开发者减少配置项，描述页面的四个文件必须具有相同的路径与文件名。</p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><hr>
+<p>圣杯布局和双飞翼布局是页面布局的常用布局方式。两者都是为了实现<strong>两侧宽度固定，中间宽度自适应的三栏布局</strong>，但两者在实现方式上有一定的差别,不过都遵循了以下要点：</p>
+<ul>
+<li>两侧宽度固定，中间官渡自适应</li>
+<li>中间部分在DOM结构上优先，以便先行渲染</li>
+<li>允许三列中的任意一列成为最高列</li>
+<li>只需要一个额外的<code>&lt;div&gt;&lt;/div&gt;</code>标签<br><img src="http://blog.sherrybaby.club/image/posts/bu_1.png" alt="圣杯布局和双飞翼布局"></li>
+</ul>
+<a id="more"></a>
+<h2 id="一、圣杯布局"><a href="#一、圣杯布局" class="headerlink" title="一、圣杯布局"></a>一、圣杯布局</h2><p>实现方式：</p>
+<ol>
+<li>三者都设置向左浮动。</li>
+<li>设置中间宽度为100%。</li>
+<li>设置容器的padding值给左右两部分留出空间。</li>
+<li>左部分：设置margin-left为-100%,定位设置为<strong>relative</strong>，right设置为width px</li>
+<li>右部分：设置margin-right为-width px</li>
+</ol>
+<h3 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;header&quot;&gt;Header&lt;/div&gt;</span><br><span class="line">&lt;div class=&quot;container&quot;&gt;</span><br><span class="line">    &lt;div class=&quot;main&quot;&gt;Main&lt;/div&gt;</span><br><span class="line">    &lt;div class=&quot;left&quot;&gt;Left&lt;/div&gt;</span><br><span class="line">    &lt;div class=&quot;right&quot;&gt;Right&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;div class=&quot;footer&quot;&gt;Footer&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>主体main放在前面可以优先加载</li>
+<li>中间部分由<code>container</code>包裹的<code>main</code>、<code>left</code>、<code>right</code>三列组成，<code>main</code>写在最前面</li>
+</ul>
+<h3 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">html,body &#123;</span><br><span class="line">    margin: 0;</span><br><span class="line">    padding: 0;</span><br><span class="line">    min-width: 600px;</span><br><span class="line">    &#125;</span><br><span class="line">.header &#123;</span><br><span class="line">    height: 200px;</span><br><span class="line">    background-color: #105B63;</span><br><span class="line">&#125;</span><br><span class="line">.container &#123;</span><br><span class="line">    padding: 0 200px 0 200px;</span><br><span class="line">&#125;</span><br><span class="line">.container &gt; div &#123;</span><br><span class="line">    float: left;</span><br><span class="line">&#125;</span><br><span class="line">.main &#123;</span><br><span class="line">    height: 200px;</span><br><span class="line">    width: 100%;</span><br><span class="line">    background-color: #DB9E36;</span><br><span class="line">&#125;</span><br><span class="line">.left &#123;</span><br><span class="line">    width: 200px;</span><br><span class="line">    height: 200px;</span><br><span class="line">    margin-left: -100%;</span><br><span class="line">    position: relative;</span><br><span class="line">    right: 200px;</span><br><span class="line">    background-color: #FFFAD5;</span><br><span class="line">&#125;</span><br><span class="line">.right &#123;</span><br><span class="line">    width: 200px;</span><br><span class="line">    height: 200px;</span><br><span class="line">    margin-right: -200px;</span><br><span class="line">    background-color: #FFD34E;</span><br><span class="line">&#125;</span><br><span class="line">.footer &#123;</span><br><span class="line">    height: 200px;</span><br><span class="line">    clear: both;</span><br><span class="line">    background-color: #BD4932;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="二、双飞翼布局"><a href="#二、双飞翼布局" class="headerlink" title="二、双飞翼布局"></a>二、双飞翼布局</h2><h3 id="HTML-1"><a href="#HTML-1" class="headerlink" title="HTML"></a>HTML</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;header&quot;&gt;Header&lt;/div&gt;</span><br><span class="line">&lt;div class=&quot;container column&quot;&gt;</span><br><span class="line">    &lt;div class=&quot;main&quot;&gt;Main&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;div class=&quot;left column&quot;&gt;Left&lt;/div&gt;</span><br><span class="line">&lt;div class=&quot;right column&quot;&gt;Right&lt;/div&gt;</span><br><span class="line">&lt;div class=&quot;footer&quot;&gt;Footer&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>与圣杯布局相比，双飞翼HTML只为<code>main</code>包裹了<code>div</code>，这是为了处理margin中内容被遮盖的问题。</p>
+<h3 id="CSS-1"><a href="#CSS-1" class="headerlink" title="CSS"></a>CSS</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">html,body &#123;</span><br><span class="line">    margin: 0;</span><br><span class="line">    padding: 0;</span><br><span class="line">&#125;</span><br><span class="line">body &#123;</span><br><span class="line">    min-width: 450px;</span><br><span class="line">&#125;</span><br><span class="line">.header &#123;</span><br><span class="line">    height: 160px;</span><br><span class="line">    background-color: #DB9E36;</span><br><span class="line">&#125;</span><br><span class="line">.container &#123;</span><br><span class="line">    width: 100%;</span><br><span class="line">&#125;</span><br><span class="line">.column &#123;</span><br><span class="line">    float: left;</span><br><span class="line">&#125;</span><br><span class="line">.main &#123;</span><br><span class="line">    height: 200px;</span><br><span class="line">    margin: 0 200px 0 200px;</span><br><span class="line">    background-color: #105B63;</span><br><span class="line">&#125;</span><br><span class="line">.left &#123;</span><br><span class="line">    width: 200px;</span><br><span class="line">    height: 200px;</span><br><span class="line">    margin-left: -100%;</span><br><span class="line">    background-color: #FFD34E;</span><br><span class="line">&#125;</span><br><span class="line">.right &#123;</span><br><span class="line">    width: 200px;</span><br><span class="line">    height: 200px;</span><br><span class="line">    margin-left: -200px;</span><br><span class="line">    background-color: #BD4932;</span><br><span class="line">&#125;</span><br><span class="line">.footer &#123;</span><br><span class="line">    height: 200px;</span><br><span class="line">    clear: both;</span><br><span class="line">    background-color: #FFFAD5;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>为三个<code>column</code>设置float，采用负边距将左、右测部分定外到<code>container</code>的margin留的空白处。<br>相比圣杯布局，双飞翼不比设置左右部分的<code>position: relative</code>，也不比设置left、right值，简单了不少，但圣杯布局的DOM结构更加直观和自然。</p>
+<h2 id="三、Flex布局"><a href="#三、Flex布局" class="headerlink" title="三、Flex布局"></a>三、Flex布局</h2><p>Flex布局又称弹性布局，在实现上更简单和实用。</p>
+<h3 id="HTML-2"><a href="#HTML-2" class="headerlink" title="HTML"></a>HTML</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">html,body &#123;</span><br><span class="line">    margin: 0;</span><br><span class="line">padding: 0;</span><br><span class="line">&#125;</span><br><span class="line">.header &#123;</span><br><span class="line">    height: 200px;</span><br><span class="line">    background-color: #105B63;</span><br><span class="line">&#125;</span><br><span class="line">.container &#123;</span><br><span class="line">    height: 200px;</span><br><span class="line">    display: flex;</span><br><span class="line">&#125;</span><br><span class="line">.left &#123;</span><br><span class="line">    width: 200px;</span><br><span class="line">    background-color: #FFFAD5;</span><br><span class="line">&#125;</span><br><span class="line">.main &#123;</span><br><span class="line">    flex: 1;</span><br><span class="line">    background-color: #FFD34E;</span><br><span class="line">&#125;</span><br><span class="line">.right &#123;</span><br><span class="line">    width: 200px;</span><br><span class="line">    background-color: #BD4932;</span><br><span class="line">&#125;</span><br><span class="line">.footer &#123;</span><br><span class="line">    height: 200px;</span><br><span class="line">    background-color: #DB9E36;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>本质上是利用<code>flex: 1</code>这个属性，使中间部分main可以自适应。</p>
 
       
 
@@ -210,7 +237,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">小程序</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">CSS3</a>
         		</li>
       		
 		</ul>
@@ -266,7 +293,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/04/15/微信小程序开发目录/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/07/10/页面布局详解(圣杯、双飞翼、弹性布局)/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -280,18 +307,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/04/15/小程序开发框架的四种基本组成/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          小程序开发框架的四种基本组成
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/04/13/JavaScript-浏览器/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">JS-浏览器</div>
+    <a href="/2019/06/12/JavaScript异步总结/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">JavaScript异步总结</div>
       <i class="icon-circle-right"></i>
     </a>
   
