@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="个人博客">
 <meta property="og:description" content="Git是目前世界上最先进的分布式版本控制系统（没有之一）。现在的项目开发已经离不开Git了，其强大的分支管理令多人协同开发十分便捷。并且先在很多项目都选择在github上开源，学Git已是大势所趋。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-14T12:55:19.545Z">
+<meta property="og:updated_time" content="2019-09-07T05:15:02.530Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git教程">
 <meta name="twitter:description" content="Git是目前世界上最先进的分布式版本控制系统（没有之一）。现在的项目开发已经离不开Git了，其强大的分支管理令多人协同开发十分便捷。并且先在很多项目都选择在github上开源，学Git已是大势所趋。">
@@ -176,7 +176,7 @@
 <h2 id="一、安装和创建版本库"><a href="#一、安装和创建版本库" class="headerlink" title="一、安装和创建版本库"></a>一、安装和创建版本库</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>在Ubuntu上安装git，先在终端输入git，看看系统有没有安装git<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git</span><br><span class="line">The program &apos;git&apos; is currently not installed. You can install it by typing:</span><br><span class="line">sudo apt-get install git</span><br></pre></td></tr></table></figure></p>
 <p>如上面提示是没有安装git，通过一条<code>sudo apt-get install git</code>命令即可完成git安装。<br>安装完成后，需要进行下一步的设置;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.name &quot;Your Name&quot;</span><br><span class="line">$ git config --global user.email &quot;email@example.com&quot;</span><br></pre></td></tr></table></figure></p>
 <p>git config 命令用了-global参数，表示你这台机器上的所有git仓库都会使用这个配置，当然也可以对某个仓库指定不同的用户名和Email地址</p>
-<h3 id="创建版本库"><a href="#创建版本库" class="headerlink" title="创建版本库"></a>创建版本库</h3><p>版本库又名repository。<br>在一个目录下，通过<code>git init</code>命令把这个目录变成Git可以管理的仓库，目录下多了一个隐藏的.git文件夹，它是用来跟踪管理版本库的。<br>将文件添加到仓库需要两步：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git add &lt;file&gt;  //把file文件添加到仓库。使用git add .可以把目录下全部改动的文件添加</span><br><span class="line">$ git commit -m &lt;message&gt; //把文件提交到仓库。-m后面输入的是提交的说明，最好添加上说明，不然会提示错误</span><br></pre></td></tr></table></figure></p>
+<h3 id="创建版本库"><a href="#创建版本库" class="headerlink" title="创建版本库"></a>创建版本库</h3><p>版本库又名repository。<br>在一个目录下，通过<code>git init</code>命令把这个目录变成Git可以管理的仓库，目录下多了一个隐藏的.git文件夹，它是用来跟踪管理版本库的。<br>将文件添加到仓库需要两步：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git init  //把目录初始化为Git仓库</span><br><span class="line">$ git add &lt;file&gt;  //把file文件添加到仓库。使用git add .可以把目录下全部改动的文件添加</span><br><span class="line">$ git commit -m &lt;message&gt; //把文件提交到仓库。-m后面输入的是提交的说明，最好添加上说明，不然会提示错误</span><br></pre></td></tr></table></figure></p>
 <h2 id="二、远程仓库"><a href="#二、远程仓库" class="headerlink" title="二、远程仓库"></a>二、远程仓库</h2><h3 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h3><p>Github网站提供Git仓库托管服务，只要注册一个Git帐号，就可以免费获得Git远程仓库。<br>由于你的本地Git仓库和GitHub仓库之间的传输是通过SSH加密的，所以需要设置：<br>第一步：创建SSH Key。打开终端，创建SSH Key：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C &quot;youremail@example.com&quot;</span><br></pre></td></tr></table></figure></p>
 <p>一路回车，默认值即可。<br>之后可以在用户主目录中找到.ssh目录，里面有<strong>id_rsa</strong>和<strong>id_rsa.pub</strong>两个文件，这两个就是SSH Key的秘钥对，id_rsa是私钥，不能泄露出去，id_rsa.pub是公钥，可以放心地告诉任何人。<br>第二步：打开github网址，打开“Account setting”，“SSH and GPG keys”页面，然后点<strong>New SSH key</strong>，填写任意title，在key值栏里粘贴<strong>id_rsa.pub</strong>文件的内容。<br>Github需要SSH key是因为github需要识别推送内容是尼推送的，而不是别人冒充推送的，而且Git支持SSH协议，所以Github只要知道了你的公钥，就可以确认只有你可以推送。<br>而且，Github允许你添加多个Key，你就可以在多台电脑上往Github<br>上推送了。</p>
 <h3 id="添加远程库"><a href="#添加远程库" class="headerlink" title="添加远程库"></a>添加远程库</h3><p>在本地创建一个Git仓库后，在Github创建一个Git仓库，并且让着两个仓库进行远程同步，这样。Github上的仓库既可以作为备份，又可以让其他人通过该仓库来协作<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin git@github.com:sherrybabyone/demo.git   // 关联一个远程仓库</span><br><span class="line">git push -u origin master    // 关联后，第一次推送master分支的所有内容</span><br><span class="line">git push origin master   // 此后，可以省略-u参数</span><br></pre></td></tr></table></figure></p>
@@ -211,6 +211,18 @@
 <li>在Github上，可以任意Fork开源仓库，参与一个开源项目</li>
 <li>自己拥有Fork仓库的读写权限</li>
 <li>可以推送pull request给官方仓库来贡献代码</li>
+</ul>
+<h2 id="五、远程分支管理"><a href="#五、远程分支管理" class="headerlink" title="五、远程分支管理"></a>五、远程分支管理</h2><h3 id="远程仓库基本操作"><a href="#远程仓库基本操作" class="headerlink" title="远程仓库基本操作"></a>远程仓库基本操作</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">查看远程仓库: $ git remote -v</span><br><span class="line">添加远程仓库: $ git remote add [name] [url]</span><br><span class="line">删除远程仓库: $ git remote rm [name]</span><br><span class="line">修改远程仓库: $ git remote set-url --push [name] [newUrl]</span><br><span class="line">拉取远程仓库: $ git pull [remoteName] [localBranchName]</span><br><span class="line">推送远程仓库: $ git push [remoteName] [localBranchName]</span><br></pre></td></tr></table></figure>
+<h3 id="远程分支操作"><a href="#远程分支操作" class="headerlink" title="远程分支操作"></a>远程分支操作</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">查看本地分支: $ git branch</span><br><span class="line">查看远程分支: $ git branch -r</span><br><span class="line">创建本地分支: $ git branch [name]</span><br><span class="line">切换分支:    $ git checkout [name]</span><br><span class="line">创建并切换到新分支: $ git checkout -b [name]</span><br><span class="line">创建远程分支: $ git push origin [name]</span><br><span class="line">删除远程分支: # git push origin :heads/[name]</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>在本地仓库没有分支，但远程仓库存在，想将远程仓库拉至本地仓库，使用命令:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b [新分支名] origin/[分支名]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在远程没有分支，想上传分支</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin [本地分支名]:[远程分支名]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>git删除远程分支:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git push origin :[远程分支名]   //相当于提交了一个空的分支覆盖远程仓库的分支</span><br><span class="line">// 或者 git push origin --delete [分支名]</span><br></pre></td></tr></table></figure></li>
 </ul>
 
       
@@ -445,7 +457,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React</a>
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -453,7 +465,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -477,11 +489,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">CSS3</a>
+                <a href="javascript:void(0)" class="js-tag color3">面试</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">面试</a>
+                <a href="javascript:void(0)" class="js-tag color5">CSS3</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -148,6 +148,158 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Next-Koa" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/30/Next-Koa/">Next-Koa</a>
+    </h1>
+  
+
+        
+        <a href="/2019/08/30/Next-Koa/" class="archive-article-date">
+  	<time datetime="2019-08-30T09:27:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="服务器"><a href="#服务器" class="headerlink" title="服务器"></a>服务器</h2><ul>
+<li>NextJS自身带有服务器，只处理SSR渲染</li>
+<li>处理HTTP请求，并根据请求数据返回相应的内容</li>
+<li>根据域名之类的HOST来定位服务器</li>
+</ul>
+<h2 id="NextJS无法处理服务端"><a href="#NextJS无法处理服务端" class="headerlink" title="NextJS无法处理服务端"></a>NextJS无法处理服务端</h2><ul>
+<li>数据接口</li>
+<li>数据库连接</li>
+<li>session状态</li>
+</ul>
+<h2 id="为什么Koa"><a href="#为什么Koa" class="headerlink" title="为什么Koa"></a>为什么Koa</h2><ul>
+<li>Koa是一个非常流行的轻量级NodeJS服务端框架</li>
+<li>项目相对轻量，并不需要很多集成的功能</li>
+<li>非常易于扩展，编程模式非常符合JS特性</li>
+</ul>
+<h2 id="Koa特性"><a href="#Koa特性" class="headerlink" title="Koa特性"></a>Koa特性</h2><ul>
+<li>轻量： 本身不封装什么功能</li>
+</ul>
+<h2 id="api"><a href="#api" class="headerlink" title="api"></a>api</h2><ul>
+<li>app.use<br>  将给定的中间件方法添加到此应用程-序</li>
+<li>ctx对象<br>  上下文(Context)。每一个请求都将创建一个<strong>Context</strong>，并在中间件中作为接收器引用，或者<strong>ctx</strong>标识符。<br>  为方便起见许多上下文的访问器和方法直接委托给它们的 ctx.request或 ctx.response</li>
+<li>request、response、req、res的关系<br>  ctx.request: <strong>Koa</strong>的Request对象<br>  ctx.response : <strong>Koa</strong>的Response对象<br>  ctx.req : <strong>Node</strong>的request对象<br>  ctx.res : <strong>Node</strong>的response对象<br>  <strong>Koa Context</strong> 将 Node 的 request 和 response 对象封装到单个对象中。</li>
+</ul>
+<h2 id="redis数据库"><a href="#redis数据库" class="headerlink" title="redis数据库"></a>redis数据库</h2><p>特点：</p>
+<pre><code>- redis 本质上是一个高性能的 Key，Value 数据库；
+- 支持存储的类型相对更多；（String、list、set、hash
+</code></pre><p>Mac下安装： 使用<strong>HomeBrew</strong>, <code>brew install redis</code><br>启动redis: <code>redis-server</code><br>连接数据库: <code>redis-cli</code></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/08/30/Next-Koa/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-JavaScript之数据结构与算法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/25/JavaScript之数据结构与算法/">JavaScript之数据结构与算法</a>
+    </h1>
+  
+
+        
+        <a href="/2019/07/25/JavaScript之数据结构与算法/" class="archive-article-date">
+  	<time datetime="2019-07-25T07:47:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>JavaScript之数据结构与算法</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/07/25/JavaScript之数据结构与算法/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-页面布局详解(圣杯、双飞翼、弹性布局)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -760,157 +912,9 @@
 
 
   
-    <article id="post-Taro开发微信小程序-用户授权(三)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/16/Taro开发微信小程序-用户授权(三)/">Taro开发微信小程序-用户授权(三)</a>
-    </h1>
-  
-
-        
-        <a href="/2019/05/16/Taro开发微信小程序-用户授权(三)/" class="archive-article-date">
-  	<time datetime="2019-05-16T12:22:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>我们已经完成了用户的登录，现在我们来完成用户的授权页面。</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">小程序</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/05/16/Taro开发微信小程序-用户授权(三)/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Taro开发微信小程序-登" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/16/Taro开发微信小程序-登/">Taro开发微信小程序-登录实现(二)</a>
-    </h1>
-  
-
-        
-        <a href="/2019/05/16/Taro开发微信小程序-登/" class="archive-article-date">
-  	<time datetime="2019-05-16T12:08:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Taro开发微信小程序-登录实现(二)</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">小程序</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/05/16/Taro开发微信小程序-登/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 
@@ -997,7 +1001,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React</a>
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1005,7 +1009,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1029,11 +1033,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">CSS3</a>
+                <a href="javascript:void(0)" class="js-tag color3">面试</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">面试</a>
+                <a href="javascript:void(0)" class="js-tag color5">CSS3</a>
               </li>
              
               <li class="article-tag-list-item">
