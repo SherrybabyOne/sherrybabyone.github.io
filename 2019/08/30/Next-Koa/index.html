@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="个人博客">
 <meta property="og:description" content="服务器 NextJS自身带有服务器，只处理SSR渲染 处理HTTP请求，并根据请求数据返回相应的内容 根据域名之类的HOST来定位服务器  NextJS无法处理服务端 数据接口 数据库连接 session状态  为什么Koa Koa是一个非常流行的轻量级NodeJS服务端框架 项目相对轻量，并不需要很多集成的功能 非常易于扩展，编程模式非常符合JS特性  Koa特性 轻量： 本身不封装什么功能">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-09-02T14:18:22.644Z">
+<meta property="og:updated_time" content="2019-09-08T09:57:36.682Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Next-Koa">
 <meta name="twitter:description" content="服务器 NextJS自身带有服务器，只处理SSR渲染 处理HTTP请求，并根据请求数据返回相应的内容 根据域名之类的HOST来定位服务器  NextJS无法处理服务端 数据接口 数据库连接 session状态  为什么Koa Koa是一个非常流行的轻量级NodeJS服务端框架 项目相对轻量，并不需要很多集成的功能 非常易于扩展，编程模式非常符合JS特性  Koa特性 轻量： 本身不封装什么功能">
@@ -170,7 +170,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="服务器"><a href="#服务器" class="headerlink" title="服务器"></a>服务器</h2><ul>
+        <a id="more"></a>
+<h2 id="服务器"><a href="#服务器" class="headerlink" title="服务器"></a>服务器</h2><ul>
 <li>NextJS自身带有服务器，只处理SSR渲染</li>
 <li>处理HTTP请求，并根据请求数据返回相应的内容</li>
 <li>根据域名之类的HOST来定位服务器</li>
@@ -193,10 +194,15 @@
 <li>ctx对象<br>  上下文(Context)。每一个请求都将创建一个<strong>Context</strong>，并在中间件中作为接收器引用，或者<strong>ctx</strong>标识符。<br>  为方便起见许多上下文的访问器和方法直接委托给它们的 ctx.request或 ctx.response</li>
 <li>request、response、req、res的关系<br>  ctx.request: <strong>Koa</strong>的Request对象<br>  ctx.response : <strong>Koa</strong>的Response对象<br>  ctx.req : <strong>Node</strong>的request对象<br>  ctx.res : <strong>Node</strong>的response对象<br>  <strong>Koa Context</strong> 将 Node 的 request 和 response 对象封装到单个对象中。</li>
 </ul>
-<h2 id="redis数据库"><a href="#redis数据库" class="headerlink" title="redis数据库"></a>redis数据库</h2><p>特点：</p>
+<h2 id="Redis数据库"><a href="#Redis数据库" class="headerlink" title="Redis数据库"></a>Redis数据库</h2><p>特点：</p>
 <pre><code>- redis 本质上是一个高性能的 Key，Value 数据库；
 - 支持存储的类型相对更多；（String、list、set、hash
+- Reis下数据都是key、value,key不能重复
 </code></pre><p>Mac下安装： 使用<strong>HomeBrew</strong>, <code>brew install redis</code><br>启动redis: <code>redis-server</code><br>连接数据库: <code>redis-cli</code></p>
+<h3 id="Redis基本操作"><a href="#Redis基本操作" class="headerlink" title="Redis基本操作"></a>Redis基本操作</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ get a         //获取a的值</span><br><span class="line">$ set a 1    //将a的值设置为1</span><br><span class="line">$ setex c 10 1  //给key设置一个过期时间 设置c为1,5s之后过期为null</span><br><span class="line">$ set session:sessionId     //给session模块下的sessionId设值</span><br><span class="line">$ KEYS *        //查找所有的keys</span><br><span class="line">$ del a         //删除key为a</span><br></pre></td></tr></table></figure>
+<h3 id="NodeJS下连接Redis"><a href="#NodeJS下连接Redis" class="headerlink" title="NodeJS下连接Redis"></a>NodeJS下连接Redis</h3><p>使用<strong>ioredis</strong>模块<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const redis = Redis(&#123;</span><br><span class="line">    port:</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<h3 id="Next下处理CSS文件"><a href="#Next下处理CSS文件" class="headerlink" title="Next下处理CSS文件"></a>Next下处理CSS文件</h3><p>Next默认不支持CSS文件<br>安装@zeit/next-css包<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const withCss = require(&apos;@zeit/next-css&apos;)</span><br><span class="line"></span><br><span class="line">if (typeof require !== &apos;undefined&apos;) &#123;</span><br><span class="line">    require.extensions[&apos;.css&apos;] = file =&gt; &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">module.exports = withCss(&#123;&#125;)</span><br></pre></td></tr></table></figure></p>
+<h3 id="Next下按需加载antd"><a href="#Next下按需加载antd" class="headerlink" title="Next下按需加载antd"></a>Next下按需加载antd</h3><p>创建<code>.babelrc</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;presets&quot;: [&quot;next/babel&quot;],</span><br><span class="line">    &quot;plugins&quot; : [</span><br><span class="line">        [</span><br><span class="line">            &quot;import&quot;,</span><br><span class="line">            &#123;</span><br><span class="line">                &quot;libraryName&quot;: &quot;antd&quot;</span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
       
 
@@ -289,6 +295,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2019/09/07/NextJS基础/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          NextJS基础
+        
+      </div>
+    </a>
   
   
     <a href="/2019/07/25/JavaScript之数据结构与算法/" id="article-nav-older" class="article-nav-link-wrap">
@@ -410,11 +425,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">HTML</a>
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -422,7 +437,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">HTML</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">NextJS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -434,11 +457,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
+                <a href="javascript:void(0)" class="js-tag color3">Express</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Express</a>
+                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -447,10 +470,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">CSS3</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
             
             <div class="clearfix"></div>
