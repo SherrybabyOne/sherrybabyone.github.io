@@ -168,8 +168,33 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Loader"><a href="#Loader" class="headerlink" title="Loader"></a>Loader</h1><p>webpack 通过 <strong>loader</strong> 可以支持各种语言和预处理器编写模块。<br>loader 用于对模块的源代码进行转换。loader 可以使你在 import 或”加载”模块时预处理文件。因此，loader 类似于其他构建工具中“任务(task)”，并提供了处理前端构建步骤的强大方法。loader 可以将文件从不同的语言（如 TypeScript）转换为 JavaScript，或将内联图像转换为 data URL。loader 甚至允许你直接在 JavaScript 模块中 import CSS文件！</p>
-        
+        <a id="more"></a>
+<h2 id="一、Loader"><a href="#一、Loader" class="headerlink" title="一、Loader"></a>一、Loader</h2><p>webpack 通过 <strong>loader</strong> 可以支持各种语言和预处理器编写模块。<br>loader 用于对模块的源代码进行转换。loader 可以使你在 import 或”加载”模块时预处理文件。因此，loader 类似于其他构建工具中“任务(task)”，并提供了处理前端构建步骤的强大方法。loader 可以将文件从不同的语言（如 TypeScript）转换为 JavaScript，或将内联图像转换为 data URL。loader 甚至允许你直接在 JavaScript 模块中 import CSS文件！</p>
+<h3 id="使用Loader打包静态资源-图片"><a href="#使用Loader打包静态资源-图片" class="headerlink" title="使用Loader打包静态资源(图片)"></a>使用Loader打包静态资源(图片)</h3><hr>
+<h4 id="file-loader"><a href="#file-loader" class="headerlink" title="file-loader"></a>file-loader</h4><p>使用<strong>file-loader</strong>处理图片,在webpack配置文件中的<strong>module</strong>中配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">const path = require(&apos;path&apos;)</span><br><span class="line"></span><br><span class="line">module.exports = &#123;</span><br><span class="line">    module: &#123;</span><br><span class="line">        rules: [</span><br><span class="line">            &#123;</span><br><span class="line">                test: /\.jpg$/,</span><br><span class="line">                use: &#123;</span><br><span class="line">                    loader: &apos;file-loader&apos;,</span><br><span class="line">                    options: &#123;</span><br><span class="line">                        name: &apos;[name]_[hash].[ext]&apos;,</span><br><span class="line">                        outputPath: &apos;images/&apos;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="url-loader"><a href="#url-loader" class="headerlink" title="url-loader"></a>url-loader</h4><p><code>url-loader</code>类似于<code>file-loader</code>,但是在文件大小(单位byte)低于指定的限制时，可以返回一个DataURL<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">moudle.exports = &#123;</span><br><span class="line">    module: &#123;</span><br><span class="line">        rules:</span><br><span class="line">        [</span><br><span class="line">            &#123;</span><br><span class="line">                test: /\.(jpg|png|gif)$/,</span><br><span class="line">                use: &#123;</span><br><span class="line">                    loader: &apos;url-loader&apos;,</span><br><span class="line">                    options: &#123;</span><br><span class="line">                        name: &apos;[name]_[hash].[ext]&apos;,</span><br><span class="line">                        outputPath: &apos;images/&apos;,</span><br><span class="line">                        limit: 2048</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>添加了<code>limit</code>配置，超过limit字节</p>
+<h3 id="使用Loader打包静态资源-样式篇"><a href="#使用Loader打包静态资源-样式篇" class="headerlink" title="使用Loader打包静态资源(样式篇)"></a>使用Loader打包静态资源(样式篇)</h3><hr>
+<p>对于一个模块，若需要多个<strong>loader</strong>预处理,执行顺序是:<strong>从下到上,从右到左</strong></p>
+<h4 id="处理CSS模块"><a href="#处理CSS模块" class="headerlink" title="处理CSS模块"></a>处理CSS模块</h4><p>使用<code>style-loader</code>和<code>css-loader</code>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">module.exports = &#123;</span><br><span class="line">    module: [</span><br><span class="line">        &#123;</span><br><span class="line">            test: /\.css$/,</span><br><span class="line">            use: [&apos;style-loader&apos;, &apos;css-loader&apos;]</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="处理SCSS模块"><a href="#处理SCSS模块" class="headerlink" title="处理SCSS模块"></a>处理SCSS模块</h4><p>使用<code>style-loader</code>和<code>css-loader</code>和<code>sass-loader</code><br>需要安装<code>node-sass</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">module.exports = &#123;</span><br><span class="line">    module: [</span><br><span class="line">        &#123;</span><br><span class="line">            test: /\.css$/,</span><br><span class="line">            use: [&apos;style-loader&apos;, &apos;css-loader&apos;, &apos;sass-loader&apos;]</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="添加浏览器前缀"><a href="#添加浏览器前缀" class="headerlink" title="添加浏览器前缀"></a>添加浏览器前缀</h4><p>使用<strong>postcss-loader</strong>。<br><code>postcss-config.js</code>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">module.exports = &#123;</span><br><span class="line">  parser: &apos;sugarss&apos;,</span><br><span class="line">  plugins: &#123;</span><br><span class="line">    &apos;postcss-import&apos;: &#123;&#125;,</span><br><span class="line">    &apos;postcss-cssnext&apos;: &#123;&#125;,</span><br><span class="line">    &apos;cssnano&apos;: &#123;&#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="CSS打包模块化"><a href="#CSS打包模块化" class="headerlink" title="CSS打包模块化"></a>CSS打包模块化</h4><p>配置<strong>css-loader</strong>中的选项<strong>modules</strong>,设置为true<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">                test: /\.scss$/,</span><br><span class="line">                use: [</span><br><span class="line">                    &apos;style-loader&apos;,</span><br><span class="line">                    &#123;</span><br><span class="line">                        loader: &apos;css-loader&apos;,</span><br><span class="line">                        options: &#123;</span><br><span class="line">                            importLoaders: 2,</span><br><span class="line">                            modules: true</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;,</span><br><span class="line">                    &apos;sass-loader&apos;,</span><br><span class="line">                    &apos;postcss-loader&apos;</span><br><span class="line">                ]</span><br><span class="line">            &#125;</span><br></pre></td></tr></table></figure></p>
+<p>在文件中使用:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import style from &apos;./index.css&apos;</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line">&lt;div class=&#123;style.avatar&#125;&gt;&lt;/div&gt;</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
+<h4 id="记载字体"><a href="#记载字体" class="headerlink" title="记载字体"></a>记载字体</h4><p>使用<code>file-loader</code>,可以接受并加载任何文件，然后将其输出到构建目录。可以将它们用于任何类型的文件，包括字体<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">module: &#123;</span><br><span class="line">    rules:</span><br><span class="line">    [</span><br><span class="line">        &#123;</span><br><span class="line">            test: /\.(woff|woff2|eot|ttf|otf)$/,</span><br><span class="line">            use: [</span><br><span class="line">                &apos;file-loader&apos;</span><br><span class="line">            ]</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="二、plugins"><a href="#二、plugins" class="headerlink" title="二、plugins"></a>二、plugins</h2><p><strong>plugin</strong> 可以在webpack运行到某个时刻的时候，自动帮你做一些事情。</p>
+<h3 id="html-webpack-plugin"><a href="#html-webpack-plugin" class="headerlink" title="html-webpack-plugin"></a>html-webpack-plugin</h3><p>htmlWebpackPlugin 会在打包结束后，自动生成一个HTML文件，并把打包生成的JS自动引入到这个HTML文件。<br>使用<strong>template</strong>模版可以根据模版html文件，打包生成html文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">plugins: [</span><br><span class="line">        new HtmlWebpackPlugin(&#123;</span><br><span class="line">            template: &apos;./src/index.html&apos;</span><br><span class="line">        &#125;)</span><br><span class="line">    ]</span><br></pre></td></tr></table></figure></p>
+<h3 id="clean-webpack-plugin"><a href="#clean-webpack-plugin" class="headerlink" title="clean-webpack-plugin"></a>clean-webpack-plugin</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">plugins: [</span><br><span class="line">        new CleanWebpackPlugin(),</span><br><span class="line">    ]</span><br></pre></td></tr></table></figure>
+<p>每次打包之前自动删除<code>output.path</code></p>
+<h2 id="三、devtool配置"><a href="#三、devtool配置" class="headerlink" title="三、devtool配置"></a>三、devtool配置</h2><p>此选项控制是否生成，以及如何生成 source map。<br>sourceMap是一个映射关系,他知道打包后文件(dist下文件)中的报错实际上对应的是未打包的文件(即源码)中的报错位置<br>一般情况下:</p>
+<ul>
+<li>在开发环境中(development): <strong>cheap-module-eval-source-map</strong> (快速定位问题)</li>
+<li>在上线环境中(production) : <strong>cheap-module-source-map</strong> ()</li>
+</ul>
+<h2 id="四、使用-WebpackDevServer-提升开发效率"><a href="#四、使用-WebpackDevServer-提升开发效率" class="headerlink" title="四、使用 WebpackDevServer 提升开发效率"></a>四、使用 WebpackDevServer 提升开发效率</h2><p>在<code>package.json</code>中<code>scripts</code>中配置:<br>“watch”: “webpack –watch”<br>可以监听代码的改变。</p>
+<h3 id="webpackDevServer"><a href="#webpackDevServer" class="headerlink" title="webpackDevServer"></a>webpackDevServer</h3><p>将页面以HTTP的形式(localhost)打开(发送AJAX请求必须在服务器上以HTTP的形式打开)<br>先安装<strong>webpack-dev-server</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-&gt; npm install webpack-dev-server -D</span><br></pre></td></tr></table></figure></p>
+<p><strong>contentBase</strong> :服务器获取内容的位置<br><strong>proxy</strong>       :配置跨域<br><strong>open</strong>        :开启自动打开浏览器<br><strong>port</strong>        :<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">devServer: &#123;</span><br><span class="line">    contentBase: &apos;./dist&apos;,</span><br><span class="line">    open: true</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
       
 
       
@@ -296,19 +321,19 @@
 
 
   
-    <article id="post-七牛云NodeJS SDK使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Upload上传七牛云处理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/09/七牛云NodeJS SDK使用/">七牛云NodeJS SDK使用</a>
+      <a class="article-title" href="/2019/09/09/Upload上传七牛云处理/">Upload组件上传图片,七牛云处理实践</a>
     </h1>
   
 
         
-        <a href="/2019/09/09/七牛云NodeJS SDK使用/" class="archive-article-date">
+        <a href="/2019/09/09/Upload上传七牛云处理/" class="archive-article-date">
   	<time datetime="2019-09-09T06:11:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-09</time>
 </a>
         
@@ -347,7 +372,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/09/七牛云NodeJS SDK使用/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/09/09/Upload上传七牛云处理/">展开全文 >></a>
         </p>
       
 
@@ -1068,11 +1093,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">HTML</a>
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React</a>
+                <a href="javascript:void(0)" class="js-tag color5">HTML</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1100,19 +1125,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Express</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">面试</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
              
               <li class="article-tag-list-item">

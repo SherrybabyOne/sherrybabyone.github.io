@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>七牛云NodeJS SDK使用 | 个人博客</title>
+  <title>Upload组件上传图片,七牛云处理实践 | 个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="需要完成的需求:使用Antd的Upload组件上传文件到七牛云上(CDN加速),获取七牛云返回的url连接即可。参考官方文档: Node.js SDK优点:  以非常便捷的方式将数据安全地存储到七牛云上 通过七牛云及其CDK,实现应用程序的终端用户高速上传和下载基本流程是: 先获取到七牛的一个token值 然后将文件上传到七牛提供的url上(一个post接口,要附带token提交) 拿到返回的ur">
 <meta name="keywords" content="React">
 <meta property="og:type" content="article">
-<meta property="og:title" content="七牛云NodeJS SDK使用">
-<meta property="og:url" content="http://yoursite.com/2019/09/09/七牛云NodeJS SDK使用/index.html">
+<meta property="og:title" content="Upload组件上传图片,七牛云处理实践">
+<meta property="og:url" content="http://yoursite.com/2019/09/09/Upload上传七牛云处理/index.html">
 <meta property="og:site_name" content="个人博客">
 <meta property="og:description" content="需要完成的需求:使用Antd的Upload组件上传文件到七牛云上(CDN加速),获取七牛云返回的url连接即可。参考官方文档: Node.js SDK优点:  以非常便捷的方式将数据安全地存储到七牛云上 通过七牛云及其CDK,实现应用程序的终端用户高速上传和下载基本流程是: 先获取到七牛的一个token值 然后将文件上传到七牛提供的url上(一个post接口,要附带token提交) 拿到返回的ur">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-09-09T06:23:00.370Z">
+<meta property="og:updated_time" content="2019-09-16T08:52:14.728Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="七牛云NodeJS SDK使用">
+<meta name="twitter:title" content="Upload组件上传图片,七牛云处理实践">
 <meta name="twitter:description" content="需要完成的需求:使用Antd的Upload组件上传文件到七牛云上(CDN加速),获取七牛云返回的url连接即可。参考官方文档: Node.js SDK优点:  以非常便捷的方式将数据安全地存储到七牛云上 通过七牛云及其CDK,实现应用程序的终端用户高速上传和下载基本流程是: 先获取到七牛的一个token值 然后将文件上传到七牛提供的url上(一个post接口,要附带token提交) 拿到返回的ur">
   
     <link rel="alternative" href="/atom.xml" title="个人博客" type="application/atom+xml">
@@ -151,19 +151,19 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-七牛云NodeJS SDK使用" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Upload上传七牛云处理" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      七牛云NodeJS SDK使用
+      Upload组件上传图片,七牛云处理实践
     </h1>
   
 
         
-        <a href="/2019/09/09/七牛云NodeJS SDK使用/" class="archive-article-date">
+        <a href="/2019/09/09/Upload上传七牛云处理/" class="archive-article-date">
   	<time datetime="2019-09-09T06:11:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-09</time>
 </a>
         
@@ -180,9 +180,21 @@
 <li>拿到返回的url地址</li>
 </ul>
 <a id="more"></a>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>先安装依赖<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ tyarn add qiniu</span><br></pre></td></tr></table></figure></p>
+<h2 id="一、获取客户端上传凭证"><a href="#一、获取客户端上传凭证" class="headerlink" title="一、获取客户端上传凭证"></a>一、获取客户端上传凭证</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>先安装依赖<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ tyarn add qiniu</span><br></pre></td></tr></table></figure></p>
 <h3 id="鉴权"><a href="#鉴权" class="headerlink" title="鉴权"></a>鉴权</h3><p>七牛Node.js SDK的所有功能，都需要合法的授权。授权凭证的签算需要七牛云账号下一对有效的<strong>Access Key</strong>和<strong>Secret Key</strong>这对密钥。</p>
-
+<h3 id="生成凭证"><a href="#生成凭证" class="headerlink" title="生成凭证"></a>生成凭证</h3><p>创建一个简单的上传凭证:<br>将自己账号七牛云的<strong>AK</strong>和<strong>SK</strong>创建个文件存储起来:<br><code>secret.js</code>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">const Qiniu = &#123;</span><br><span class="line">    AK: xxx,</span><br><span class="line">    SK: xxx</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export default Qiniu;</span><br></pre></td></tr></table></figure></p>
+<p>生成凭证:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">import qiniu from &apos;qiniu&apos;</span><br><span class="line">import Qiniu from &apos;./secret&apos;</span><br><span class="line"></span><br><span class="line">export const getToken = () =&gt; &#123;</span><br><span class="line">    const mac = new qiniu.auth.digest.Mac(Qiniu.AK, Qiniu.SK);</span><br><span class="line">    const options = &#123;</span><br><span class="line">        // bucket对应你上传的bucket</span><br><span class="line">        scope: bucket,</span><br><span class="line">        expires: 3600 * 24</span><br><span class="line">    &#125;;</span><br><span class="line">    const putPolicy = new qiniu.rs.PutPolicy(options);</span><br><span class="line">    const uploadToken= putPolicy.uploadToken(mac);</span><br><span class="line">    return uploadToken</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>至此,客户端上传七牛云凭证已经实现。</p>
+<h2 id="二、搭配Antd的Upload组件实现实践"><a href="#二、搭配Antd的Upload组件实现实践" class="headerlink" title="二、搭配Antd的Upload组件实现实践"></a>二、搭配Antd的Upload组件实现实践</h2><p>上传域名查看官网说明:<a href="https://developer.qiniu.com/kodo/manual/1671/region-endpoint" target="_blank" rel="noopener">七牛云 存储区域</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">import React from &apos;react&apos;</span><br><span class="line">import &#123; Upload, Button, Icon &#125; from &apos;antd&apos;;</span><br><span class="line">import &#123; getToken &#125; from &apos;./../../utils/qiniu&apos;</span><br><span class="line"></span><br><span class="line">const QINIU_SERVER = &apos;http://up-z1.qiniup.com&apos;</span><br><span class="line">const QINIU_PICTURE = &apos;http://blog.sherrybaby.club/&apos;</span><br><span class="line"></span><br><span class="line">export default class Demo extends React.Component &#123;</span><br><span class="line">  constructor (props) &#123;</span><br><span class="line">    super(props)</span><br><span class="line">    this.state = &#123;</span><br><span class="line">      token: null</span><br><span class="line">    &#125;</span><br><span class="line">    this.getUploadToken = this.getUploadToken.bind(this)</span><br><span class="line">  &#125;</span><br><span class="line">  getUploadToken () &#123;</span><br><span class="line">    const token = getToken()</span><br><span class="line">    this.setState(&#123;</span><br><span class="line">      token</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  render () &#123;</span><br><span class="line">    const &#123; token &#125; = this.state;</span><br><span class="line">    return (</span><br><span class="line">      &lt;Upload</span><br><span class="line">        action=&#123;QINIU_SERVER&#125;</span><br><span class="line">        beforeUpload= &#123;this.getUploadToken&#125;</span><br><span class="line">        data= &#123;&#123;token&#125;&#125;</span><br><span class="line">        onChange= &#123;this.handleChange&#125;</span><br><span class="line">      &gt;</span><br><span class="line">        &lt;Button&gt;</span><br><span class="line">          &lt;Icon type=&apos;upload&apos; /&gt; Click to Upload</span><br><span class="line">        &lt;/Button&gt;</span><br><span class="line">      &lt;/Upload&gt;</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>至此，一个最简单的上传Upload组件已经完成。</p>
+<h2 id="三、优化"><a href="#三、优化" class="headerlink" title="三、优化"></a>三、优化</h2><p>加入一些功能:</p>
+<ul>
+<li>对上传图片的格式和大小做检测</li>
+<li>可以对已经上传的图片进行预览</li>
+<li>连续上传多个图片<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line">import React from &apos;react&apos;</span><br><span class="line">import &#123; Upload, Icon, message, Modal &#125; from &apos;antd&apos;</span><br><span class="line">import &#123; getToken &#125; from &apos;./../../utils/qiniu&apos;</span><br><span class="line">import &apos;./index.less&apos;</span><br><span class="line"></span><br><span class="line">const QINIU_SERVER = &apos;http://up-z1.qiniup.com&apos;</span><br><span class="line">const QINIU_PICTURE = &apos;http://blog.sherrybaby.club/&apos;</span><br><span class="line"></span><br><span class="line">export default class PicturesWall extends React.Component &#123;</span><br><span class="line">  constructor (props) &#123;</span><br><span class="line">    super(props)</span><br><span class="line">    this.state = &#123;</span><br><span class="line">      previewVisible: false,</span><br><span class="line">      previewImage: &apos;&apos;,</span><br><span class="line">      fileList: []</span><br><span class="line">    &#125;</span><br><span class="line">    this.handleChange = this.handleChange.bind(this)</span><br><span class="line">    this.beforeUpload = this.beforeUpload.bind(this)</span><br><span class="line">    this.handlePreview = this.handlePreview.bind(this)</span><br><span class="line">    this.handleCancel = this.handleCancel.bind(this)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  handleChange = (&#123; fileList &#125;) =&gt; &#123;</span><br><span class="line">    this.setState(&#123; fileList &#125;)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  // 上传图片</span><br><span class="line">  beforeUpload(file) &#123;</span><br><span class="line">    // 获取token</span><br><span class="line">    const token = getToken()</span><br><span class="line">    this.setState(&#123; token &#125;)</span><br><span class="line">    // 检测图片的格式和大小是否符合要求</span><br><span class="line">    const isJpgOrPng = file.type === &apos;image/jpeg&apos; || file.type === &apos;image/png&apos;;</span><br><span class="line">    if (!isJpgOrPng) &#123;</span><br><span class="line">      message.error(&apos;You can only upload JPG/PNG file!&apos;);</span><br><span class="line">    &#125;</span><br><span class="line">    const isLt2M = file.size / 1024 / 1024 &lt; 2;</span><br><span class="line">    if (!isLt2M) &#123;</span><br><span class="line">      message.error(&apos;Image must smaller than 2MB!&apos;);</span><br><span class="line">    &#125;</span><br><span class="line">    return isJpgOrPng &amp;&amp; isLt2M;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  // 图片预览</span><br><span class="line">  handlePreview = async file =&gt; &#123;</span><br><span class="line">    console.log(this.state.fileList)</span><br><span class="line">    this.setState(&#123;</span><br><span class="line">      previewImage: QINIU_PICTURE + file.response.hash,</span><br><span class="line">      previewVisible: true,</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;;</span><br><span class="line">  // 图片预览状态关闭</span><br><span class="line">  handleCancel = () =&gt; this.setState(&#123; previewVisible: false &#125;);</span><br><span class="line"></span><br><span class="line">  render() &#123;</span><br><span class="line">    const &#123; previewVisible, previewImage, fileList, token &#125; = this.state;</span><br><span class="line">    const uploadButton = (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &lt;Icon type=&quot;plus&quot; /&gt;</span><br><span class="line">        &lt;div className=&quot;ant-upload-text&quot;&gt;Upload&lt;/div&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    );</span><br><span class="line">    return (</span><br><span class="line">      &lt;div className=&quot;clearfix&quot;&gt;</span><br><span class="line">        &lt;Upload</span><br><span class="line">          listType=&quot;picture-card&quot;</span><br><span class="line">          fileList=&#123;fileList&#125;</span><br><span class="line">          data=&#123;&#123;token&#125;&#125;</span><br><span class="line">          action=&#123;QINIU_SERVER&#125;</span><br><span class="line">          onPreview=&#123;this.handlePreview&#125;</span><br><span class="line">          onChange=&#123;this.handleChange&#125;</span><br><span class="line">          beforeUpload=&#123;this.beforeUpload&#125;</span><br><span class="line">        &gt;</span><br><span class="line">          &#123;fileList.length &gt;= 8 ? null : uploadButton&#125;</span><br><span class="line">        &lt;/Upload&gt;</span><br><span class="line">        &lt;Modal visible=&#123;previewVisible&#125; footer=&#123;null&#125; onCancel=&#123;this.handleCancel&#125;&gt;</span><br><span class="line">          &lt;img alt=&quot;example&quot; style=&#123;&#123; width: &apos;100%&apos; &#125;&#125; src=&#123;previewImage&#125; /&gt;</span><br><span class="line">        &lt;/Modal&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">.ant-upload-select-picture-card i &#123;</span><br><span class="line">  font-size: 32px;</span><br><span class="line">  color: #999;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.ant-upload-select-picture-card .ant-upload-text &#123;</span><br><span class="line">  margin-top: 8px;</span><br><span class="line">  color: #666;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
 
       
@@ -272,7 +284,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/09/09/七牛云NodeJS SDK使用/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/09/09/Upload上传七牛云处理/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -415,11 +427,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">HTML</a>
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React</a>
+                <a href="javascript:void(0)" class="js-tag color5">HTML</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -447,19 +459,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Express</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">面试</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
              
               <li class="article-tag-list-item">
