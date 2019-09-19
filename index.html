@@ -192,8 +192,21 @@
 <li>在上线环境中(production) : <strong>cheap-module-source-map</strong> ()</li>
 </ul>
 <h2 id="四、使用-WebpackDevServer-提升开发效率"><a href="#四、使用-WebpackDevServer-提升开发效率" class="headerlink" title="四、使用 WebpackDevServer 提升开发效率"></a>四、使用 WebpackDevServer 提升开发效率</h2><p>在<code>package.json</code>中<code>scripts</code>中配置:<br>“watch”: “webpack –watch”<br>可以监听代码的改变。</p>
-<h3 id="webpackDevServer"><a href="#webpackDevServer" class="headerlink" title="webpackDevServer"></a>webpackDevServer</h3><p>将页面以HTTP的形式(localhost)打开(发送AJAX请求必须在服务器上以HTTP的形式打开)<br>先安装<strong>webpack-dev-server</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-&gt; npm install webpack-dev-server -D</span><br></pre></td></tr></table></figure></p>
-<p><strong>contentBase</strong> :服务器获取内容的位置<br><strong>proxy</strong>       :配置跨域<br><strong>open</strong>        :开启自动打开浏览器<br><strong>port</strong>        :<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">devServer: &#123;</span><br><span class="line">    contentBase: &apos;./dist&apos;,</span><br><span class="line">    open: true</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="webpackDevServer"><a href="#webpackDevServer" class="headerlink" title="webpackDevServer"></a>webpackDevServer</h3><p>起一个HTTP服务器，将页面以HTTP的形式(localhost)打开(发送AJAX请求必须在服务器上以HTTP的形式打开),并且代码更新页面也会热更新。<br>先安装<strong>webpack-dev-server</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-&gt; npm install webpack-dev-server -D</span><br></pre></td></tr></table></figure></p>
+<p><strong>contentBase</strong> :服务器获取内容的位置<br><strong>proxy</strong>       :配置跨域<br><strong>open</strong>        :开启自动打开浏览器<br><strong>port</strong>        :<br>配置devServer:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">devServer: &#123;</span><br><span class="line">    contentBase: &apos;./dist&apos;,</span><br><span class="line">    open: true,</span><br><span class="line">    prot: 8080</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>在<code>package.json</code>中配置webpackDevServer启动:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;start&quot;: &quot;webpack-dev-server&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><code>npm run start</code>即可启动。<br>webpackDevServer会将打包好的文件直接放在<strong>内存</strong>里面,提升打包速度。</p>
+<h2 id="五、Hot-Module-Replacement-热更新"><a href="#五、Hot-Module-Replacement-热更新" class="headerlink" title="五、Hot Module Replacement(热更新)"></a>五、Hot Module Replacement(热更新)</h2><p>它允许在运行时更新各种模块,而无需进行完全刷新。<br>更新<strong>webpack-dev-server</strong>配置,和使用webpack内置的HMR插件:<br><strong>webpack.config.js</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">  const path = require(&apos;path&apos;);</span><br><span class="line">  const HtmlWebpackPlugin = require(&apos;html-webpack-plugin&apos;);</span><br><span class="line">  const CleanWebpackPlugin = require(&apos;clean-webpack-plugin&apos;);</span><br><span class="line">+ const webpack = require(&apos;webpack&apos;);</span><br><span class="line"></span><br><span class="line">  module.exports = &#123;</span><br><span class="line">    entry: &#123;</span><br><span class="line">      app: &apos;./src/index.js&apos;</span><br><span class="line">    &#125;,</span><br><span class="line">    devtool: &apos;inline-source-map&apos;,</span><br><span class="line">    devServer: &#123;</span><br><span class="line">      contentBase: &apos;./dist&apos;,</span><br><span class="line">+     hot: true</span><br><span class="line">    &#125;,</span><br><span class="line">    plugins: [</span><br><span class="line">      new CleanWebpackPlugin([&apos;dist&apos;]),</span><br><span class="line">      new HtmlWebpackPlugin(&#123;</span><br><span class="line">        title: &apos;Hot Module Replacement&apos;</span><br><span class="line">      &#125;),</span><br><span class="line">+     new webpack.NamedModulesPlugin(),</span><br><span class="line">+     new webpack.HotModuleReplacementPlugin()</span><br><span class="line">    ],</span><br><span class="line">    output: &#123;</span><br><span class="line">      filename: &apos;[name].bundle.js&apos;,</span><br><span class="line">      path: path.resolve(__dirname, &apos;dist&apos;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br></pre></td></tr></table></figure></p>
+<h2 id="六、使用Babel处理ES6语法"><a href="#六、使用Babel处理ES6语法" class="headerlink" title="六、使用Babel处理ES6语法"></a>六、使用Babel处理ES6语法</h2><p>安装依赖:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-dev babel-loader @babel/core @babel/preset-env</span><br></pre></td></tr></table></figure></p>
+<p>添加配置:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    test: /\.js$/,</span><br><span class="line">    exclude: /node_modules/,</span><br><span class="line">    loader: &quot;babel-loader&quot;,</span><br><span class="line">    options: &#123;</span><br><span class="line">        &quot;presets&quot;: [&quot;@babel/preset-env&quot;]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>一些变量和函数(Promise、map…)也需要补充到低版本的浏览器中,需要使用<strong>polyfill</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save @babel/polyfill</span><br></pre></td></tr></table></figure></p>
+<p>在运行之前引入,在<code>index.js</code>最顶部加上<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import &quot;@babel/p</span><br><span class="line">olyfill&quot;;</span><br></pre></td></tr></table></figure></p>
+<p>按需引入:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    test: /\.js$/,</span><br><span class="line">    exclude: /node_modules/,</span><br><span class="line">    loader: &quot;babel-loader&quot;,</span><br><span class="line">    options: &#123;</span><br><span class="line">        presets: [[&quot;@babel/preset-env&quot;, &#123;</span><br><span class="line">            useBuiltIns: &quot;usage&quot;</span><br><span class="line">        &#125;]]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>以上配置写业务逻辑代码时完全够用,但如果要写第三方类库时,则需要多考虑一些东西:</p>
+<h2 id="缺点：以全局变量的形式引入，会污染到全局环境。"><a href="#缺点：以全局变量的形式引入，会污染到全局环境。" class="headerlink" title="缺点：以全局变量的形式引入，会污染到全局环境。"></a>缺点：以全局变量的形式引入，会污染到全局环境。</h2><h3 id="使用transform-runtime"><a href="#使用transform-runtime" class="headerlink" title="使用transform-runtime"></a>使用transform-runtime</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-dev @babel/plugin-transform-runtime</span><br><span class="line">npm install --save @babel/runtime</span><br><span class="line">npm install --save @babel/runtime-corejs2</span><br></pre></td></tr></table></figure>
+<p>配置:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    // presets: [[&quot;@babel/preset-env&quot;, &#123;</span><br><span class="line">    //     targets: &#123;</span><br><span class="line">    //         chrome: &quot;67&quot;</span><br><span class="line">    //     &#125;,</span><br><span class="line">    //     useBuiltIns: &quot;usage&quot;</span><br><span class="line">    // &#125;]]</span><br><span class="line">    &quot;plugins&quot;: [[&quot;@babel/plugin-transform-runtime&quot;, &#123;</span><br><span class="line">        &quot;corejs&quot;: 2,</span><br><span class="line">        &quot;helpers&quot;: true,</span><br><span class="line">        &quot;regenerator&quot;: true,</span><br><span class="line">        &quot;useESModules&quot;: false</span><br><span class="line">    &#125;]]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="七、webpack实现对React的打包"><a href="#七、webpack实现对React的打包" class="headerlink" title="七、webpack实现对React的打包"></a>七、webpack实现对React的打包</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-dev @babel/preset-react</span><br></pre></td></tr></table></figure>
+<p>添加配置:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;presets&quot;: [</span><br><span class="line">    [&quot;@babel/preset-env&quot;, &#123;</span><br><span class="line">      &quot;targets&quot;: &#123;</span><br><span class="line">          &quot;chrome&quot;: &quot;67&quot;</span><br><span class="line">      &#125;,</span><br><span class="line">      &quot;useBuiltIns&quot;: &quot;usage&quot;</span><br><span class="line">    &#125;],</span><br><span class="line">+    [&quot;@babel/preset-react&quot;]</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
       
 
@@ -1093,15 +1106,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">HTML</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1117,6 +1130,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Mongodb</a>
               </li>
              
@@ -1125,19 +1142,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Express</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">面试</a>
+                <a href="javascript:void(0)" class="js-tag color3">Express</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+                <a href="javascript:void(0)" class="js-tag color3">面试</a>
               </li>
              
               <li class="article-tag-list-item">
