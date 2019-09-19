@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>webpack学习(二)之loader | 个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一、Loaderwebpack 通过 loader 可以支持各种语言和预处理器编写模块。loader 用于对模块的源代码进行转换。loader 可以使你在 import 或”加载”模块时预处理文件。因此，loader 类似于其他构建工具中“任务(task)”，并提供了处理前端构建步骤的强大方法。loader 可以将文件从不同的语言（如 TypeScript）转换为 JavaScript，或将内联">
+  <meta name="description" content="一、Loader 二、plugins 三、devtool 四、webpackDevServer 五、Babel处理ES6语法 六、Babel实现对React的打包">
 <meta name="keywords" content="webpack">
 <meta property="og:type" content="article">
 <meta property="og:title" content="webpack学习(二)之loader">
 <meta property="og:url" content="http://yoursite.com/2019/09/13/webpack学习(二)之loader/index.html">
 <meta property="og:site_name" content="个人博客">
-<meta property="og:description" content="一、Loaderwebpack 通过 loader 可以支持各种语言和预处理器编写模块。loader 用于对模块的源代码进行转换。loader 可以使你在 import 或”加载”模块时预处理文件。因此，loader 类似于其他构建工具中“任务(task)”，并提供了处理前端构建步骤的强大方法。loader 可以将文件从不同的语言（如 TypeScript）转换为 JavaScript，或将内联">
+<meta property="og:description" content="一、Loader 二、plugins 三、devtool 四、webpackDevServer 五、Babel处理ES6语法 六、Babel实现对React的打包">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-09-19T11:07:51.598Z">
+<meta property="og:updated_time" content="2019-09-19T11:19:32.520Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="webpack学习(二)之loader">
-<meta name="twitter:description" content="一、Loaderwebpack 通过 loader 可以支持各种语言和预处理器编写模块。loader 用于对模块的源代码进行转换。loader 可以使你在 import 或”加载”模块时预处理文件。因此，loader 类似于其他构建工具中“任务(task)”，并提供了处理前端构建步骤的强大方法。loader 可以将文件从不同的语言（如 TypeScript）转换为 JavaScript，或将内联">
+<meta name="twitter:description" content="一、Loader 二、plugins 三、devtool 四、webpackDevServer 五、Babel处理ES6语法 六、Babel实现对React的打包">
   
     <link rel="alternative" href="/atom.xml" title="个人博客" type="application/atom+xml">
   
@@ -171,7 +171,15 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <a id="more"></a>
+        <ul>
+<li>一、Loader</li>
+<li>二、plugins</li>
+<li>三、devtool</li>
+<li>四、webpackDevServer</li>
+<li>五、Babel处理ES6语法</li>
+<li>六、Babel实现对React的打包</li>
+</ul>
+<a id="more"></a>
 <h2 id="一、Loader"><a href="#一、Loader" class="headerlink" title="一、Loader"></a>一、Loader</h2><p>webpack 通过 <strong>loader</strong> 可以支持各种语言和预处理器编写模块。<br>loader 用于对模块的源代码进行转换。loader 可以使你在 import 或”加载”模块时预处理文件。因此，loader 类似于其他构建工具中“任务(task)”，并提供了处理前端构建步骤的强大方法。loader 可以将文件从不同的语言（如 TypeScript）转换为 JavaScript，或将内联图像转换为 data URL。loader 甚至允许你直接在 JavaScript 模块中 import CSS文件！</p>
 <h3 id="使用Loader打包静态资源-图片"><a href="#使用Loader打包静态资源-图片" class="headerlink" title="使用Loader打包静态资源(图片)"></a>使用Loader打包静态资源(图片)</h3><hr>
 <h4 id="file-loader"><a href="#file-loader" class="headerlink" title="file-loader"></a>file-loader</h4><p>使用<strong>file-loader</strong>处理图片,在webpack配置文件中的<strong>module</strong>中配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">const path = require(&apos;path&apos;)</span><br><span class="line"></span><br><span class="line">module.exports = &#123;</span><br><span class="line">    module: &#123;</span><br><span class="line">        rules: [</span><br><span class="line">            &#123;</span><br><span class="line">                test: /\.jpg$/,</span><br><span class="line">                use: &#123;</span><br><span class="line">                    loader: &apos;file-loader&apos;,</span><br><span class="line">                    options: &#123;</span><br><span class="line">                        name: &apos;[name]_[hash].[ext]&apos;,</span><br><span class="line">                        outputPath: &apos;images/&apos;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
@@ -210,6 +218,7 @@
 <p>配置:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    // presets: [[&quot;@babel/preset-env&quot;, &#123;</span><br><span class="line">    //     targets: &#123;</span><br><span class="line">    //         chrome: &quot;67&quot;</span><br><span class="line">    //     &#125;,</span><br><span class="line">    //     useBuiltIns: &quot;usage&quot;</span><br><span class="line">    // &#125;]]</span><br><span class="line">    &quot;plugins&quot;: [[&quot;@babel/plugin-transform-runtime&quot;, &#123;</span><br><span class="line">        &quot;corejs&quot;: 2,</span><br><span class="line">        &quot;helpers&quot;: true,</span><br><span class="line">        &quot;regenerator&quot;: true,</span><br><span class="line">        &quot;useESModules&quot;: false</span><br><span class="line">    &#125;]]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h2 id="七、webpack实现对React的打包"><a href="#七、webpack实现对React的打包" class="headerlink" title="七、webpack实现对React的打包"></a>七、webpack实现对React的打包</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-dev @babel/preset-react</span><br></pre></td></tr></table></figure>
 <p>添加配置:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;presets&quot;: [</span><br><span class="line">    [&quot;@babel/preset-env&quot;, &#123;</span><br><span class="line">      &quot;targets&quot;: &#123;</span><br><span class="line">          &quot;chrome&quot;: &quot;67&quot;</span><br><span class="line">      &#125;,</span><br><span class="line">      &quot;useBuiltIns&quot;: &quot;usage&quot;</span><br><span class="line">    &#125;],</span><br><span class="line">+    [&quot;@babel/preset-react&quot;]</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>完整webpack配置:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line">const path = require(&apos;path&apos;)</span><br><span class="line">const HtmlWebpackPlugin = require(&apos;html-webpack-plugin&apos;)</span><br><span class="line">const &#123; CleanWebpackPlugin &#125; = require(&apos;clean-webpack-plugin&apos;)</span><br><span class="line">const webpack = require(&apos;webpack&apos;)</span><br><span class="line"></span><br><span class="line">module.exports = &#123;</span><br><span class="line">    mode: &apos;development&apos;,</span><br><span class="line">    devtool: &apos;cheap-module-eval-source-map&apos;,</span><br><span class="line">    entry: &#123;</span><br><span class="line">        main: &apos;./src/index.js&apos;</span><br><span class="line">    &#125;,</span><br><span class="line">    devServer: &#123;</span><br><span class="line">        contentBase: &apos;./dist&apos;,</span><br><span class="line">        open: true,</span><br><span class="line">        port: 8080,</span><br><span class="line">        hot: true,</span><br><span class="line">        hotOnly: true</span><br><span class="line">    &#125;,</span><br><span class="line">    module: &#123;</span><br><span class="line">        rules: [</span><br><span class="line">            &#123;</span><br><span class="line">                test: /\.(jpg|png|gif)$/,</span><br><span class="line">                use: &#123;</span><br><span class="line">                    loader: &apos;url-loader&apos;,</span><br><span class="line">                    options: &#123;</span><br><span class="line">                        name: &apos;[name]_[hash].[ext]&apos;,</span><br><span class="line">                        outputPath: &apos;images/&apos;,</span><br><span class="line">                        limit: 2048</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                test: /\.css$/,</span><br><span class="line">                use: [&apos;style-loader&apos;, &apos;css-loader&apos;]</span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                test: /\.scss$/,</span><br><span class="line">                use: [</span><br><span class="line">                    &apos;style-loader&apos;,</span><br><span class="line">                    &apos;css-loader&apos;,</span><br><span class="line">                    &apos;postcss-loader&apos;</span><br><span class="line">                ]</span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                test: /\.(eot|ttf|svg|woff)$/,</span><br><span class="line">                use: [</span><br><span class="line">                    &apos;file-loader&apos;</span><br><span class="line">                ]</span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                test: /\.js$/,</span><br><span class="line">                exclude: /node_modules/,</span><br><span class="line">                loader: &quot;babel-loader&quot;</span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    plugins: [</span><br><span class="line">        new HtmlWebpackPlugin(&#123;</span><br><span class="line">            template: &apos;./src/index.html&apos;</span><br><span class="line">        &#125;),</span><br><span class="line">        new CleanWebpackPlugin(),</span><br><span class="line">        new webpack.HotModuleReplacementPlugin()</span><br><span class="line">    ],</span><br><span class="line">    output: &#123;</span><br><span class="line">        publicPath: &apos;/&apos;,</span><br><span class="line">        filename: &apos;[name].js&apos;,</span><br><span class="line">        path: path.resolve(__dirname, &apos;dist&apos;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
       
 
@@ -434,11 +443,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">HTML</a>
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
+                <a href="javascript:void(0)" class="js-tag color5">HTML</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -458,19 +467,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Mongodb</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">webpack</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
+                <a href="javascript:void(0)" class="js-tag color3">Mongodb</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -482,7 +483,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">CSS3</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
             
             <div class="clearfix"></div>
