@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="个人博客">
 <meta property="og:description" content="Git是目前世界上最先进的分布式版本控制系统（没有之一）。现在的项目开发已经离不开Git了，其强大的分支管理令多人协同开发十分便捷。并且先在很多项目都选择在github上开源，学Git已是大势所趋。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-09-11T10:23:11.487Z">
+<meta property="og:updated_time" content="2019-12-06T06:33:52.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git教程">
 <meta name="twitter:description" content="Git是目前世界上最先进的分布式版本控制系统（没有之一）。现在的项目开发已经离不开Git了，其强大的分支管理令多人协同开发十分便捷。并且先在很多项目都选择在github上开源，学Git已是大势所趋。">
@@ -183,7 +183,7 @@
 <h3 id="从远程库克隆"><a href="#从远程库克隆" class="headerlink" title="从远程库克隆"></a>从远程库克隆</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git@github.com:sherrybabyone/demo.git   // 克隆远程仓库</span><br></pre></td></tr></table></figure>
 <p>Git支持多种协议，包括<strong>https</strong>，但通过<strong>ssh</strong>支持的原生git协议速度最快</p>
 <h2 id="三、时光机穿梭"><a href="#三、时光机穿梭" class="headerlink" title="三、时光机穿梭"></a>三、时光机穿梭</h2><p>先说明两个命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git status   //掌握工作区的状态</span><br><span class="line">$ git diff &lt;file&gt;  //如果git status显示有文件被修改过，用git diff 可以查看被修改的内容。可以查看工作区和版本库里面最新版本的区别。</span><br></pre></td></tr></table></figure></p>
-<h3 id="版本回退"><a href="#版本回退" class="headerlink" title="版本回退"></a>版本回退</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git log    // 命令显示在版本库的提交日志。</span><br></pre></td></tr></table></figure>
+<h3 id="版本回退"><a href="#版本回退" class="headerlink" title="版本回退"></a>版本回退</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git log    // 命令显示在版本库的提交日志。</span><br><span class="line">$ git log --oneline     // 输出概要日志</span><br><span class="line">$ git log --oneline -5  //</span><br></pre></td></tr></table></figure>
 <p>在Git中，每次commit提交到仓库都会保存一个快照，称为<strong>commit</strong>，操作失误时可以回退之前的commit恢复。<br>一大串类似6899rta…的是<strong>commit id</strong>(版本号)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 在Git中，用HEAD表示当前版本，上一个版本是HEAD^，上上一个版本号是HEAD ^^，往上100个版本用HEAD~100表示。</span><br><span class="line">$ git reset --hard commit_id     //回退到指定版本</span><br><span class="line">$ git reset --hard HEAD^     //回退到上一个版本</span><br><span class="line">$ git reflog    //命令查看历史所有提交命令，以便确定返回哪个版本的版本号</span><br></pre></td></tr></table></figure></p>
 <h3 id="工作区和暂存区"><a href="#工作区和暂存区" class="headerlink" title="工作区和暂存区"></a>工作区和暂存区</h3><p>工作区：你存储git及文件的文件夹就是一个工作区。<br>版本库：工作区里的隐藏目录.git就是GIt的版本库<br>Git的版本库里包含很多东西，有被称为<strong>stage的暂存区</strong>，还有Git为我们自动创建的第一个分支master，以及指向master分支的HEAD指针等等。<br><code>git add</code> 把文件添加进去，实际上就是把文件添加到暂存区里。<br><code>git commit</code>提交，实际上就是把暂存区里的所有文件提交到当前分支</p>
 <h3 id="管理修改"><a href="#管理修改" class="headerlink" title="管理修改"></a>管理修改</h3><p>Git追踪并管理的是修改，而非文件。<br>每次修改，如果不用git add到暂存区，那就不会加入到commit中。</p>
@@ -213,7 +213,8 @@
 <li>可以推送pull request给官方仓库来贡献代码</li>
 </ul>
 <h2 id="五、远程分支管理"><a href="#五、远程分支管理" class="headerlink" title="五、远程分支管理"></a>五、远程分支管理</h2><h3 id="远程仓库基本操作"><a href="#远程仓库基本操作" class="headerlink" title="远程仓库基本操作"></a>远程仓库基本操作</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">查看远程仓库: $ git remote -v</span><br><span class="line">添加远程仓库: $ git remote add [name] [url]</span><br><span class="line">删除远程仓库: $ git remote rm [name]</span><br><span class="line">修改远程仓库: $ git remote set-url --push [name] [newUrl]</span><br><span class="line">拉取远程仓库: $ git pull [remoteName] [localBranchName]</span><br><span class="line">推送远程仓库: $ git push [remoteName] [localBranchName]</span><br></pre></td></tr></table></figure>
-<h3 id="远程分支操作"><a href="#远程分支操作" class="headerlink" title="远程分支操作"></a>远程分支操作</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">查看本地分支: $ git branch</span><br><span class="line">查看远程分支: $ git branch -r</span><br><span class="line">创建本地分支: $ git branch [name]</span><br><span class="line">切换分支:    $ git checkout [name]</span><br><span class="line">创建并切换到新分支: $ git checkout -b [name]</span><br><span class="line">创建远程分支: $ git push origin [name]</span><br><span class="line">删除远程分支: # git push origin :heads/[name]</span><br></pre></td></tr></table></figure>
+<h3 id="远程分支操作"><a href="#远程分支操作" class="headerlink" title="远程分支操作"></a>远程分支操作</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">查看本地分支: $ git branch</span><br><span class="line">查看远程分支: $ git branch -r</span><br><span class="line">创建本地分支: $ git branch [name]</span><br><span class="line">切换分支:    $ git checkout [name]</span><br><span class="line">创建并切换到新分支: $ git checkout -b [name]</span><br><span class="line">$ git push origin test:test // 提交本地test分支作为远程的test分支</span><br><span class="line">$ git push origin test:maste  // 提交本地test分支作为远程的master分支</span><br><span class="line">删除远程分支: $ git push origin :test // 刚提交到远程的test将会删除，但本地还在</span><br></pre></td></tr></table></figure>
+<p>Attention: <code>git push</code>时当本地分支存在，远程分支不存在的时候，可以推送关联的远程分支。</p>
 <ul>
 <li><p>在本地仓库没有分支，但远程仓库存在，想将远程仓库拉至本地仓库，使用命令:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b [新分支名] origin/[分支名]</span><br></pre></td></tr></table></figure>
@@ -382,7 +383,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2019 Sherry
+    		&copy; 2020 Sherry
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -457,15 +458,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">CSS3</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">HTML</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -497,15 +502,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">HTML5</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">CSS3</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+                <a href="javascript:void(0)" class="js-tag color3">MongoDB</a>
               </li>
             
             <div class="clearfix"></div>

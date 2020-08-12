@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>JavaScript异步的几种方式 | 个人博客</title>
+  <title>React新特性Hooks重构去哪儿网PWA | 个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="JavaScript的四种常用异步操作方式:callback、Promise、Generator、asnyc/await">
-<meta name="keywords" content="JavaScript">
+  <meta name="description" content="React新特性Hooks重构去哪儿网PWA">
+<meta name="keywords" content="React">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JavaScript异步的几种方式">
-<meta property="og:url" content="http://yoursite.com/2019/05/11/JavaScript异步的几种方式/index.html">
+<meta property="og:title" content="React新特性Hooks重构去哪儿网PWA">
+<meta property="og:url" content="http://yoursite.com/2019/11/27/React新特性Hooks重构去哪儿网PWA/index.html">
 <meta property="og:site_name" content="个人博客">
-<meta property="og:description" content="JavaScript的四种常用异步操作方式:callback、Promise、Generator、asnyc/await">
+<meta property="og:description" content="React新特性Hooks重构去哪儿网PWA">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-11T14:52:55.452Z">
+<meta property="og:updated_time" content="2019-12-02T06:03:06.365Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JavaScript异步的几种方式">
-<meta name="twitter:description" content="JavaScript的四种常用异步操作方式:callback、Promise、Generator、asnyc/await">
+<meta name="twitter:title" content="React新特性Hooks重构去哪儿网PWA">
+<meta name="twitter:description" content="React新特性Hooks重构去哪儿网PWA">
   
     <link rel="alternative" href="/atom.xml" title="个人博客" type="application/atom+xml">
   
@@ -151,45 +151,254 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-JavaScript异步的几种方式" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-React新特性Hooks重构去哪儿网PWA" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      JavaScript异步的几种方式
+      React新特性Hooks重构去哪儿网PWA
     </h1>
   
 
         
-        <a href="/2019/05/11/JavaScript异步的几种方式/" class="archive-article-date">
-  	<time datetime="2019-05-11T12:44:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-11</time>
+        <a href="/2019/11/27/React新特性Hooks重构去哪儿网PWA/" class="archive-article-date">
+  	<time datetime="2019-11-27T11:18:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-27</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="JavaScript的四种常用异步操作方式-callback、Promise、Generator、asnyc-await"><a href="#JavaScript的四种常用异步操作方式-callback、Promise、Generator、asnyc-await" class="headerlink" title="JavaScript的四种常用异步操作方式:callback、Promise、Generator、asnyc/await"></a>JavaScript的四种常用异步操作方式:callback、Promise、Generator、asnyc/await</h2><a id="more"></a>
-<h2 id="一、callback回调函数"><a href="#一、callback回调函数" class="headerlink" title="一、callback回调函数"></a>一、callback回调函数</h2><p>回调是一个函数作为参数传递到另一个函数里，在那个函数执行完后再执行。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function f1 (callback) &#123;</span><br><span class="line">    setTimeout(function () &#123;</span><br><span class="line">　　　　 console.log(&quot;1&quot;)</span><br><span class="line">        callback();</span><br><span class="line">    &#125;,1000);</span><br><span class="line">    &#125;</span><br><span class="line">function f2()&#123;</span><br><span class="line">        console.log(&quot;2&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">    f1(f2);</span><br></pre></td></tr></table></figure></p>
-<p>缺点是会陷入回调地狱。</p>
-<h2 id="二、Promise-ES6"><a href="#二、Promise-ES6" class="headerlink" title="二、Promise(ES6)"></a>二、Promise(ES6)</h2><ul>
-<li>Promise对象代表一个异步操作，有三种状态：<strong>pending</strong>(进行中),<strong>resolved</strong>(已成功)和<strong>rejected</strong>(已失败)。</li>
-<li>一旦状态改变，就不会再变，任何时候都可以得到这个结果。状态改变只有两种可能：<strong>pending</strong>=&gt;<strong>resolved</strong>,<strong>pending</strong>=&gt;<strong>rejected</strong>。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">const promise = new Promise(function(resolve, reject) &#123;</span><br><span class="line">  // ... some code</span><br><span class="line"></span><br><span class="line">  if (/* 异步操作成功 */)&#123;</span><br><span class="line">    resolve(value);</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    reject(error);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+        <p>React新特性Hooks重构去哪儿网PWA</p>
+<a id="more"></a>
+<h2 id="一、-入门"><a href="#一、-入门" class="headerlink" title="一、 入门"></a>一、 入门</h2><p>class类声明组件的问题：</p>
+<ul>
+<li>难以服用的状态逻辑</li>
+<li>难以捉摸的生命周期</li>
+<li>混乱的副作用<br>function函数组件：<br>use*（Hooks）<br>精于使用React Hooks作为未来新的组件开发方式</li>
+</ul>
+<p>前置准备（预备知识）：</p>
+<ul>
+<li>工具类</li>
+<li>语法类</li>
+<li>概念类</li>
+<li>效率类</li>
+<li>原则类</li>
+</ul>
+<h3 id="工具类"><a href="#工具类" class="headerlink" title="工具类"></a>工具类</h3><ul>
+<li>node<ul>
+<li>建立在V8之上</li>
+<li>异步事件驱动</li>
+<li>广泛应用于前端工具化</li>
+</ul>
+</li>
+<li>npm<ul>
+<li>JavaScript模块化规范</li>
+<li>模块托管服务</li>
+<li>意外应用于浏览器端代码共享</li>
+<li>npx下载全局命令行，执行完成之后移除</li>
+</ul>
+</li>
+<li>webpack<ul>
+<li>模块打包器</li>
+<li>演化为构建工具</li>
+</ul>
+</li>
+<li>eslint<ul>
+<li>ECMAScript代码风格校验</li>
+<li>“–fix”自动修复风格错误</li>
+<li>自定义规则以扩展校验范围</li>
+</ul>
+</li>
+<li>prettier<ul>
+<li>增强的代码美化工具</li>
+<li>武断的行为风格</li>
+<li>多种语法支持</li>
+</ul>
 </li>
 </ul>
-<p><strong>Promise</strong>实例生成以后，可以用<strong>then</strong>方法分别指定<strong>resolved</strong>状态和<strong>rejected</strong>状态的回调函数。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">promise.then(function(value) &#123;</span><br><span class="line">  // success</span><br><span class="line">&#125;, function(error) &#123;</span><br><span class="line">  // failure</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
-<p><strong>then</strong>方法接收两个回调函数，第一个回调函数是<strong>Promise</strong>对象的状态变为<strong>resolved</strong>时调用。第二个回调函数是<strong>Promise</strong>对象的状态变为<strong>rejected</strong>时调用。<br>缺点是：</p>
-<ul>
-<li>无法取消<strong>Promise</strong>，一旦新建就立即执行，无法中途取消。</li>
-<li>不设置回调函数，<strong>Promise</strong>内部抛出的错误，不会反应到外部。</li>
-<li>当初与<strong>pending</strong>状态时，无法得知目前进展到哪一个阶段(刚刚开始还是即将完成)</li>
+<h3 id="语法类"><a href="#语法类" class="headerlink" title="语法类"></a>语法类</h3><ul>
+<li>ECMAScript 2015+<ul>
+<li>Destructuring</li>
+<li>Spread</li>
+<li>Rest</li>
+<li>Arrow Function</li>
 </ul>
-<h2 id="三、Generator-ES6"><a href="#三、Generator-ES6" class="headerlink" title="三、Generator(ES6)"></a>三、Generator(ES6)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">function* G() &#123;</span><br><span class="line">    const a = yield 100</span><br><span class="line">    console.log(&apos;a&apos;, a)  // a aaa</span><br><span class="line">    const b = yield 200</span><br><span class="line">    console.log(&apos;b&apos;, b)  // b bbb</span><br><span class="line">    const c = yield 300</span><br><span class="line">    console.log(&apos;c&apos;, c)  // c ccc</span><br><span class="line">&#125;</span><br><span class="line">const g = G()</span><br><span class="line">g.next()    // value: 100, done: false</span><br><span class="line">g.next(&apos;aaa&apos;) // value: 200, done: false</span><br><span class="line">g.next(&apos;bbb&apos;) // value: 300, done: false</span><br><span class="line">g.next(&apos;ccc&apos;) // value: undefined, done: true</span><br></pre></td></tr></table></figure>
-<p>相比<strong>Promise</strong>，<strong>Generator</strong>流程更加直观、语义化。<br><strong>Generator</strong>的问题在于，函数的执行需要执行器每次都需要通过<code>g.next()</code>方式执行。</p>
-<h2 id="四、async-await-ES2017"><a href="#四、async-await-ES2017" class="headerlink" title="四、async/await(ES2017)"></a>四、async/await(ES2017)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">async function testResult() &#123;</span><br><span class="line">    let first = await doubleAfter2seconds(30);</span><br><span class="line">    let second = await doubleAfter2seconds(50);</span><br><span class="line">    let third = await doubleAfter2seconds(30);</span><br><span class="line">    console.log(first + second + third);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>asnyc</strong>函数解决了上述问题，流程清晰、直观、语义明显。<br>同时<strong>asnyc</strong>函数自带执行器，执行的时候无需手动加载。</p>
+</li>
+<li>JSX (React语法糖)</li>
+<li>CSS flex (弹性布局)</li>
+</ul>
+<h3 id="概念类"><a href="#概念类" class="headerlink" title="概念类"></a>概念类</h3><ul>
+<li>SPA/MPA<ul>
+<li>SPA(单页面应用)<ul>
+<li>异步接口通信</li>
+<li>纯前端渲染</li>
+<li>解藕的前后端协作</li>
+</ul>
+</li>
+<li>MPA(多页应用)</li>
+</ul>
+</li>
+<li>PWA(渐进式网络应用)<ul>
+<li>浏览器不支持PWA所需要的API可退化为传统HTTP访问模式</li>
+<li>可控的静态缓存</li>
+<li>离线访问能力</li>
+<li>优化载入速度</li>
+</ul>
+</li>
+</ul>
+<h3 id="效率类"><a href="#效率类" class="headerlink" title="效率类"></a>效率类</h3><ul>
+<li>iconfont<ul>
+<li>衍生于webfont</li>
+<li>自定义文字图形</li>
+<li>仅限于单色字体</li>
+</ul>
+</li>
+<li>snippets<ul>
+<li>自动生成代码片段</li>
+</ul>
+</li>
+</ul>
+<h3 id="原则类"><a href="#原则类" class="headerlink" title="原则类"></a>原则类</h3><ul>
+<li>职责分离<ul>
+<li>模块解藕</li>
+<li>优化可维护性</li>
+</ul>
+</li>
+</ul>
+<h2 id="二、React新特性"><a href="#二、React新特性" class="headerlink" title="二、React新特性"></a>二、React新特性</h2><h3 id="Context"><a href="#Context" class="headerlink" title="Context"></a>Context</h3><p>Context提供了一种方式，能够让数据在组件树中传递而不必一级一级手动传递。<br>创建Context API: <strong>createContext</strong><br>提供组件: <code>&lt;Context.Provider&gt;。。。&lt;/Context.Provider&gt;</code><br>消费者: <code>&lt;Context.Consume&gt;{val =&gt; (。。。)}&lt;/Context.Consume&gt;</code></p>
+<h3 id="ContextType"><a href="#ContextType" class="headerlink" title="ContextType"></a>ContextType</h3><p>使用静态方法:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">static contextType = CountContext;</span><br><span class="line"></span><br><span class="line">const count = this.context</span><br></pre></td></tr></table></figure></p>
+<p>替代使用消费者<code>Consumer</code>复杂的写法。<br>attention： Context会影响组件的可扩展性，一个组件建议最多引入一个<code>context</code></p>
+<h3 id="lazy和Suspense"><a href="#lazy和Suspense" class="headerlink" title="lazy和Suspense"></a>lazy和Suspense</h3><p>延迟加载</p>
+<ul>
+<li>webpack - Code Splitting(import<strong>动态</strong>导入模块的时候，webpack会做一次代码拆分，将导入的模块及其依赖打包成独立的文件，默认情况下页面不会主动加载，只有渲染的时候才会导入)</li>
+<li>import<br>封装的是组件导入的行为，而不是组件本身。<br>一个完整的懒加载组件的🌰:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">import React, &#123; Component, lazy, Suspense &#125; from &apos;react&apos;</span><br><span class="line"></span><br><span class="line">const About = lazy(() =&gt; import(/* webpackChunkName: &quot;about&quot; */ &apos;./About.jsx&apos;))</span><br><span class="line"></span><br><span class="line">// ErrorBoundary</span><br><span class="line">// componentDidCatch</span><br><span class="line">// getDerivedStateFromError</span><br><span class="line"></span><br><span class="line">export default class Lazy extends Component &#123;</span><br><span class="line">  state = &#123;</span><br><span class="line">    hasError: false</span><br><span class="line">  &#125;</span><br><span class="line">  componentDidCatch() &#123;</span><br><span class="line">    this.setState(&#123;</span><br><span class="line">      hasError: true</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  // static getDerivedStateFromError() &#123;</span><br><span class="line">  //   return &#123;</span><br><span class="line">  //     hasError: true</span><br><span class="line">  //   &#125;</span><br><span class="line">  // &#125;</span><br><span class="line">  render() &#123;</span><br><span class="line">    if(this.state.hasError) &#123;</span><br><span class="line">      return &lt;div&gt;error&lt;/div&gt;</span><br><span class="line">    &#125;</span><br><span class="line">    return (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &lt;Suspense fallback=&#123;&lt;div&gt;loading&lt;/div&gt;&#125;&gt;</span><br><span class="line">          &lt;About /&gt;</span><br><span class="line">        &lt;/Suspense&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ol>
+<li>使用lazy之后，会存在一个加载中的空档，需要配合使用<strong>Suspense</strong>，将异步导入的组件包裹起来，定义属性<strong>fallback</strong>，传入一段JSX(组件实例)，说明在加载空档时期组件的显示。</li>
+<li>webpack在实现Code Splitting的同时，可以支持自定义命名：<code>import(/* webpackChunkName: &quot;about&quot; */ &#39;./About.jsx&#39;))</code><ul>
+<li>以<code>About.jsx</code>为入口新生成一个Chunk</li>
+<li>当代码执行到<code>import</code>语句时才会去加载由Chunk对应的文件</li>
+</ul>
+</li>
+<li>ErrorBoundary(异常捕获)，可以使用<code>componentDidCatch</code>或使用静态方法<code>getDerivedStateFromError</code>处理当请求资源被禁用时的渲染页面。</li>
+</ol>
+<h3 id="memo"><a href="#memo" class="headerlink" title="memo"></a>memo</h3><p>避免无状态的重复渲染：</p>
+<ul>
+<li>shouldComponentUpdate生命周期</li>
+<li>使用PureComponent进行简单的对比算法(只有传入props的第一级发生变化才会渲染，引用对象类型属性发生变化不会发生重新渲染)</li>
+<li>使用function函数组件，使用<strong>memo</strong>进行简单的对比渲染(类似于PureComponent)：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import React, &#123; Component, memo &#125; from &apos;react&apos;</span><br><span class="line"></span><br><span class="line">const Foo = memo(function Foo(props) &#123;</span><br><span class="line">  console.log(&apos;Foo render&apos;)</span><br><span class="line">  return &lt;div&gt;Hello World&lt;/div&gt;;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="三、React-Hooks"><a href="#三、React-Hooks" class="headerlink" title="三、React Hooks"></a>三、React Hooks</h2><h3 id="Hook"><a href="#Hook" class="headerlink" title="Hook"></a>Hook</h3><blockquote>
+<p>Hooks let you use state and other React features without writing a class<br>Hook 是一些可以让你在函数组件里“钩入” React state 及生命周期等特性的函数。Hook 不能在 class 组件中使用 —— 这使得你不使用 class 也能使用 React。</p>
+</blockquote>
+<p>类组件的不足：</p>
+<ol>
+<li>组件状态逻辑复用难<ul>
+<li>缺少复用机制</li>
+<li>渲染属性和高阶组件导致层次冗余</li>
+</ul>
+</li>
+<li>趋向复杂难以维护<ul>
+<li>生命周期函数混杂不相干逻辑</li>
+<li>相干逻辑分散在不用生命周期</li>
+</ul>
+</li>
+<li>难以理解的class(this指向困扰)<ul>
+<li>内联函数过度创建新句柄</li>
+<li>类成员函数不能保证this</li>
+</ul>
+</li>
+</ol>
+<p>优化类组件的三大问题：</p>
+<ul>
+<li>函数组件无this问题</li>
+<li>自定义Hook方便复用状态逻辑</li>
+<li>副作用的关注点分离(副作用: 指没有发生在数据向视图转化环节之中，比如: 发起网络请求、访问原生DOM元素，写本地缓存、绑定解绑事件)</li>
+</ul>
+<h3 id="State-Hooks"><a href="#State-Hooks" class="headerlink" title="State Hooks"></a>State Hooks</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 声明一个叫 “count” 的 state 变量</span><br><span class="line">const [count, setCount] = useState(initialState);</span><br></pre></td></tr></table></figure>
+<p><code>useState</code>的参数和返回值:<br><code>useState()</code>方法里面唯一的参数就是初始<code>state</code>。返回一个<code>state</code>以及更新<code>state</code>的函数。</p>
+<blockquote>
+<p>注意<br>React 会确保 setState 函数的标识是稳定的，并且不会在组件重新渲染时发生变化。这就是为什么可以安全地从 useEffect 或 useCallback 的依赖列表中省略 setState。</p>
+</blockquote>
+<p><code>initialState</code>参数只会在组件的初始渲染中起作用，后续渲染会忽略。如果<code>state</code>需要通过复杂计算获得，可以传入一个函数，在函数中计算返回初始的<code>state</code>，此函数只在初始渲染时被调用。<br>举个🌰:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const defaultCount = props.defaultCount || 0;</span><br><span class="line">const [count, setCount] = useState(defaultCount)</span><br></pre></td></tr></table></figure></p>
+<p><code>defaultCount</code>在每次重新渲染的时候都会执行，如果是复杂逻辑会消耗大量性能，应该使用<code>useState</code>参数为函数，返回值即为默认<code>initialState</code>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const [count, setCount] = useState(() =&gt; &#123;</span><br><span class="line">  return props.defaultCount || 0;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p><code>setState</code>的参数还可以是一个函数，函数参数就为上一次的<code>state</code>，函数返回值就为更新后的<code>state</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setCount(count =&gt; count + 1)</span><br></pre></td></tr></table></figure></p>
+<h3 id="Effect-Hook"><a href="#Effect-Hook" class="headerlink" title="Effect Hook"></a>Effect Hook</h3><blockquote>
+<p>Effect Hook 可以让你在函数组件中执行副作用操作。<br>副作用: 指没有发生在数据向视图转化环节之中，比如: 数据获取，设置订阅以及手动更改React组件中的DOM…<br>默认情况下，<code>effect</code>将在每轮渲染结束后执行。<br>虽然<code>useEffect</code>会在浏览器绘制之后延迟执行，但会保证在任何新的渲染前执行。React将在组件更新前刷新上一轮渲染的<code>effect</code>。</p>
+</blockquote>
+<p><code>useEffect</code>可以看作是<code>componentDidMount</code>、<code>componentDidUpdate</code>、<code>componentWillUnmount</code>这三个生命周期的组合。</p>
+<p>React组件中有两种常见的副作用: 需要清除的和不需要清除的。</p>
+<p>无需清除的(只想在React更新DOM后运行一些额外的代码，比如发送网络请求、手动变更DOM):<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">useEffect(() =&gt; &#123;</span><br><span class="line">  document.title = `You clicked $&#123;count&#125; times`;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>会在每次渲染后都执行(相当于ComponentDidMount和componentDidUpdate)</p>
+<p>需要清除的effect：<br>effect返回一个函数，React会在执行清除操作的时候调用它。<br><strong>何时清除effect?</strong>: React会在执行当前effect之前对上一个effect进行清除。</p>
+<p>通过跳过Effect进行性能优化:</p>
+<ul>
+<li>传递<strong>数组</strong>为第二个可选参数。数组中的多个元素，任意一个元素发生变化时，React才会执行effect。</li>
+<li>如果只想仅在<strong>组件挂载和卸载</strong>时执行effect，可以传入一个空数组([])。如果传入了空数组([]),effect内部的props和state就会一直拥有其初始值，相比较有更好的方法。</li>
+</ul>
+<h3 id="Context-Hooks"><a href="#Context-Hooks" class="headerlink" title="Context Hooks"></a>Context Hooks</h3><p>在class类组件中可以使用静态方法<strong>contextType</strong>,在子组件中获取。但在函数组件中没有静态方法的概念，可以使用<strong>useContext</strong>获取context。<br>一个🌰:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">import React, &#123; useState, createContext, useContext &#125; from &apos;react&apos;</span><br><span class="line"></span><br><span class="line">const CountContext = createContext()</span><br><span class="line"></span><br><span class="line">function Bar(props) &#123;</span><br><span class="line">  const count = useContext(CountContext);</span><br><span class="line">  return (</span><br><span class="line">    &lt;h1&gt;&#123;count&#125;&lt;/h1&gt;</span><br><span class="line">  )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function ContextFunc(props) &#123;</span><br><span class="line">  const [count, setCount] = useState(0)</span><br><span class="line">  return (</span><br><span class="line">    &lt;CountContext.Provider value=&#123;count&#125;&gt;</span><br><span class="line">      &lt;button onClick=&#123;() =&gt; &#123;setCount(count + 1)&#125;&#125;&gt;Click Add&lt;/button&gt;</span><br><span class="line">      &lt;Bar /&gt;</span><br><span class="line">    &lt;/CountContext.Provider&gt;</span><br><span class="line">  )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export default ContextFunc;</span><br></pre></td></tr></table></figure></p>
+<h3 id="Memo-Callback-Hooks"><a href="#Memo-Callback-Hooks" class="headerlink" title="Memo/Callback Hooks"></a>Memo/Callback Hooks</h3><p><strong>useMemo</strong>和<strong>useCallback</strong>的目的都是解决组件的重复渲染问题。</p>
+<p><code>memo</code>针对一个组件的渲染是否重复执行。<br><code>useMemo</code>定义了一段函数逻辑是否重复执行。<br>用法跟<code>useEffect</code>大致相同，存在细微差别：</p>
+<ul>
+<li>useEffect针对的是副作用，渲染之后运行的</li>
+<li>useMemo有返回值，返回值可以直接参与渲染，useMemo是在渲染期间完成的。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const double = useMemo(() =&gt; &#123;</span><br><span class="line">  return count * 2</span><br><span class="line">&#125;, [count])</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>第二个参数数组表示其中变量发生变化时，回调函数才调用，<code>double</code>直接表示回调函数返回的值。</p>
+<p>当传递子组件一个函数时，父组件重新渲染一定会导致子组件重新渲染。这是因为传入子组件的函数参数过度变化导致子组件过度渲染。可以使用<strong>useMemo</strong>返回这个函数，也可以使用<strong>useCallback</strong>进行更简介的表示。<br><strong>useCallback</strong>是<strong>useMemo</strong>的一种变体:<br><code>useMemo(() =&gt; fn)</code>等价于<code>useCallback(fn)</code><br><code>useCallback</code>解决的是传入子组件的函数参数过度变化导致子组件过度渲染的问题。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">const onClick = useCallback(() =&gt; &#123;</span><br><span class="line">  console.log(&apos;click&apos;)</span><br><span class="line">&#125;, [])</span><br><span class="line">// useMemo(() =&gt; fn)  &lt;=&gt; useCallback(fn)</span><br><span class="line"></span><br><span class="line">return (</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;button onClick=&#123;() =&gt; &#123;setCount(count + 1)&#125;&#125;&gt;Click &#123;count&#125;&lt;/button&gt;</span><br><span class="line">    &lt;Counter count=&#123;double&#125; onClick=&#123;onClick&#125; /&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">)</span><br></pre></td></tr></table></figure></p>
+<p>需要注意的是: 当依赖变化时，可以断定<code>useMemo</code>一定重新执行，但即使依赖不变化，我们不能假定一定不会重新执行。</p>
+<h3 id="Ref-Hooks"><a href="#Ref-Hooks" class="headerlink" title="Ref Hooks"></a>Ref Hooks</h3><p>在类组件中经常使用的是<code>createRef</code>，在函数组件中取而代之的是<strong>useRef</strong><br>在组件中使用<strong>useRef</strong>的两种使用场景：</p>
+<ul>
+<li>获取子组件或者DOM节点的句柄</li>
+<li>渲染周期之间共享数据的存储(state会导致重新渲染，ref不会)<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const countRef = useRef()</span><br><span class="line">...</span><br><span class="line">&lt;Counter ref=&#123;countRef&#125; /&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>挂载<code>ref</code>需要是组件实例(函数组件不行，必须是类组件)</p>
+<p>第一种使用情况(获取子组件或者DOM节点的句柄):<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">const countRef = useRef()</span><br><span class="line">const onClick = useCallback(() =&gt; &#123;</span><br><span class="line">  counterRef.current.speak();</span><br><span class="line">&#125;, [counterRef])</span><br><span class="line">...</span><br><span class="line">&lt;Counter ref=&#123;countRef&#125; onClick=&#123;handleClick&#125;&gt;&lt;/Counter&gt;</span><br></pre></td></tr></table></figure></p>
+<p>第二种使用情况,保存一个普通变量(使用场景：需要上一次渲染的数据，但又不参与渲染不需要添加到state中，使用<code>useRef</code>,在函数组件中直接声明变量，组件重新渲染变量会重新创建！):<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">const it = useRef()</span><br><span class="line">useEffect(() =&gt; &#123;</span><br><span class="line">  it.current = setInterval(() =&gt; &#123;</span><br><span class="line">    setCount(count =&gt; count + 1)</span><br><span class="line">  &#125;, 1000)</span><br><span class="line">&#125;, [])</span><br><span class="line">useEffect(() =&gt; &#123;</span><br><span class="line">  if(count &gt;= 10) &#123;</span><br><span class="line">    clearInterval(it.current)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<h3 id="自定义Hooks-Hooks使用规则"><a href="#自定义Hooks-Hooks使用规则" class="headerlink" title="自定义Hooks/Hooks使用规则"></a>自定义Hooks/Hooks使用规则</h3><p>Hooks使用规则:</p>
+<ul>
+<li>只能在<strong>函数最外层</strong>调用 Hook。不要在循环、条件判断或者子函数中调用。(原因: React是根据<strong>Hook出现的顺序进行调用</strong>的，必须确保Hook在每一次渲染中都按照同样的顺序被调用)</li>
+<li>只能在React函数中调用Hook<br><strong>不要再普通JavaScript函数中调用Hook</strong>。你可以:<ul>
+<li>在React的函数组件中调用Hook</li>
+<li>在自定义Hook中调用Hook</li>
+</ul>
+</li>
+</ul>
+<p>规范：所有Hooks函数(包括自定义的)都应该以<code>use</code>开头</p>
+<p>使用ESlint插件:<br>可以使用React Hooks提供的Eslint插件: <code>npm install eslint-plugin-react-hooks --save-dev</code><br>配置esling:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&quot;eslintConfig&quot;: &#123;</span><br><span class="line">  &quot;extends&quot;: &quot;react-app&quot;,</span><br><span class="line">  &quot;plugins&quot;: [</span><br><span class="line">    &quot;react-hooks&quot;</span><br><span class="line">  ],</span><br><span class="line">  &quot;rules&quot;: &#123;</span><br><span class="line">    &quot;react-hooks/rules-of-hooks&quot;: &quot;error&quot;,</span><br><span class="line">    &quot;react-hooks/exhaustive-deps&quot;: &quot;warn&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="Hooks常见问题"><a href="#Hooks常见问题" class="headerlink" title="Hooks常见问题"></a>Hooks常见问题</h3><p>Hooks对传统React编程的影响:</p>
+<ol>
+<li>生命周期函数如何映射到Hooks？<ul>
+<li><code>constructor</code>: 使用<code>useState</code></li>
+<li>静态方法<code>getDerivedStateFromProps</code>: 使用<code>setState</code></li>
+<li><code>shouldComponentUpdate</code>: 使用memo</li>
+<li><code>render</code>: 本身返回JSX，包含<code>render</code>的能力</li>
+<li><code>componentDidMount</code>、<code>componentDidUpdate</code>、<code>componentWillUnmount</code>: <code>useEffect</code></li>
+<li><code>componentDidCatch</code>生命周期和静态方法<code>getDerivedStateFromError</code>处理组件渲染错误，目前函数组件中没有对应的Hooks</li>
+</ul>
+</li>
+<li><p>类实例成员变量如何映射到Hooks？<br>使用<code>useRef</code>:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">class App&#123;</span><br><span class="line">  it = 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function App() &#123;</span><br><span class="line">  const it = useRef(0)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Hooks中如何获取历史props和state？<br>使用<code>useRef</code>，一个🌰:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">import React, &#123; useState, useEffect, useRef &#125; from &apos;react&apos;;</span><br><span class="line">function Counter() &#123;</span><br><span class="line">  const [count, setCount] = useState(0);</span><br><span class="line">  const prevCountRef = useRef();</span><br><span class="line"></span><br><span class="line">  useEffect(() =&gt; &#123;</span><br><span class="line">    prevCountRef.current = count;</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  const prevCount = prevCountRef.current;</span><br><span class="line"></span><br><span class="line">  const handleClick = () =&gt; &#123;</span><br><span class="line">    setCount(count + 1);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  return (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;button onClick=&#123;handleClick&#125;&gt;ADD&lt;/button&gt;</span><br><span class="line">      &lt;h1&gt;Now: &#123;count&#125;&lt;/h1&gt;</span><br><span class="line">      &lt;h1&gt;before: &#123;prevCount&#125;&lt;/h1&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  )</span><br><span class="line">&#125;</span><br><span class="line">export default Counter;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如何强制更新一个Hooks组件？<br>类组件中存在<code>forceUpdate</code>方法强制更新组件。在函数组件中可以定义一个不相关的变量:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const [updater, setUpdater] = useState(0)</span><br><span class="line">function forceUpdate() &#123;</span><br><span class="line">  setUpdater(updater =&gt; updater + 1);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="四、Redux"><a href="#四、Redux" class="headerlink" title="四、Redux"></a>四、Redux</h2><p><strong>Redux三大原则</strong>:</p>
+<ul>
+<li>单一数据源</li>
+<li>状态不可变</li>
+<li>纯函数修改状态</li>
+</ul>
 
       
 
@@ -224,7 +433,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">React</a>
         		</li>
       		
 		</ul>
@@ -280,7 +489,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/05/11/JavaScript异步的几种方式/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/11/27/React新特性Hooks重构去哪儿网PWA/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -294,18 +503,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/05/11/JavaScript中this指向的修改/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/11/27/记一次完整的头条实习三面经历/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          JavaScript中this指向的修改
+          (no title)
         
       </div>
     </a>
   
   
-    <a href="/2019/05/09/JavaScript之this原理/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">JavaScript之this原理</div>
+    <a href="/2019/11/13/微信小程序原理/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">微信小程序原理</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -348,7 +557,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2019 Sherry
+    		&copy; 2020 Sherry
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -423,15 +632,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">CSS3</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">HTML</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -463,15 +676,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">HTML5</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">CSS3</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+                <a href="javascript:void(0)" class="js-tag color3">MongoDB</a>
               </li>
             
             <div class="clearfix"></div>

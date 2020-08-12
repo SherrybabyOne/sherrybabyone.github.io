@@ -148,32 +148,39 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-JavaScript-入门" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-JavaScript中this指向的修改" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/13/JavaScript-入门/">JS-入门</a>
+      <a class="article-title" href="/2019/05/11/JavaScript中this指向的修改/">JavaScript中this指向的修改</a>
     </h1>
   
 
         
-        <a href="/2019/04/13/JavaScript-入门/" class="archive-article-date">
-  	<time datetime="2019-04-13T13:54:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-13</time>
+        <a href="/2019/05/11/JavaScript中this指向的修改/" class="archive-article-date">
+  	<time datetime="2019-05-11T13:37:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-11</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>利用寒假一个多月的时间，重新学习下JS。参考文献：<a href="https://www.liaoxuefeng.com/" target="_blank" rel="noopener">廖雪峰的官方网站</a><br>一步一步地学习并记下笔记复习。<br>
+        <p>已经介绍过JavaScript中this指向的原理，今天介绍一下this指向的几个复杂解析，和如何改变this的指向。</p>
+<p>关于this的指向，有几个点需要注意：</p>
+<ul>
+<li>this指向的，只能是对象。</li>
+<li>this指向谁，取决于函数的执行环境，而不是在创建时就决定了。</li>
+<li>匿名函数的执行环境具有全局性。</li>
+<li>对于普通函数调用，我们通常把<strong>this</strong>绑定为<strong>null</strong></li>
+</ul>
         
       
 
       
-    </p></div>
+    </div>
     <div class="article-info article-info-index">
       
       
@@ -192,7 +199,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/13/JavaScript-入门/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/05/11/JavaScript中this指向的修改/">展开全文 >></a>
         </p>
       
 
@@ -222,27 +229,325 @@
 
 
   
-    <article id="post-React-Redux数据流" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-JavaScript之this原理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/13/React-Redux数据流/">React-Redux数据流</a>
+      <a class="article-title" href="/2019/05/09/JavaScript之this原理/">JavaScript之this原理</a>
     </h1>
   
 
         
-        <a href="/2019/04/13/React-Redux数据流/" class="archive-article-date">
-  	<time datetime="2019-04-13T13:52:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-13</time>
+        <a href="/2019/05/09/JavaScript之this原理/" class="archive-article-date">
+  	<time datetime="2019-05-09T13:19:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-09</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Redux 是 JavaScript <strong>状态容器</strong>，提供可预测化的状态管理。<br>可以让你构建一致化的应用，运行于不同的环境（客户端、服务器、原生应用），并且易于测试。不仅于此，它还提供 超爽的开发体验，比如有一个时间旅行调试器可以编辑后实时预览。<br>Redux 除了和 React 一起用外，还支持其它界面库。 它体小精悍（只有2kB，包括依赖）。</p>
+        <p>深入解析JavaScript中this原理</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/05/09/JavaScript之this原理/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-JavaScript7个实用技巧" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/08/JavaScript7个实用技巧/">JavaScript7个实用技巧</a>
+    </h1>
+  
+
+        
+        <a href="/2019/05/08/JavaScript7个实用技巧/" class="archive-article-date">
+  	<time datetime="2019-05-08T13:07:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>记录分享下JavaScript7个简单实用的小技巧~</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/05/08/JavaScript7个实用技巧/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-JavaScript数据类型及其检测" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/05/JavaScript数据类型及其检测/">JavaScript数据类型及其检测</a>
+    </h1>
+  
+
+        
+        <a href="/2019/05/05/JavaScript数据类型及其检测/" class="archive-article-date">
+  	<time datetime="2019-05-05T04:48:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="http://prl8grrsh.bkt.clouddn.com/image/posts/JS_1" alt="JavaScript数据类型" title="知识树"></p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/05/05/JavaScript数据类型及其检测/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-云服务器Nginx配置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/26/云服务器Nginx配置/">云服务器Nginx配置</a>
+    </h1>
+  
+
+        
+        <a href="/2019/04/26/云服务器Nginx配置/" class="archive-article-date">
+  	<time datetime="2019-04-26T11:00:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>  Nginx是一款轻量级的HTTP服务器，采用事件驱动的异步非阻塞处理方式框架，这让其具有极好的IO性能，时常用于服务端的反向代理和负载均衡。</p>
+</blockquote>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Nginx</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/04/26/云服务器Nginx配置/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-React中变量声明使用的坑" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/22/React中变量声明使用的坑/">React中变量声明使用的坑</a>
+    </h1>
+  
+
+        
+        <a href="/2019/04/22/React中变量声明使用的坑/" class="archive-article-date">
+  	<time datetime="2019-04-22T02:13:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在React中state的定义中有一个坑不易被发现，主要是state属性变量未被定义就使用，会造成编译错误，需要用到三位运算符：</p>
         
       
 
@@ -266,7 +571,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/13/React-Redux数据流/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/04/22/React中变量声明使用的坑/">展开全文 >></a>
         </p>
       
 
@@ -296,27 +601,27 @@
 
 
   
-    <article id="post-Git教程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Umi配置proxy解决跨域问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/13/Git教程/">Git教程</a>
+      <a class="article-title" href="/2019/04/21/Umi配置proxy解决跨域问题/">Umi配置proxy解决跨域问题</a>
     </h1>
   
 
         
-        <a href="/2019/04/13/Git教程/" class="archive-article-date">
-  	<time datetime="2019-04-13T11:43:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-13</time>
+        <a href="/2019/04/21/Umi配置proxy解决跨域问题/" class="archive-article-date">
+  	<time datetime="2019-04-21T14:23:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-21</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Git是目前世界上最先进的分布式版本控制系统（没有之一）。<br>现在的项目开发已经离不开Git了，其强大的分支管理令多人协同开发十分便捷。<br>并且先在很多项目都选择在github上开源，学Git已是大势所趋。</p>
+        <p>在umi脚手架下，配置webpack解决跨域问题</p>
         
       
 
@@ -330,7 +635,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Git</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">React</a>
         		</li>
       		
 		</ul>
@@ -340,7 +645,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/13/Git教程/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/04/21/Umi配置proxy解决跨域问题/">展开全文 >></a>
         </p>
       
 
@@ -370,26 +675,27 @@
 
 
   
-    <article id="post-mac前端环境配置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Dva数据流实现AJAX请求" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/13/mac前端环境配置/">mac前端环境配置</a>
+      <a class="article-title" href="/2019/04/21/Dva数据流实现AJAX请求/">Dva数据流实现AJAX请求</a>
     </h1>
   
 
         
-        <a href="/2019/04/13/mac前端环境配置/" class="archive-article-date">
-  	<time datetime="2019-04-13T11:32:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-13</time>
+        <a href="/2019/04/21/Dva数据流实现AJAX请求/" class="archive-article-date">
+  	<time datetime="2019-04-21T09:09:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-21</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
+        <p>Dva数据流中数据的相关操作在<strong>Modal</strong>中实现，发送AJAX请求时则需要调用异步操作方法<strong>effect</strong>。<br>为了显示加载中的效果，还可以使用第三方插件<strong>dva-loading</strong></p>
         
       
 
@@ -398,11 +704,22 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">React</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/13/mac前端环境配置/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/04/21/Dva数据流实现AJAX请求/">展开全文 >></a>
         </p>
       
 
@@ -432,28 +749,32 @@
 
 
   
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-mongoose基本操作" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/13/hello-world/">Hello World</a>
+      <a class="article-title" href="/2019/04/20/mongoose基本操作/">Mongoose基本操作</a>
     </h1>
   
 
         
-        <a href="/2019/04/13/hello-world/" class="archive-article-date">
-  	<time datetime="2019-04-12T21:25:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-13</time>
+        <a href="/2019/04/20/mongoose基本操作/" class="archive-article-date">
+  	<time datetime="2019-04-20T04:07:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-20</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>之前的博客大大小小丢了好多，从今天开始完善博客，随手记录知识点，方便温习。2019-4-13</p>
-
+        <p>mongoose的基本操作：</p>
+<ul>
+<li>connect链接数据库</li>
+<li>定义文档模型，Schema和model新建模型</li>
+</ul>
+        
       
 
       
@@ -461,11 +782,104 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Mongodb</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/13/hello-world/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/04/20/mongoose基本操作/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-后端Express、mongodb环境部署" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/20/后端Express、mongodb环境部署/">后端Express、mongodb环境部署</a>
+    </h1>
+  
+
+        
+        <a href="/2019/04/20/后端Express、mongodb环境部署/" class="archive-article-date">
+  	<time datetime="2019-04-20T03:16:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Express"><a href="#Express" class="headerlink" title="Express:"></a>Express:</h2><p>基于<strong>Node.js</strong>平台，快速、开放、极简的Web开发框架。</p>
+<h2 id="MongoDB"><a href="#MongoDB" class="headerlink" title="MongoDB:"></a>MongoDB:</h2><p>由C++语言编写，是一个基于分布式文件存储的<strong>非关系型</strong>开源数据库系统。MonogoDB将数据存储为一个文档，数据结构由键值(key=&gt;value)对组成，MongoDB文档类似于JSON对象。</p>
+<h2 id="Mongoose"><a href="#Mongoose" class="headerlink" title="Mongoose:"></a>Mongoose:</h2><p>Mongoose是在Node.js环境下对Mongodb进行便捷操作的对象模型工具</p>
+<hr>
+<p>本文介绍在mac系统下，Express、Mongodb和Mongoose的环境配置 </p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Mongodb</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Express</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/04/20/后端Express、mongodb环境部署/">展开全文 >></a>
         </p>
       
 
@@ -497,7 +911,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/4/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span>
+      <a class="extend prev" rel="prev" href="/page/4/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/6/">Next &raquo;</a>
     </nav>
   
 
@@ -509,7 +923,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2019 Sherry
+    		&copy; 2020 Sherry
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -584,15 +998,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">CSS3</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">HTML</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -624,15 +1042,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">HTML5</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">CSS3</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+                <a href="javascript:void(0)" class="js-tag color3">MongoDB</a>
               </li>
             
             <div class="clearfix"></div>

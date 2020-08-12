@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>JavaScript的单线程和异步 | 个人博客</title>
+  <title>Webpack学习(四)之实战篇 | 个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一、前言 提到JavaScript的单线程(single threaded)和异步(asynchronous)，很多初入JavaScript的会想到这是自相矛盾的。当然，单线程和异步不能同时成为一个语言的特性。JS语言的特性是单线程，所以本身是不可能异步的，但JS的宿主环境(比如浏览器,Node)是多线程的，宿主环境通过某种方式使得JS具备了异步的属性。">
-<meta name="keywords" content="JavaScript">
+  <meta name="description" content="一、Library的打包 二、PWA的打包配置 三、TypeScript的打包配置 四、使用WebpackDevServer实现请求转发 五、WebpackDevServer解决但页面应用路由问题 六、Eslint配置 七、webpack性能优化 八、多页面应用打包配置">
+<meta name="keywords" content="webpack">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JavaScript的单线程和异步">
-<meta property="og:url" content="http://yoursite.com/2019/05/09/JavaScript的单线程和异步/index.html">
+<meta property="og:title" content="Webpack学习(四)之实战篇">
+<meta property="og:url" content="http://yoursite.com/2019/09/26/Webpack学习(四)之实战篇/index.html">
 <meta property="og:site_name" content="个人博客">
-<meta property="og:description" content="一、前言 提到JavaScript的单线程(single threaded)和异步(asynchronous)，很多初入JavaScript的会想到这是自相矛盾的。当然，单线程和异步不能同时成为一个语言的特性。JS语言的特性是单线程，所以本身是不可能异步的，但JS的宿主环境(比如浏览器,Node)是多线程的，宿主环境通过某种方式使得JS具备了异步的属性。">
+<meta property="og:description" content="一、Library的打包 二、PWA的打包配置 三、TypeScript的打包配置 四、使用WebpackDevServer实现请求转发 五、WebpackDevServer解决但页面应用路由问题 六、Eslint配置 七、webpack性能优化 八、多页面应用打包配置">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-09T13:55:21.732Z">
+<meta property="og:updated_time" content="2019-09-27T11:20:29.391Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JavaScript的单线程和异步">
-<meta name="twitter:description" content="一、前言 提到JavaScript的单线程(single threaded)和异步(asynchronous)，很多初入JavaScript的会想到这是自相矛盾的。当然，单线程和异步不能同时成为一个语言的特性。JS语言的特性是单线程，所以本身是不可能异步的，但JS的宿主环境(比如浏览器,Node)是多线程的，宿主环境通过某种方式使得JS具备了异步的属性。">
+<meta name="twitter:title" content="Webpack学习(四)之实战篇">
+<meta name="twitter:description" content="一、Library的打包 二、PWA的打包配置 三、TypeScript的打包配置 四、使用WebpackDevServer实现请求转发 五、WebpackDevServer解决但页面应用路由问题 六、Eslint配置 七、webpack性能优化 八、多页面应用打包配置">
   
     <link rel="alternative" href="/atom.xml" title="个人博客" type="application/atom+xml">
   
@@ -151,52 +151,89 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-JavaScript的单线程和异步" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Webpack学习(四)之实战篇" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      JavaScript的单线程和异步
+      Webpack学习(四)之实战篇
     </h1>
   
 
         
-        <a href="/2019/05/09/JavaScript的单线程和异步/" class="archive-article-date">
-  	<time datetime="2019-05-09T11:02:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-09</time>
+        <a href="/2019/09/26/Webpack学习(四)之实战篇/" class="archive-article-date">
+  	<time datetime="2019-09-26T10:01:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-26</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h2><hr>
-<p>提到JavaScript的单线程(single threaded)和异步(asynchronous)，很多初入JavaScript的会想到这是自相矛盾的。当然，单线程和异步不能同时成为一个语言的特性。<br>JS语言的特性是<strong>单线程</strong>，所以本身是不可能异步的，但JS的宿主环境(比如浏览器,Node)是多线程的，宿主环境通过某种方式使得JS具备了异步的属性。</p>
+        <ul>
+<li>一、Library的打包</li>
+<li>二、PWA的打包配置</li>
+<li>三、TypeScript的打包配置</li>
+<li>四、使用WebpackDevServer实现请求转发</li>
+<li>五、WebpackDevServer解决但页面应用路由问题</li>
+<li>六、Eslint配置</li>
+<li>七、webpack性能优化</li>
+<li>八、多页面应用打包配置</li>
+</ul>
+<hr>
 <a id="more"></a>
-<h2 id="二、浏览器"><a href="#二、浏览器" class="headerlink" title="二、浏览器"></a>二、浏览器</h2><p>JS是单线程语言，浏览器指分配给JS一个主线程，用来执行函数，但一次只能执行一个函数，这些任务排队形成任务队列等候执行。<br>有些任务是很耗时的，比如网络请求、定时器和事件监听等。这些任务还要排队执行的话，效率很低甚至网页会卡死。<br>所以，浏览器为这些耗时任务开辟了另外的线程，主要包括http请求线程，浏览器定时触发器，浏览器事件触发线程，这些任务是异步的。</p>
+<h2 id="一、Library的打包"><a href="#一、Library的打包" class="headerlink" title="一、Library的打包"></a>一、Library的打包</h2><p>在打包库的时候，需要配置<strong>library</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">const path = require(&apos;path&apos;)</span><br><span class="line"></span><br><span class="line">module.exports = &#123;</span><br><span class="line">  mode: &quot;production&quot;,</span><br><span class="line">  entry: &apos;./src/index.js&apos;,</span><br><span class="line">  externals: [</span><br><span class="line">    &quot;lodash&quot;</span><br><span class="line">  ],</span><br><span class="line">  output: &#123;</span><br><span class="line">    path: path.resolve(__dirname, &apos;dist&apos;),</span><br><span class="line">    filename: &apos;library.js&apos;,</span><br><span class="line">    library: &apos;library&apos;,</span><br><span class="line">    libraryTarget: &apos;umd&apos;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>externals</strong>:      打包的时候不打包指定的包,依靠外部扩展<br><strong>libraryTarget</strong>:  库在外部的引入方式.”umd”时CommonJS、ES2015模块、AMD均支持<br><strong>library</strong>:        以<code>&lt;script&gt;&lt;/script&gt;</code>方式引入会注入全局变量</p>
 <ul>
-<li>任务队列<br>浏览器为网络请求这样的异步任务单独开启了一个线程，这些异步任务完成后，主线程怎么知道的呢？<strong>回调函数</strong>，整个程序是事件驱动的，每个事件都会绑定相应的回调函数，举个🌰：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(function()&#123;</span><br><span class="line">    console.log(&apos;time is out);</span><br><span class="line">&#125;,50)</span><br></pre></td></tr></table></figure>
-</li>
+<li>npm add username  //添加npm账号</li>
+<li>npm publish       //提交npm仓库</li>
+<li>npm config set registry <a href="http://registry.npmjs.org" target="_blank" rel="noopener">http://registry.npmjs.org</a>       //切回到npmjs源</li>
+<li>npm config set registry <a href="https://registry.npm.taobao.org" target="_blank" rel="noopener">https://registry.npm.taobao.org</a> //设置淘宝源</li>
 </ul>
-<p>当50ms到了之后，会触发定时事件，这个时候，就会把回调函数放到任务队列里,整个程序就是通过这样的一个个事件驱动起来的。</p>
+<h2 id="二、Progressive-Web-Application-PWA-的打包配置"><a href="#二、Progressive-Web-Application-PWA-的打包配置" class="headerlink" title="二、Progressive Web Application(PWA)的打包配置"></a>二、Progressive Web Application(PWA)的打包配置</h2><p>安装http-server模拟服务器:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install http-server --save-dev</span><br></pre></td></tr></table></figure></p>
+<p>遇到断网的情况下,第二次浏览即便断网也能使用浏览器缓存文件,需要使用WorkBox插件:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install workbox-webpack-plugin --save-dev</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">plugins: [</span><br><span class="line">  new WorkBoxPlugin.GenerateSW(&#123;</span><br><span class="line">      clientsClaim: true,</span><br><span class="line">      skipWaiting: true</span><br><span class="line">  &#125;)</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>页面中应用service-worker:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">if (&apos;serviceWorker&apos; in navigator) &#123;</span><br><span class="line">  window.addEventListener(&apos;load&apos;, () =&gt; &#123;</span><br><span class="line">    navigator.serviceWorker.register(&apos;./service-worker.js&apos;)</span><br><span class="line">      .then(registration =&gt; &#123;</span><br><span class="line">        console.log(registration)</span><br><span class="line">      &#125;).catch(error =&gt; &#123;</span><br><span class="line">        console.log(&quot;service-worker register error&quot;)</span><br><span class="line">      &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="三、TypeScript的打包配置"><a href="#三、TypeScript的打包配置" class="headerlink" title="三、TypeScript的打包配置"></a>三、TypeScript的打包配置</h2><p>TypeScript是JavaScript的一个超集。<br>配置loader:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">rules: [&#123;</span><br><span class="line">  test: /\.tsx?$/,</span><br><span class="line">  use: &apos;ts-loader&apos;,</span><br><span class="line">  exclude: /node_modules/</span><br><span class="line">&#125;]</span><br></pre></td></tr></table></figure></p>
+<p>配置TS需要一个<code>tsconfig.json</code>配置文件:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;compilerOptions&quot;: &#123;</span><br><span class="line">    &quot;outDir&quot;: &quot;./dist&quot;,</span><br><span class="line">    &quot;module&quot;: &quot;es6&quot;,</span><br><span class="line">    &quot;target&quot;: &quot;es5&quot;,</span><br><span class="line">    &quot;allowJs&quot;: true</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>TS下引入外部库，如果直接引用不能用到TS类型的测试,需要安装TS版本库，🌰:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install @types/lodash --save-dev</span><br></pre></td></tr></table></figure></p>
+<p>一个TS代码的🌰:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">import * as _ from &apos;lodash&apos;;</span><br><span class="line"></span><br><span class="line">class Greeter &#123;</span><br><span class="line">  greeting: string;</span><br><span class="line">  constructor(message: string) &#123;</span><br><span class="line">    this.greeting = message;</span><br><span class="line">  &#125;</span><br><span class="line">  greet() &#123;</span><br><span class="line">    return _.join([&quot;hello,&quot;, &apos; &apos;, this.greeting], &apos;&apos;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let greeter = new Greeter(&apos;world&apos;)</span><br><span class="line">alert(greeter.greet())</span><br></pre></td></tr></table></figure></p>
+<h2 id="四、使用WebpackDevServer实现请求转发"><a href="#四、使用WebpackDevServer实现请求转发" class="headerlink" title="四、使用WebpackDevServer实现请求转发"></a>四、使用WebpackDevServer实现请求转发</h2><p>配置<code>devServer</code>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">devServer: &#123;</span><br><span class="line">  proxy: &#123;</span><br><span class="line">    contentBase: &apos;./dist&apos;,</span><br><span class="line">    open: true,</span><br><span class="line">    port: 8080,</span><br><span class="line">    hot: true,</span><br><span class="line">    hotOnly: true,</span><br><span class="line">    proxy: &#123;</span><br><span class="line">      &apos;/react/api&apos;: &#123;</span><br><span class="line">        // 请求代理的网址</span><br><span class="line">        target: &apos;http://www.dell-lee.com&apos;,</span><br><span class="line">        // 对https请求的转发</span><br><span class="line">        secure: false,</span><br><span class="line">        pathRewrite: &#123;</span><br><span class="line">          // 路径的重写</span><br><span class="line">          &apos;header.json&apos;: &apos;demo.json&apos;</span><br><span class="line">        &#125;,</span><br><span class="line">        changeOrigin: true</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>只有在开发环境下,proxy才会生效(也只有开发情况下需要webpackDevServer)</p>
+<h2 id="五、WebpackDevServer解决但页面应用路由问题"><a href="#五、WebpackDevServer解决但页面应用路由问题" class="headerlink" title="五、WebpackDevServer解决但页面应用路由问题"></a>五、WebpackDevServer解决但页面应用路由问题</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">devServer: &#123;</span><br><span class="line">  historyApiFallback: &#123;</span><br><span class="line">    rewrites: [&#123;</span><br><span class="line">      from: /\.*/,</span><br><span class="line">      to: &apos;/index.html&apos;</span><br><span class="line">    &#125;]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以简写为:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">devServer: &#123;</span><br><span class="line">  historyApiFallback: true</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>访问路由的时候,服务器重新在<code>/</code>下访问(即访问index.html)</p>
+<h2 id="六、EsLint在webpack中的配置"><a href="#六、EsLint在webpack中的配置" class="headerlink" title="六、EsLint在webpack中的配置"></a>六、EsLint在webpack中的配置</h2><h3 id="EsLint"><a href="#EsLint" class="headerlink" title="EsLint"></a>EsLint</h3><h2 id="EsLint-可组装的JavaScript和JSX检查工具"><a href="#EsLint-可组装的JavaScript和JSX检查工具" class="headerlink" title="EsLint: 可组装的JavaScript和JSX检查工具"></a><strong>EsLint</strong>: 可组装的JavaScript和JSX检查工具</h2><p>设置一个配置文件:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx eslint --init</span><br></pre></td></tr></table></figure></p>
+<p>eslint配置文件在<code>.eslintrc.js</code>下<br>屏蔽一些规范,在配置文件的<code>rules</code>下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">rules: &#123;</span><br><span class="line">  &quot;react/prefer-stateless-function&quot;: 0,</span><br><span class="line">  &quot;eol-last&quot;: 0,</span><br><span class="line">  &quot;semi&quot;: 0</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>在<strong>VsCode</strong>编辑器下,安装eslint插件,就可以全局检测代码规范。</p>
+<h3 id="webpack下检测代码规范"><a href="#webpack下检测代码规范" class="headerlink" title="webpack下检测代码规范"></a>webpack下检测代码规范</h3><p>安装<code>eslint-loader</code>,配置webpack:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  test: /\.js$/,</span><br><span class="line">  use: [&apos;babel-loader&apos;, &apos;eslint-loader&apos;],</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure></p>
+<p><code>eslint-loader</code>写在下面,eslint-loader需要首先执行检测代码,然后再打包<br>在devServer中配置<strong>overlay</strong>,报错的时候显示图层:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">devServer: &#123;</span><br><span class="line">  overlay: true</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="七、webpack性能优化"><a href="#七、webpack性能优化" class="headerlink" title="七、webpack性能优化"></a>七、webpack性能优化</h2><ul>
+<li>跟上技术的迭代(Node,Npm,Yarn)</li>
+<li>在尽可能少的模块上应用Loaders(exclude、include)</li>
+<li>Plugin尽可能精简并确保可靠</li>
+<li>resolve参数合理配置</li>
+<li>控制包文件大小</li>
+<li>thread-loader,parallel-webpack,happypack多进程打包</li>
+<li>合理使用source-map</li>
+<li>结合stats分析打包结果</li>
+<li>开发环境内存编译</li>
+<li>开发环境无用插件剔除</li>
+</ul>
+<p>webpack配置<strong>resolve</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">resolve: &#123;</span><br><span class="line">  extensions: [&apos;.js&apos;, &apos;.jsx&apos;],</span><br><span class="line">  mainFiles: [&apos;index&apos;, &apos;child&apos;]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>在文件导入的时候,自动按照<strong>extensions</strong>查找后缀文件(查找文件性能消耗,一般只用于逻辑文件的查找,资源文件一般不自动添加后缀)<br>在文件夹中导入的时候,自动按照<strong>mainFiles</strong>查找文件名称(减少配置,减少性能消耗))</p>
+<h3 id="使用DllPlugin提高打包速度"><a href="#使用DllPlugin提高打包速度" class="headerlink" title="使用DllPlugin提高打包速度"></a>使用DllPlugin提高打包速度</h3><hr>
+<p>目标:</p>
 <ul>
-<li>主线程<br>JS一直在做一件事，就是从任务队列里提取任务，放到主线程里执行。<br>上文所说到的浏览器为异步任务开辟的线程可以统一理解为<strong>WebAPIs</strong>，任务队列就是<strong>callback queue</strong>，<strong>堆(heap)</strong>和<strong>栈(stack)</strong>共同组成了JS主线程。函数的执行就是通过进栈和出栈实现的，等到栈(stack)被清空的时候，说明一个任务已经执行完了，这是就会从callback queue中寻找下一个任务进栈，这个寻找的过程成为称为<strong>event loop</strong>，它总是循环的查找任务队列里是否还有任务。</li>
+<li>第三方模块只打包一次</li>
+<li>引入第三方模块的时候,要去使用dll文件引入</li>
 </ul>
-<h2 id="三、举个实际的🌰"><a href="#三、举个实际的🌰" class="headerlink" title="三、举个实际的🌰:"></a>三、举个实际的🌰:</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(function()&#123;</span><br><span class="line">    console.log(&apos;a&apos;)</span><br><span class="line">&#125;,0)</span><br><span class="line">console.log(&apos;b&apos;)</span><br></pre></td></tr></table></figure>
-<p>实际的输出结果现输出b，再输出a。为什么呢？<br>因为执行完setTimeout后，会立即把匿名函数放到callback queue里等待主程序的召唤。但此时stack里面不是空的，还有一句<code>console.log(&#39;b&#39;)</code>等到执行完这个之后，才通过event loop把匿名函数放到stack里面。<br>如果是很耗时的任务，那就应该把任务放到callback queue里面，等主程序执行完后再执行。</p>
-<ul>
-<li>AJAX<br>AJAX请求内容的时候是异步的，当请求完成后，会触发请求完成的事件，然后把回调函数放入callback queue。这样保证了页面不会出现因为网络请求页面一段时间内卡顿渲染不出来，影响用户体验。</li>
-<li>界面渲染<br>界面渲染线程是单独开辟的线程，是不是DOM一变化，界面就立刻重新渲染？<br>如果DOM一变化，页面就立刻重新渲染，效率必然会很低，所以浏览器的机制规定界面渲染和主程序是互斥的。<br>主程序执行任务时，浏览器渲染线程处于挂起状态。</li>
-</ul>
-<h2 id="四、利用浏览器的异步机制"><a href="#四、利用浏览器的异步机制" class="headerlink" title="四、利用浏览器的异步机制"></a>四、利用浏览器的异步机制</h2><p>浏览器为几个明显耗时任务单独开辟线程解决耗时问题，但我们自己写的程序里面也会有耗时的函数，肯定不能自己开辟单独的线程，这种情况下，我们可以利用浏览器给我们开放的这几个窗口。<br>浏览器定时器线程和事件触发线程是好利用的，网络请求不适合我们使用。<br>举个栗子，假设耗时函数是f1，f1是f2的前置任务。</p>
-<ul>
-<li>利用定时器触发线程<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function f1(callback)&#123;</span><br><span class="line">    setTimeout(function()&#123;</span><br><span class="line">        // f1的代码</span><br><span class="line">        callback()</span><br><span class="line">    &#125;,0)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>这是最简单但并不实用的方法，以后会介绍现在常用的异步处理方式。</p>
-<h2 id="五、异步适用的场景"><a href="#五、异步适用的场景" class="headerlink" title="五、异步适用的场景"></a>五、异步适用的场景</h2><p>当我们的程序需要大量I/O操作和用户请求时，JS这个具备单线程、异步、事件驱动的语言就发挥出优势了。相比多线程语言，它不必耗费过多的系统开销，同时也不必把精力用于处理多线程管理，相比同步执行的语言，宿主环境的异步和事件驱动机制又让它实现了非阻塞I/O。</p>
-
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install add-asset-html-webpack-plugin --save</span><br></pre></td></tr></table></figure>
+<p>新建一个<code>webpack.dll.js</code>导出第三方模块:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">const path = require(&apos;path&apos;)</span><br><span class="line">const webpack = require(&apos;webpack&apos;)</span><br><span class="line"></span><br><span class="line">module.exports = &#123;</span><br><span class="line">  mode: &apos;production&apos;,</span><br><span class="line">  entry: &#123;</span><br><span class="line">    vendors: [&apos;react&apos;, &apos;react-dom&apos;, &apos;lodash&apos;]</span><br><span class="line">  &#125;,</span><br><span class="line">  output: &#123;</span><br><span class="line">    filename: &apos;[name].dll.js&apos;,</span><br><span class="line">    path: path.resolve(__dirname, &apos;../dll&apos;),</span><br><span class="line">    library: &apos;[name]&apos;</span><br><span class="line">  &#125;,</span><br><span class="line">  plugins: [</span><br><span class="line">    new webpack.DllPlugin(&#123;</span><br><span class="line">      name: &apos;[name]&apos;,</span><br><span class="line">      path: path.resolve(__dirname, &apos;../dll/[name].manifest.json&apos;)</span><br><span class="line">    &#125;)</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>运行npm导出第三方模块(<code>vendors.dll.js</code>)和映射文件(<code>vendors.manifest.json</code>).</p>
+<p>配置webpack:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">const AddAssetHtmlWebpackPlugin = require(&apos;add-asset-html-webpack-plugin&apos;);</span><br><span class="line">plugins: [</span><br><span class="line">  new AddAssetHtmlWebpackPlugin(&#123;</span><br><span class="line">    filepath: path.resolve(__dirname, &apos;../dll/vendors.dll.js&apos;)</span><br><span class="line">  &#125;),</span><br><span class="line">  new webpack.DllReferencePlugin(&#123;</span><br><span class="line">    manifest: path.resolve(__dirname, &apos;../dll/vendors.manifest.json&apos;)</span><br><span class="line">  &#125;)</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p>
+<h2 id="八、多页面应用打包配置"><a href="#八、多页面应用打包配置" class="headerlink" title="八、多页面应用打包配置"></a>八、多页面应用打包配置</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  entry: &#123;</span><br><span class="line">		main: &apos;./src/index.js&apos;,</span><br><span class="line">		list: &apos;./src/list.js&apos;</span><br><span class="line">	&#125;,</span><br><span class="line">  output: &#123;</span><br><span class="line">		path: path.resolve(__dirname, &apos;../dist&apos;),</span><br><span class="line">    filename: &apos;[name].[contenthash].js&apos;,</span><br><span class="line">		chunkFilename: &apos;[name].[contenthash].js&apos;</span><br><span class="line">	&#125;</span><br><span class="line">  plugins: [</span><br><span class="line">    new HtmlWebpackPlugin(&#123;</span><br><span class="line">			template: &apos;src/index.html&apos;,</span><br><span class="line">			filename: &apos;index.html&apos;,</span><br><span class="line">      // html文件引入的chunks</span><br><span class="line">			chunks: [&apos;runtime&apos;, &apos;vendors&apos;, &apos;main&apos;]</span><br><span class="line">		&#125;), </span><br><span class="line">		new HtmlWebpackPlugin(&#123;</span><br><span class="line">			template: &apos;src/index.html&apos;,</span><br><span class="line">			filename: &apos;list.html&apos;,</span><br><span class="line">      // html文件引入的chunks</span><br><span class="line">			chunks: [&apos;runtime&apos;, &apos;vendors&apos;, &apos;list&apos;]</span><br><span class="line">		&#125;), </span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
 
       
@@ -230,7 +267,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">webpack</a>
         		</li>
       		
 		</ul>
@@ -286,7 +323,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/05/09/JavaScript的单线程和异步/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/09/26/Webpack学习(四)之实战篇/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -300,18 +337,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/05/09/JavaScript之this原理/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/09/28/webpack学习(五)之webpack底层原理及脚手架工具分析/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          JavaScript之this原理
+          webpack学习(五)之webpack底层原理及脚手架工具分析
         
       </div>
     </a>
   
   
-    <a href="/2019/05/08/JavaScript7个实用技巧/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">JavaScript7个实用技巧</div>
+    <a href="/2019/09/23/webpack学习(三)之高级篇/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Webpack学习(三)之高级篇</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -354,7 +391,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2019 Sherry
+    		&copy; 2020 Sherry
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -429,15 +466,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">CSS3</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">HTML</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -469,15 +510,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">HTML5</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">CSS3</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+                <a href="javascript:void(0)" class="js-tag color3">MongoDB</a>
               </li>
             
             <div class="clearfix"></div>
