@@ -6,15 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2019/4 | 个人博客</title>
+  <title>「深入浅出」彻底理解前端路由，React-Router原理解析 | 个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="个人博客">
-<meta property="og:url" content="http://yoursite.com/archives/2019/04/index.html">
+  <meta name="description" content="前言路由这个概念最先是在后端出现的，在服务端进行路由地址捕获，返回相应的页面给前端，这就是早期的服务端渲染，它的优势和劣势：  优势：安全性好，利于SEO 劣势：加大服务器压力，不利于用户体验（页面跳转会刷新页面存在等待时间）  正因为如此，才有了前端路由的诞生，通过前端路由可以实现单页面应用（SPA），达到路由变化无需刷新页面，大幅提高了用户体验，当然也有一定缺陷：  不利于SEO 使用浏览器的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「深入浅出」彻底理解前端路由，React-Router原理解析">
+<meta property="og:url" content="http://yoursite.com/2020/08/23/「深入浅出」彻底理解前端路由，React-Router原理解析/index.html">
 <meta property="og:site_name" content="个人博客">
+<meta property="og:description" content="前言路由这个概念最先是在后端出现的，在服务端进行路由地址捕获，返回相应的页面给前端，这就是早期的服务端渲染，它的优势和劣势：  优势：安全性好，利于SEO 劣势：加大服务器压力，不利于用户体验（页面跳转会刷新页面存在等待时间）  正因为如此，才有了前端路由的诞生，通过前端路由可以实现单页面应用（SPA），达到路由变化无需刷新页面，大幅提高了用户体验，当然也有一定缺陷：  不利于SEO 使用浏览器的">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-08-23T15:25:04.812Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="个人博客">
+<meta name="twitter:title" content="「深入浅出」彻底理解前端路由，React-Router原理解析">
+<meta name="twitter:description" content="前言路由这个概念最先是在后端出现的，在服务端进行路由地址捕获，返回相应的页面给前端，这就是早期的服务端渲染，它的优势和劣势：  优势：安全性好，利于SEO 劣势：加大服务器压力，不利于用户体验（页面跳转会刷新页面存在等待时间）  正因为如此，才有了前端路由的诞生，通过前端路由可以实现单页面应用（SPA），达到路由变化无需刷新页面，大幅提高了用户体验，当然也有一定缺陷：  不利于SEO 使用浏览器的">
   
     <link rel="alternative" href="/atom.xml" title="个人博客" type="application/atom+xml">
   
@@ -146,409 +150,179 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-「深入浅出」彻底理解前端路由，React-Router原理解析" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      「深入浅出」彻底理解前端路由，React-Router原理解析
+    </h1>
+  
+
+        
+        <a href="/2020/08/23/「深入浅出」彻底理解前端路由，React-Router原理解析/" class="archive-article-date">
+  	<time datetime="2020-08-23T15:24:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-23</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>路由这个概念最先是在后端出现的，在服务端进行路由地址捕获，返回相应的页面给前端，这就是早期的服务端渲染，它的优势和劣势：</p>
+<ul>
+<li>优势：安全性好，利于SEO</li>
+<li>劣势：加大服务器压力，不利于用户体验（页面跳转会刷新页面存在等待时间）</li>
+</ul>
+<p>正因为如此，才有了前端路由的诞生，通过前端路由可以实现单页面应用（SPA），达到路由变化无需刷新页面，大幅提高了用户体验，当然也有一定缺陷：</p>
+<ul>
+<li>不利于SEO</li>
+<li>使用浏览器的前进，后退键的时候会重新发送请求，没有合理地利用缓存</li>
+<li>单页面无法记住之前滚动的位置，无法在前进，后退的时候记住滚动的位置</li>
+</ul>
+<p>虽然有一定缺陷，但现在前端路由已经是路由实现的主要方式了，常用的<code>react-router</code>、<code>vue-router</code>都是基于前端路由的原理，前端路由主要有<code>hash</code>、<code>history</code>两种实现方式。</p>
+<p>所以我会先将手写<code>hash</code>路由、<code>history</code>路由的实现，有了这个了解，<code>React-Router</code>的核心原理就很容易理解了。</p>
+<p>本文的大致内容：</p>
+<ol>
+<li>hash路由的实现</li>
+<li>history路由的实现</li>
+<li>解析React-Router原理</li>
+</ol>
+<h2 id="hash路由"><a href="#hash路由" class="headerlink" title="hash路由"></a>hash路由</h2><h3 id="hash概念"><a href="#hash概念" class="headerlink" title="hash概念"></a>hash概念</h3><p>早期的前端路由就是基于<strong>location.hash</strong>实现的，<strong>location.hash</strong>就是URL中<code>#</code>后面的内容，比如：<code>https://github.com/#a</code>这个网站的location.hash就是<code>#a</code></p>
+<p>它具有以下几个特性：</p>
+<ul>
+<li></li>
+</ul>
+<h2 id="history路由方案"><a href="#history路由方案" class="headerlink" title="history路由方案"></a>history路由方案</h2><p><a href="https://juejin.im/post/6844903589123457031#heading-0" target="_blank" rel="noopener">aaa</a></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/26/云服务器Nginx配置/" class="archive-article-date">
-  	<time datetime="2019-04-26T11:00:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/26/云服务器Nginx配置/">云服务器Nginx配置</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Nginx</a>
-        		</li>
-      		
-		</ul>
-	</div>
+      
 
-          
-
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/08/23/「深入浅出」彻底理解前端路由，React-Router原理解析/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/22/React中变量声明使用的坑/" class="archive-article-date">
-  	<time datetime="2019-04-22T02:13:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-22</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/08/12/最详细的Promise相关源码实现/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">最详细的Promise相关源码实现</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/22/React中变量声明使用的坑/">React中变量声明使用的坑</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">React</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/21/Umi配置proxy解决跨域问题/" class="archive-article-date">
-  	<time datetime="2019-04-21T14:23:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/21/Umi配置proxy解决跨域问题/">Umi配置proxy解决跨域问题</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">React</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/21/Dva数据流实现AJAX请求/" class="archive-article-date">
-  	<time datetime="2019-04-21T09:09:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/21/Dva数据流实现AJAX请求/">Dva数据流实现AJAX请求</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">React</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/20/mongoose基本操作/" class="archive-article-date">
-  	<time datetime="2019-04-20T04:07:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/20/mongoose基本操作/">Mongoose基本操作</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Mongodb</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/20/后端Express、mongodb环境部署/" class="archive-article-date">
-  	<time datetime="2019-04-20T03:16:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/20/后端Express、mongodb环境部署/">后端Express、mongodb环境部署</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Mongodb</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Express</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/18/JavaScript之顶层对象和全局变量/" class="archive-article-date">
-  	<time datetime="2019-04-18T11:41:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/18/JavaScript之顶层对象和全局变量/">JavaScript之顶层对象和全局变量</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/17/JavaScript作用域、let、const详解/" class="archive-article-date">
-  	<time datetime="2019-04-17T13:16:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/17/JavaScript作用域、let、const详解/">JS作用域、let、const详解</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/15/小程序开发框架的四种基本组成/" class="archive-article-date">
-  	<time datetime="2019-04-15T12:47:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-15</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/15/小程序开发框架的四种基本组成/">小程序开发框架的四种基本组成</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">小程序</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/15/微信小程序开发目录/" class="archive-article-date">
-  	<time datetime="2019-04-15T11:33:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-15</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/15/微信小程序开发目录/">微信小程序项目目录</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">小程序</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2019/04/page/2/">2</a><a class="extend next" rel="next" href="/archives/2019/04/page/2/">Next &raquo;</a>
-    </nav>
   
 
 
@@ -572,8 +346,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

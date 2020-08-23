@@ -148,6 +148,93 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-「深入浅出」彻底理解前端路由，React-Router原理解析" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/23/「深入浅出」彻底理解前端路由，React-Router原理解析/">「深入浅出」彻底理解前端路由，React-Router原理解析</a>
+    </h1>
+  
+
+        
+        <a href="/2020/08/23/「深入浅出」彻底理解前端路由，React-Router原理解析/" class="archive-article-date">
+  	<time datetime="2020-08-23T15:24:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>路由这个概念最先是在后端出现的，在服务端进行路由地址捕获，返回相应的页面给前端，这就是早期的服务端渲染，它的优势和劣势：</p>
+<ul>
+<li>优势：安全性好，利于SEO</li>
+<li>劣势：加大服务器压力，不利于用户体验（页面跳转会刷新页面存在等待时间）</li>
+</ul>
+<p>正因为如此，才有了前端路由的诞生，通过前端路由可以实现单页面应用（SPA），达到路由变化无需刷新页面，大幅提高了用户体验，当然也有一定缺陷：</p>
+<ul>
+<li>不利于SEO</li>
+<li>使用浏览器的前进，后退键的时候会重新发送请求，没有合理地利用缓存</li>
+<li>单页面无法记住之前滚动的位置，无法在前进，后退的时候记住滚动的位置</li>
+</ul>
+<p>虽然有一定缺陷，但现在前端路由已经是路由实现的主要方式了，常用的<code>react-router</code>、<code>vue-router</code>都是基于前端路由的原理，前端路由主要有<code>hash</code>、<code>history</code>两种实现方式。</p>
+<p>所以我会先将手写<code>hash</code>路由、<code>history</code>路由的实现，有了这个了解，<code>React-Router</code>的核心原理就很容易理解了。</p>
+<p>本文的大致内容：</p>
+<ol>
+<li>hash路由的实现</li>
+<li>history路由的实现</li>
+<li>解析React-Router原理</li>
+</ol>
+<h2 id="hash路由"><a href="#hash路由" class="headerlink" title="hash路由"></a>hash路由</h2><h3 id="hash概念"><a href="#hash概念" class="headerlink" title="hash概念"></a>hash概念</h3><p>早期的前端路由就是基于<strong>location.hash</strong>实现的，<strong>location.hash</strong>就是URL中<code>#</code>后面的内容，比如：<code>https://github.com/#a</code>这个网站的location.hash就是<code>#a</code></p>
+<p>它具有以下几个特性：</p>
+<ul>
+<li></li>
+</ul>
+<h2 id="history路由方案"><a href="#history路由方案" class="headerlink" title="history路由方案"></a>history路由方案</h2><p><a href="https://juejin.im/post/6844903589123457031#heading-0" target="_blank" rel="noopener">aaa</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/08/23/「深入浅出」彻底理解前端路由，React-Router原理解析/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-最详细的Promise相关源码实现" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -890,80 +977,6 @@
 
 
   
-    <article id="post-深度优先搜索和广度优先搜索" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/10/16/深度优先搜索和广度优先搜索/">深度优先搜索和广度优先搜索</a>
-    </h1>
-  
-
-        
-        <a href="/2019/10/16/深度优先搜索和广度优先搜索/" class="archive-article-date">
-  	<time datetime="2019-10-16T07:33:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>深度优先遍历和广度优先遍历</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">面试</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/10/16/深度优先搜索和广度优先搜索/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1057,7 +1070,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">HTML</a>
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1065,15 +1078,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">HTML</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">NextJS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1081,19 +1090,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Mongodb</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Express</a>
+                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">面试</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">NextJS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Express</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1105,11 +1118,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
+                <a href="javascript:void(0)" class="js-tag color3">MongoDB</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MongoDB</a>
+                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
               </li>
             
             <div class="clearfix"></div>
