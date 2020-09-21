@@ -6,15 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | 个人博客</title>
+  <title>个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
+  <meta name="description" content="title: 中级前端开发必备的JS原声操作date: 2020-09-21 14:45:07tags:— JavaScript">
+<meta property="og:type" content="article">
 <meta property="og:title" content="个人博客">
-<meta property="og:url" content="http://yoursite.com/archives/page/3/index.html">
+<meta property="og:url" content="http://yoursite.com/2020/09/21/中级前端开发必备的JS原生操作/index.html">
 <meta property="og:site_name" content="个人博客">
+<meta property="og:description" content="title: 中级前端开发必备的JS原声操作date: 2020-09-21 14:45:07tags:— JavaScript">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/804ee51d522746c3b219548d038413c2~tplv-k3u1fbpfcp-zoom-1.image">
+<meta property="og:updated_time" content="2020-09-21T15:09:45.925Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="个人博客">
+<meta name="twitter:description" content="title: 中级前端开发必备的JS原声操作date: 2020-09-21 14:45:07tags:— JavaScript">
+<meta name="twitter:image" content="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/804ee51d522746c3b219548d038413c2~tplv-k3u1fbpfcp-zoom-1.image">
   
     <link rel="alternative" href="/atom.xml" title="个人博客" type="application/atom+xml">
   
@@ -146,394 +152,184 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-中级前端开发必备的JS原生操作" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<p>title: 中级前端开发必备的JS原声操作<br>date: 2020-09-21 14:45:07<br>tags:<br>— JavaScript</p>
+<a id="more"></a>
+<p>必备的原生JS操作</p>
+<h2 id="01-数组扁平化"><a href="#01-数组扁平化" class="headerlink" title="01.数组扁平化"></a>01.数组扁平化</h2><p>数组扁平化是指将一个多维数组变为一个一维数组<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>, [<span class="number">2</span>, [<span class="number">3</span>, [<span class="number">4</span>, <span class="number">5</span>]]], <span class="number">6</span>];</span><br><span class="line"><span class="comment">// =&gt; [1, 2, 3, 4, 5, 6]</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="方法一：使用flat"><a href="#方法一：使用flat" class="headerlink" title="方法一：使用flat()"></a>方法一：使用flat()</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> res1 = arr.flat(<span class="literal">Infinity</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="方法二：利用正则"><a href="#方法二：利用正则" class="headerlink" title="方法二：利用正则"></a>方法二：利用正则</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> res2 = <span class="built_in">JSON</span>.stringify(arr).replace(<span class="regexp">/\[|\]/g</span>, <span class="string">''</span>).split(<span class="string">','</span>);</span><br></pre></td></tr></table></figure>
+<p>但数据类型都会变为字符串</p>
+<h3 id="方法三：正则改良版本"><a href="#方法三：正则改良版本" class="headerlink" title="方法三：正则改良版本"></a>方法三：正则改良版本</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> res3 = <span class="built_in">JSON</span>.parse(<span class="string">'['</span> + <span class="built_in">JSON</span>.stringify(arr).replace(<span class="regexp">/\[|\]/g</span>, <span class="string">''</span>) + <span class="string">']'</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="方法四：使用reduce"><a href="#方法四：使用reduce" class="headerlink" title="方法四：使用reduce"></a>方法四：使用reduce</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> flatten = <span class="function"><span class="params">arr</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> arr.reduce(<span class="function">(<span class="params">pre, cur</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> pre.concat(<span class="built_in">Array</span>.isArray(cur) ? flatten(cur) : cur);</span><br><span class="line">  &#125;, [])</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> res4 = flatten(arr);</span><br></pre></td></tr></table></figure>
+<h3 id="方法五：函数递归"><a href="#方法五：函数递归" class="headerlink" title="方法五：函数递归"></a>方法五：函数递归</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> res5 = [];</span><br><span class="line"><span class="keyword">const</span> fn = <span class="function"><span class="params">arr</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">Array</span>.isArray(arr[i])) &#123;</span><br><span class="line">      fn(arr[i]);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      res5.push(arr[i]);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">fn(arr);</span><br></pre></td></tr></table></figure>
+<h2 id="02-数组去重"><a href="#02-数组去重" class="headerlink" title="02.数组去重"></a>02.数组去重</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>, <span class="number">1</span>, <span class="string">'1'</span>, <span class="number">17</span>, <span class="literal">true</span>, <span class="literal">true</span>, <span class="literal">false</span>, <span class="literal">false</span>, <span class="string">'true'</span>, <span class="string">'a'</span>, &#123;&#125;, &#123;&#125;];</span><br><span class="line"><span class="comment">// =&gt; [1, '1', 17, true, false, 'true', 'a', &#123;&#125;, &#123;&#125;]</span></span><br></pre></td></tr></table></figure>
+<h3 id="方法一：利用Set"><a href="#方法一：利用Set" class="headerlink" title="方法一：利用Set"></a>方法一：利用Set</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> res1 = <span class="built_in">Array</span>.from(<span class="keyword">new</span> <span class="built_in">Set</span>(arr));</span><br></pre></td></tr></table></figure>
+<h3 id="方法二：两层for循环-splice"><a href="#方法二：两层for循环-splice" class="headerlink" title="方法二：两层for循环+splice"></a>方法二：两层for循环+splice</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> unique1 = <span class="function"><span class="params">arr</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> len = arr.length;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> j = i + <span class="number">1</span>; j &lt; len; j++) &#123;</span><br><span class="line">      <span class="keyword">if</span> (arr[i] === arr[j]) &#123;</span><br><span class="line">        arr.splice(j, <span class="number">1</span>);</span><br><span class="line">        <span class="comment">// 每删除一个树，j--保证j的值经过自加后不变。同时，len--，减少循环次数提升性能</span></span><br><span class="line">        len--;</span><br><span class="line">        j--;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="方法三：利用indexOf"><a href="#方法三：利用indexOf" class="headerlink" title="方法三：利用indexOf"></a>方法三：利用indexOf</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> unique2 = <span class="function"><span class="params">arr</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> res = [];</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (res.indexOf(arr[i]) === <span class="number">-1</span>) res.push(arr[i]);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当然也可以用include、filter，思路大同小异。</p>
+<h3 id="方法四：利用include"><a href="#方法四：利用include" class="headerlink" title="方法四：利用include"></a>方法四：利用include</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> unique3 = <span class="function"><span class="params">arr</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> res = [];</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (!res.includes(arr[i])) res.push(arr[i]);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="方法五：利用filter"><a href="#方法五：利用filter" class="headerlink" title="方法五：利用filter"></a>方法五：利用filter</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> unique4 = <span class="function"><span class="params">arr</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> arr.filter(<span class="function">(<span class="params">item, index</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> arr.indexOf(item) === index;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="方法六：利用Map"><a href="#方法六：利用Map" class="headerlink" title="方法六：利用Map"></a>方法六：利用Map</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> unique5 = <span class="function"><span class="params">arr</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> map = <span class="keyword">new</span> <span class="built_in">Map</span>();</span><br><span class="line">  <span class="keyword">const</span> res = [];</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (!map.has(arr[i])) &#123;</span><br><span class="line">      map.set(arr[i], <span class="literal">true</span>)</span><br><span class="line">      res.push(arr[i]);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="03-类数组转化为数组"><a href="#03-类数组转化为数组" class="headerlink" title="03.类数组转化为数组"></a>03.类数组转化为数组</h2><p>类数组是具有<strong>length</strong>属性，但不具有数组原型上的方法。常见的类数组有<strong>arguments</strong>、DOM操作方法返回的结果。</p>
+<h3 id="方法一：Array-from"><a href="#方法一：Array-from" class="headerlink" title="方法一：Array.from"></a>方法一：Array.from</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Array</span>.from(<span class="built_in">document</span>.querySelectorAll(<span class="string">'div'</span>))</span><br></pre></td></tr></table></figure>
+<h3 id="方法二：Array-prototype-slice-call"><a href="#方法二：Array-prototype-slice-call" class="headerlink" title="方法二：Array.prototype.slice.call()"></a>方法二：Array.prototype.slice.call()</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Array</span>.prototype.slice.call(<span class="built_in">document</span>.querySelectorAll(<span class="string">'div'</span>))</span><br></pre></td></tr></table></figure>
+<h3 id="方法三：扩展运算符"><a href="#方法三：扩展运算符" class="headerlink" title="方法三：扩展运算符"></a>方法三：扩展运算符</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[...document.querySelectorAll(<span class="string">'div'</span>)]</span><br></pre></td></tr></table></figure>
+<h3 id="方法四：利用concat"><a href="#方法四：利用concat" class="headerlink" title="方法四：利用concat"></a>方法四：利用concat</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Array</span>.prototype.concat.apply([], <span class="built_in">document</span>.querySelectorAll(<span class="string">'div'</span>));</span><br></pre></td></tr></table></figure>
+<h2 id="03-Array-prototype-filter"><a href="#03-Array-prototype-filter" class="headerlink" title="03.Array.prototype.filter()"></a>03.Array.prototype.filter()</h2><p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/804ee51d522746c3b219548d038413c2~tplv-k3u1fbpfcp-zoom-1.image" alt><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Array</span>.prototype.filter = <span class="function"><span class="keyword">function</span>(<span class="params">callbackfn, thisArg</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">this</span> == <span class="literal">undefined</span>) <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>(<span class="string">"Type Error"</span>);</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> callbackfn !== <span class="string">'function'</span>) <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>(<span class="string">"Type Error"</span>);</span><br><span class="line">  <span class="keyword">const</span> res = [];</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>, j = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (callbackfn.call(thisArg, <span class="keyword">this</span>[i], i, <span class="keyword">this</span>)) &#123;</span><br><span class="line">      res[j] = <span class="keyword">this</span>[i];</span><br><span class="line">      j++</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="04-Array-prototype-map"><a href="#04-Array-prototype-map" class="headerlink" title="04.Array.prototype.map()"></a>04.Array.prototype.map()</h2><h2 id="05-Array-prototype-forEach"><a href="#05-Array-prototype-forEach" class="headerlink" title="05.Array.prototype.forEach()"></a>05.Array.prototype.forEach()</h2><h2 id="06-Array-prototype-reduce"><a href="#06-Array-prototype-reduce" class="headerlink" title="06.Array.prototype.reduce()"></a>06.Array.prototype.reduce()</h2><h2 id="06-Function-prototype-apply"><a href="#06-Function-prototype-apply" class="headerlink" title="06.Function.prototype.apply()"></a>06.Function.prototype.apply()</h2><p>第一个参数是绑定的this，默认为<code>window</code>，第二个参数是数组或类数组<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Function</span>.prototype.apply = <span class="function"><span class="keyword">function</span>(<span class="params">context = window, args</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="keyword">this</span> !== <span class="string">'function'</span>) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>(<span class="string">'Type Error'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">const</span> fn = <span class="built_in">Symbol</span>(<span class="string">'fn'</span>);</span><br><span class="line">  context[fn] = <span class="keyword">this</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> res = context[fn](...args);</span><br><span class="line">  <span class="keyword">delete</span> context[fn];</span><br><span class="line">  <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="07-Function-prototype-call"><a href="#07-Function-prototype-call" class="headerlink" title="07.Function.prototype.call"></a>07.Function.prototype.call</h2><p>于<code>call</code>唯一不同的是，<code>call()</code>方法接受的是一个参数列表<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Function</span>.prototype.call = <span class="function"><span class="keyword">function</span>(<span class="params">context = window, ...args</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="keyword">this</span> !== <span class="string">'function'</span>) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>(<span class="string">'Type Error'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">const</span> fn = <span class="built_in">Symbol</span>(<span class="string">'fn'</span>);</span><br><span class="line">  context[fn] = <span class="keyword">this</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> res = <span class="keyword">this</span>[fn](...args);</span><br><span class="line">  <span class="keyword">delete</span> <span class="keyword">this</span>.fn;</span><br><span class="line">  <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="08-Function-prototype-bind"><a href="#08-Function-prototype-bind" class="headerlink" title="08.Function.prototype.bind"></a>08.Function.prototype.bind</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Function</span>.prototype.bind = <span class="function"><span class="keyword">function</span>(<span class="params">context, ...args</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="keyword">this</span> !== <span class="string">'function'</span>) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">"Type Error"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 保存this的值</span></span><br><span class="line">  <span class="keyword">var</span> self = <span class="keyword">this</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> <span class="title">F</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 考虑new的情况</span></span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">this</span> <span class="keyword">instanceof</span> F) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">new</span> self(...args, ...arguments)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> self.apply(context, [...args, ...arguments])</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="04-debounce（防抖）"><a href="#04-debounce（防抖）" class="headerlink" title="04.debounce（防抖）"></a>04.debounce（防抖）</h2><p>触发高频时间后n秒内函数只会执行一次,如果n秒内高频时间再次触发,则重新计算时间。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> debounce = <span class="function">(<span class="params">fn, time</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> timeout = <span class="literal">null</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    clearTimeout(timeout)</span><br><span class="line">    timeout = setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      fn.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>);</span><br><span class="line">    &#125;, time);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>防抖常应用于用户进行搜索输入节约请求资源，<code>window</code>触发<code>resize</code>事件时进行防抖只触发一次。</p>
+<h2 id="05-throttle（节流）"><a href="#05-throttle（节流）" class="headerlink" title="05.throttle（节流）"></a>05.throttle（节流）</h2><p>高频时间触发,但n秒内只会执行一次,所以节流会稀释函数的执行频率。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> throttle = <span class="function">(<span class="params">fn, time</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> flag = <span class="literal">true</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!flag) <span class="keyword">return</span>;</span><br><span class="line">    flag = <span class="literal">false</span>;</span><br><span class="line">    setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      fn.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>);</span><br><span class="line">      flag = <span class="literal">true</span>;</span><br><span class="line">    &#125;, time);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>节流常应用于鼠标不断点击触发、监听滚动事件。</p>
+<h2 id="06-模拟new操作"><a href="#06-模拟new操作" class="headerlink" title="06.模拟new操作"></a>06.模拟new操作</h2><p>3个步骤：</p>
+<ol>
+<li>以<code>ctor.prototype</code>为原型创建一个对象。</li>
+<li>执行构造函数并将this绑定到新创建的对象上。</li>
+<li>判断构造函数执行返回的结果是否是引用数据类型，若是则返回构造函数执行的结果，否则返回创建的对象。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">newOperator</span>(<span class="params">ctor, ...args</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> ctor !== <span class="string">'function'</span>) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>(<span class="string">'Type Error'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">const</span> obj = <span class="built_in">Object</span>.create(ctor.prototype);</span><br><span class="line">  <span class="keyword">const</span> res = ctor.apply(obj, args);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> isObject = <span class="keyword">typeof</span> res === <span class="string">'object'</span> &amp;&amp; res !== <span class="literal">null</span>;</span><br><span class="line">  <span class="keyword">const</span> isFunction = <span class="keyword">typeof</span> res === <span class="string">'function'</span>;</span><br><span class="line">  <span class="keyword">return</span> isObject || isFunction ? res : obj;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="09-instanceof"><a href="#09-instanceof" class="headerlink" title="09.instanceof"></a>09.instanceof</h2><p><code>instanceof</code>运算符用于检测构造函数的<code>prototype</code>属性是否出现在某个实例对象的原型链上。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> myInstanceof = <span class="function">(<span class="params">left, right</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// 基本数据类型都返回false</span></span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> left !== <span class="string">'object'</span> || left === <span class="literal">null</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  <span class="keyword">let</span> proto = <span class="built_in">Object</span>.getPrototypeOf(left);</span><br><span class="line">  <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (proto === <span class="literal">null</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">if</span> (proto === right.prototype) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    proto = <span class="built_in">Object</span>.getPrototypeOf(proto);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="10-原型继承"><a href="#10-原型继承" class="headerlink" title="10.原型继承"></a>10.原型继承</h2><p>这里只写寄生组合继承了，中间还有几个演变过来的继承但都有一些缺陷<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Parent5</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = <span class="string">'parent'</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Child</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  Parent.call(<span class="keyword">this</span>);</span><br><span class="line">  <span class="keyword">this</span>.type = <span class="string">'children'</span>;</span><br><span class="line">&#125;</span><br><span class="line">Child.prototype = <span class="built_in">Object</span>.create(Parent.prototype);</span><br><span class="line">Child.prototype.constructor = Child;</span><br></pre></td></tr></table></figure></p>
+<h2 id="02-Object-is"><a href="#02-Object-is" class="headerlink" title="02.Object.is"></a>02.Object.is</h2><p><code>Object.is</code>解决的主要是这两个问题：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">+0 === -0  // true</span><br><span class="line">NaN === NaN // false</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> is= <span class="function">(<span class="params">x, y</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (x === y) &#123;</span><br><span class="line">    <span class="comment">// +0和-0应该不相等</span></span><br><span class="line">    <span class="keyword">return</span> x !== <span class="number">0</span> || y !== <span class="number">0</span> || <span class="number">1</span>/x === <span class="number">1</span>/y;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> x !== x &amp;&amp; y !== y;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="03-Object-assign"><a href="#03-Object-assign" class="headerlink" title="03.Object.assign"></a>03.Object.assign</h2><p><code>Object.assign()</code>方法用于将所有可枚举属性的值从一个或多个源对象复制到目标对象。它将返回目标对象（请注意这个操作是浅拷贝）<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>.defineProperty(<span class="built_in">Object</span>, <span class="string">'assign'</span>, &#123;</span><br><span class="line">  value: <span class="function"><span class="keyword">function</span>(<span class="params">target, ...args</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (target == <span class="literal">null</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>(<span class="string">'Cannot convert undefined or null to object'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 目标对象需要统一是引用数据类型，若不是会自动转换</span></span><br><span class="line">    <span class="keyword">const</span> to = <span class="built_in">Object</span>(target);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; args.length; i++) &#123;</span><br><span class="line">      <span class="comment">// 每一个源对象</span></span><br><span class="line">      <span class="keyword">const</span> nextSource = args[i];</span><br><span class="line">      <span class="keyword">if</span> (nextSource !== <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="comment">// 使用for...in和hasOwnProperty双重判断，确保只拿到本身的属性、方法（不包含继承的）</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">const</span> nextKey <span class="keyword">in</span> nextSource) &#123;</span><br><span class="line">          <span class="keyword">if</span> (<span class="built_in">Object</span>.prototype.hasOwnProperty.call(nextSource, nextKey)) &#123;</span><br><span class="line">            to[nextKey] = nextSource[nextKey];</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> to;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// 不可枚举</span></span><br><span class="line">  enumerable: <span class="literal">false</span>,</span><br><span class="line">  writable: <span class="literal">true</span>,</span><br><span class="line">  configurable: <span class="literal">true</span>,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<h2 id="10-JSONP"><a href="#10-JSONP" class="headerlink" title="10.JSONP"></a>10.JSONP</h2><p>script标签不遵循同源协议，可以用来进行跨域请求，优点就是兼容性好但仅限于GET请求<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> jsonp = <span class="function">(<span class="params">&#123; url, params, callbackName &#125;</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> generateUrl = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> dataSrc = <span class="string">''</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">in</span> params) &#123;</span><br><span class="line">      <span class="keyword">if</span> (<span class="built_in">Object</span>.prototype.hasOwnProperty.call(params, key)) &#123;</span><br><span class="line">        dataSrc += <span class="string">`<span class="subst">$&#123;key&#125;</span>=<span class="subst">$&#123;params[key]&#125;</span>&amp;`</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    dataSrc += <span class="string">`callback=<span class="subst">$&#123;callbackName&#125;</span>`</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;url&#125;</span>?<span class="subst">$&#123;dataSrc&#125;</span>`</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> scriptEle = <span class="built_in">document</span>.createElement(<span class="string">'script'</span>);</span><br><span class="line">    scriptEle.src = generateUrl();</span><br><span class="line">    <span class="built_in">document</span>.body.appendChild(scriptEle);</span><br><span class="line">    <span class="built_in">window</span>[callbackName] = <span class="function"><span class="params">data</span> =&gt;</span> &#123;</span><br><span class="line">      resolve(data);</span><br><span class="line">      <span class="built_in">document</span>.removeChild(scriptEle);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="11-AJAX"><a href="#11-AJAX" class="headerlink" title="11.AJAX"></a>11.AJAX</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> getJSON = <span class="function"><span class="keyword">function</span>(<span class="params">url</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> xhr = XMLHttpRequest ? <span class="keyword">new</span> XMLHttpRequest() : <span class="keyword">new</span> ActiveXObject(<span class="string">'Mscrosoft.XMLHttp'</span>);</span><br><span class="line">    xhr.open(<span class="string">'GET'</span>, url, <span class="literal">false</span>);</span><br><span class="line">    xhr.setRequestHeader(<span class="string">'Accept'</span>, <span class="string">'application/json'</span>);</span><br><span class="line">    xhr.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (xhr.readyState !== <span class="number">4</span>) <span class="keyword">return</span>;</span><br><span class="line">      <span class="keyword">if</span> (xhr.status === <span class="number">200</span> || xhr.status === <span class="number">304</span>) &#123;</span><br><span class="line">        resolve(xhr.responseText);</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        reject(<span class="keyword">new</span> <span class="built_in">Error</span>(xhr.responseText));</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    xhr.send();</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/13/webpack学习(二)之loader/" class="archive-article-date">
-  	<time datetime="2019-09-13T05:00:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/13/webpack学习(二)之loader/">webpack学习(二)之loader</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">webpack</a>
-        		</li>
-      		
-		</ul>
-	</div>
+      
 
-          
-
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/09/21/中级前端开发必备的JS原生操作/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/13/webpack学习(二)之核心篇/" class="archive-article-date">
-  	<time datetime="2019-09-13T05:00:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-13</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/08/23/「深入浅出」彻底理解前端路由，React-Router原理解析/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">「深入浅出」彻底理解前端路由，React-Router原理解析</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/13/webpack学习(二)之核心篇/">webpack学习(二)之核心篇</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">webpack</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/11/webpack学习(一)之入门/" class="archive-article-date">
-  	<time datetime="2019-09-11T13:45:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/11/webpack学习(一)之入门/">webpack学习(一)之入门</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">webpack</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/11/webpack学习(一)/" class="archive-article-date">
-  	<time datetime="2019-09-11T13:45:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/11/webpack学习(一)/">webpack学习(一)</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">webpack</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/09/Upload上传七牛云处理/" class="archive-article-date">
-  	<time datetime="2019-09-09T06:11:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/09/Upload上传七牛云处理/">Upload组件上传图片,七牛云处理实践</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">React</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/09/七牛云NodeJS SDK使用/" class="archive-article-date">
-  	<time datetime="2019-09-09T06:11:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/09/七牛云NodeJS SDK使用/">七牛云NodeJS SDK使用</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">React</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/07/NextJS基础/" class="archive-article-date">
-  	<time datetime="2019-09-07T06:12:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/07/NextJS基础/">NextJS基础</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">NextJS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/30/Next-Koa/" class="archive-article-date">
-  	<time datetime="2019-08-30T09:27:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/30/Next-Koa/">Next-Koa</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/10/页面布局详解(圣杯、双飞翼、弹性布局)/" class="archive-article-date">
-  	<time datetime="2019-07-10T03:37:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/10/页面布局详解(圣杯、双飞翼、弹性布局)/">页面布局详解(圣杯、双飞翼、弹性布局)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">CSS3</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/12/JavaScript异步总结/" class="archive-article-date">
-  	<time datetime="2019-06-12T11:20:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-12</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/12/JavaScript异步总结/">JavaScript异步总结</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/page/2/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><a class="page-number" href="/archives/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/archives/page/4/">4</a><a class="page-number" href="/archives/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/7/">7</a><a class="extend next" rel="next" href="/archives/page/4/">Next &raquo;</a>
-    </nav>
   
 
 
@@ -557,8 +353,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

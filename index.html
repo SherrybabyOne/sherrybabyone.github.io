@@ -148,6 +148,55 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-中级前端开发必备的JS原生操作" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<p>title: 中级前端开发必备的JS原声操作<br>date: 2020-09-21 14:45:07<br>tags:<br>— JavaScript</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/09/21/中级前端开发必备的JS原生操作/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-「深入浅出」彻底理解前端路由，React-Router原理解析" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -187,11 +236,12 @@
 <li>history路由的实现</li>
 <li>解析React-Router原理</li>
 </ol>
-<h2 id="hash路由"><a href="#hash路由" class="headerlink" title="hash路由"></a>hash路由</h2><h3 id="hash概念"><a href="#hash概念" class="headerlink" title="hash概念"></a>hash概念</h3><p>早期的前端路由就是基于<strong>location.hash</strong>实现的，<strong>location.hash</strong>就是URL中<code>#</code>后面的内容，比如：<code>https://github.com/#a</code>这个网站的location.hash就是<code>#a</code></p>
-<p>它具有以下几个特性：</p>
-<ul>
-<li></li>
-</ul>
+<h2 id="hash路由"><a href="#hash路由" class="headerlink" title="hash路由"></a>hash路由</h2><h3 id="hash基本概念"><a href="#hash基本概念" class="headerlink" title="hash基本概念"></a>hash基本概念</h3><p>早期的前端路由就是基于<strong>location.hash</strong>实现的，<strong>location.hash</strong>就是URL中<code>#</code>后面的内容（包括<code>#</code>符号），比如：<code>https://github.com/#a</code>这个网站的location.hash就是<code>#a</code></p>
+<p>可以直接通过赋值来改变当前页面的<code>hash</code>值：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.location.hash = <span class="string">'#b'</span></span><br></pre></td></tr></table></figure></p>
+<p>还可以通过<code>a</code>标签改变<code>hash</code>值：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#b"</span>&gt;</span>b<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>页面URL会变为<code>https://github.com/#b</code>，但页面并不会进行刷新，可以通过<strong>hashchange</strong>事件来监听页面hash变化的事件：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.addEventListener(<span class="string">'hashchange'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'hash改变'</span>)</span><br><span class="line">&#125;, <span class="literal">false</span>);</span><br></pre></td></tr></table></figure></p>
+<h3 id="hash特点"><a href="#hash特点" class="headerlink" title="hash特点"></a>hash特点</h3><h3 id="简单实现"><a href="#简单实现" class="headerlink" title="简单实现"></a>简单实现</h3><p><code>hash</code>路由概念还是比较简单的，有了这些概念就可以来简单实现一个<code>hash</code>路由组件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <h2 id="history路由方案"><a href="#history路由方案" class="headerlink" title="history路由方案"></a>history路由方案</h2><p><a href="https://juejin.im/post/6844903589123457031#heading-0" target="_blank" rel="noopener">aaa</a></p>
 
       
@@ -903,80 +953,6 @@
 
 
   
-    <article id="post-详细解析赋值、浅拷贝、深拷贝" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/10/16/详细解析赋值、浅拷贝、深拷贝/">详细解析赋值、浅拷贝、深拷贝</a>
-    </h1>
-  
-
-        
-        <a href="/2019/10/16/详细解析赋值、浅拷贝、深拷贝/" class="archive-article-date">
-  	<time datetime="2019-10-16T12:21:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="深入解析赋值-Copy-、浅拷贝-Shallow-Copy-、深拷贝-Deep-Copy"><a href="#深入解析赋值-Copy-、浅拷贝-Shallow-Copy-、深拷贝-Deep-Copy" class="headerlink" title="深入解析赋值(Copy)、浅拷贝(Shallow Copy)、深拷贝(Deep Copy)"></a>深入解析赋值(Copy)、浅拷贝(Shallow Copy)、深拷贝(Deep Copy)</h2>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">面试</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/10/16/详细解析赋值、浅拷贝、深拷贝/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1066,7 +1042,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">CSS3</a>
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1074,11 +1050,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
+                <a href="javascript:void(0)" class="js-tag color5">HTML</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">HTML</a>
+                <a href="javascript:void(0)" class="js-tag color5">CSS3</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1086,11 +1062,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">小程序</a>
+                <a href="javascript:void(0)" class="js-tag color2">NextJS</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Mongodb</a>
+                <a href="javascript:void(0)" class="js-tag color4">小程序</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1098,11 +1074,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">面试</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">NextJS</a>
+                <a href="javascript:void(0)" class="js-tag color3">Mongodb</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1110,7 +1082,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">HTML5</a>
+                <a href="javascript:void(0)" class="js-tag color3">面试</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1118,11 +1090,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MongoDB</a>
+                <a href="javascript:void(0)" class="js-tag color1">HTML5</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">MongoDB</a>
               </li>
             
             <div class="clearfix"></div>
